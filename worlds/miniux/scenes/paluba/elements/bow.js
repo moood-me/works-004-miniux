@@ -28,4 +28,13 @@ e.layer("lamp", { pivot: [0.18, -1.02] }, (g) => {
   g.fillRect(0.165, -1.06, 0.03, 0.08);
   e.light(0.18, -1.02, 0.35, "#ffd070", 1, "lamp");
 });
+// the stem head, painted red: the bow to steer by
+g.fillStyle = "#c8453a";
+g.beginPath();
+g.arc(0, -1.0, 0.08, 0, Math.PI * 2);
+g.fill();
+g.fillStyle = "#f4f1ea";
+g.beginPath();
+g.arc(0, -1.0, 0.03, 0, Math.PI * 2);
+g.fill();
 e.at(0, -1.0, "stem");

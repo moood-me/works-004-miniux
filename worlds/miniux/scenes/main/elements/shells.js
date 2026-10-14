@@ -34,14 +34,14 @@ X.forEach((x, i) => {
   });
   e.layer(id, { pivot: [x, -0.01] }, (g) => {
     if (found && id === odd) {
-      fan(g, x, -0.01, 0.14, "#f1d0b2", "#d49d7c");
-      fan(g, x, -0.07, 0.15, "#f7dcc4", "#d9a98a");
+      fan(g, x, -0.01, 0.14, "#e98f6e", "#b8603e");
+      fan(g, x, -0.07, 0.15, "#f2a585", "#c06a48");
       g.fillStyle = "#fbf8f2";
       g.beginPath();
       g.arc(x, -0.05, 0.028, 0, Math.PI * 2);
       g.fill();
     } else {
-      fan(g, x, -0.01, 0.15, "#f2d2b6", "#d9a98a");
+      fan(g, x, -0.01, 0.15, "#ec9a78", "#b8603e");
     }
   });
   e.at(x, -0.08, id);

@@ -54,7 +54,7 @@
    "id": "bell",
    "name": "Колокольчик",
    "across": 0,
-   "distance": 2.2,
+   "distance": 1.8,
    "elevation": 1.0,
    "facing": 180,
    "height": 0.78,
@@ -99,7 +99,7 @@
    "id": "bellows",
    "name": "Мех",
    "across": 0,
-   "distance": 2.2,
+   "distance": 1.8,
    "elevation": 1.0,
    "facing": 180,
    "height": 0.5,
@@ -130,7 +130,7 @@
    "id": "candle",
    "name": "Свеча",
    "across": 0,
-   "distance": 2.2,
+   "distance": 1.8,
    "elevation": 1.0,
    "facing": 180,
    "height": 0.5,
@@ -146,7 +146,7 @@
    "id": "wicks",
    "name": "Три фитиля",
    "across": 0,
-   "distance": 2.2,
+   "distance": 1.8,
    "elevation": 1.0,
    "facing": 180,
    "height": 0.95,
@@ -222,7 +222,7 @@
    "id": "knot",
    "name": "Узел на верёвке",
    "across": 0,
-   "distance": 2.2,
+   "distance": 1.8,
    "elevation": 1.0,
    "facing": 180,
    "height": 0.6,
@@ -237,30 +237,30 @@
    "id": "sockets",
    "name": "Доска с гнёздами",
    "across": 0,
-   "distance": 2.2,
+   "distance": 1.8,
    "elevation": 1.0,
    "facing": 180,
    "height": 0.36,
    "box": [
-    -0.9,
-    -0.4,
-    0.6,
-    0.02
+    -1.6,
+    -1.25,
+    1.6,
+    0.05
    ]
   },
   {
    "id": "bubbles",
    "name": "Пузыри",
    "across": 0,
-   "distance": 2.2,
+   "distance": 1.8,
    "elevation": 1.0,
    "facing": 180,
    "height": 1.0,
    "box": [
-    -0.68,
-    -1.0,
-    0.68,
-    -0.1
+    -1.6,
+    -1.25,
+    1.6,
+    0.05
    ],
    "inFront": [
     "sockets"
@@ -270,7 +270,7 @@
    "id": "crack",
    "name": "Доска с трещиной",
    "across": 0,
-   "distance": 2.2,
+   "distance": 1.8,
    "elevation": 1.0,
    "facing": 180,
    "height": 0.62,
@@ -288,7 +288,7 @@
    "id": "screws",
    "name": "Пластина с винтами",
    "across": 0,
-   "distance": 2.2,
+   "distance": 1.8,
    "elevation": 1.0,
    "facing": 180,
    "height": 0.64,
@@ -337,7 +337,7 @@
    "id": "shells",
    "name": "Три ракушки",
    "across": 0,
-   "distance": 2.2,
+   "distance": 1.8,
    "elevation": 1.0,
    "facing": 180,
    "height": 0.2,
@@ -352,7 +352,7 @@
    "id": "drum",
    "name": "Барабан",
    "across": 0,
-   "distance": 2.2,
+   "distance": 1.8,
    "elevation": 1.0,
    "facing": 180,
    "height": 0.45,
@@ -367,7 +367,7 @@
    "id": "drum2",
    "name": "Второй барабан",
    "across": 0,
-   "distance": 2.2,
+   "distance": 1.8,
    "elevation": 1.0,
    "facing": 180,
    "height": 0.45,
@@ -398,7 +398,7 @@
    "id": "hourglass",
    "name": "Песочные часы",
    "across": 0,
-   "distance": 2.2,
+   "distance": 1.8,
    "elevation": 1.0,
    "facing": 180,
    "height": 0.58,
@@ -434,9 +434,17 @@
   "knot": 0,
   "knot_off": false,
   "peg": "none",
+  "peg_u": 0,
+  "peg_v": 0,
   "bubble1": "free",
   "bubble2": "free",
   "bubble3": "free",
+  "bubble1_u": 0,
+  "bubble1_v": 0,
+  "bubble2_u": 0,
+  "bubble2_v": 0,
+  "bubble3_u": 0,
+  "bubble3_v": 0,
   "crack": 0,
   "screw1": 0,
   "screw2": 0,
@@ -643,11 +651,22 @@
   "peg": {
    "values": [
     "none",
+    "held",
     "s1",
     "s2",
     "s3"
    ],
-   "means": "колышек: none — лежит на столе слева (sockets#peg), sN — стоит в гнезде sN (меняется сразу)"
+   "means": "колышек (меняется сразу): none — лежит на столе слева, held — в руке: нарисован под пальцем, в точке peg_u, peg_v; sN — стоит в гнезде sN. Точка sockets#peg — там, где он нарисован сейчас"
+  },
+  "peg_u": {
+   "type": "number",
+   "smooth": true,
+   "means": "колышек в руке (peg = held): где он, вдоль доски — 0 в sockets#s1, 1 в sockets#s3 (может выходить за 0..1)"
+  },
+  "peg_v": {
+   "type": "number",
+   "smooth": true,
+   "means": "колышек в руке: где он, вверх от линии s1→s3, в длинах |s1→s3| (вниз — меньше 0); доска и колышек — в одной вертикальной карточке лицом к камере"
   },
   "bubble1": {
    "values": [
@@ -657,7 +676,17 @@
     "s2",
     "s3"
    ],
-   "means": "первый пузырь: free — плывёт по своему кругу, held — не виден (его несёт палец), sN — сидит в гнезде sN"
+   "means": "первый пузырь: free — плывёт по своему кругу (отпущенный — плывёт дальше оттуда, медленно возвращаясь к кругу), held — в руке: нарисован под пальцем, в точке bubble1_u, bubble1_v; sN — сидит в гнезде sN. Точка bubbles#b1 — там, где он нарисован"
+  },
+  "bubble1_u": {
+   "type": "number",
+   "smooth": true,
+   "means": "пузырь 1 в руке: вдоль доски с гнёздами — 0 в sockets#s1, 1 в sockets#s3"
+  },
+  "bubble1_v": {
+   "type": "number",
+   "smooth": true,
+   "means": "пузырь 1 в руке: вверх от линии s1→s3, в длинах |s1→s3|"
   },
   "bubble2": {
    "values": [
@@ -667,7 +696,17 @@
     "s2",
     "s3"
    ],
-   "means": "второй пузырь: как bubble1"
+   "means": "второй пузырь: free — плывёт по своему кругу (отпущенный — плывёт дальше оттуда, медленно возвращаясь к кругу), held — в руке: нарисован под пальцем, в точке bubble2_u, bubble2_v; sN — сидит в гнезде sN. Точка bubbles#b2 — там, где он нарисован"
+  },
+  "bubble2_u": {
+   "type": "number",
+   "smooth": true,
+   "means": "пузырь 2 в руке: вдоль доски с гнёздами — 0 в sockets#s1, 1 в sockets#s3"
+  },
+  "bubble2_v": {
+   "type": "number",
+   "smooth": true,
+   "means": "пузырь 2 в руке: вверх от линии s1→s3, в длинах |s1→s3|"
   },
   "bubble3": {
    "values": [
@@ -677,7 +716,17 @@
     "s2",
     "s3"
    ],
-   "means": "третий пузырь: как bubble1"
+   "means": "третий пузырь: free — плывёт по своему кругу (отпущенный — плывёт дальше оттуда, медленно возвращаясь к кругу), held — в руке: нарисован под пальцем, в точке bubble3_u, bubble3_v; sN — сидит в гнезде sN. Точка bubbles#b3 — там, где он нарисован"
+  },
+  "bubble3_u": {
+   "type": "number",
+   "smooth": true,
+   "means": "пузырь 3 в руке: вдоль доски с гнёздами — 0 в sockets#s1, 1 в sockets#s3"
+  },
+  "bubble3_v": {
+   "type": "number",
+   "smooth": true,
+   "means": "пузырь 3 в руке: вверх от линии s1→s3, в длинах |s1→s3|"
   },
   "crack": {
    "range": [

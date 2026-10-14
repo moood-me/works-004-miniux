@@ -52,4 +52,18 @@ e.layer("leaf", { pivot: [-0.6, -0.42] }, (g) => {
   g.beginPath();
   g.arc(-0.07, -0.42, 0.025, 0, Math.PI * 2);
   g.fill();
+  // the knocker: where to knock
+  g.fillStyle = "#6e4a1e";
+  g.beginPath();
+  g.arc(-0.3, -0.47, 0.03, 0, Math.PI * 2);
+  g.fill();
+  g.strokeStyle = "#e8b53a";
+  g.lineWidth = 0.022;
+  g.beginPath();
+  g.arc(-0.3, -0.41, 0.06, 0, Math.PI * 2);
+  g.stroke();
+  g.fillStyle = "#e8b53a";
+  g.beginPath();
+  g.arc(-0.3, -0.47, 0.018, 0, Math.PI * 2);
+  g.fill();
 });

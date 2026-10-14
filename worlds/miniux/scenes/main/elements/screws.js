@@ -7,9 +7,9 @@ const X = one ? [0] : [-0.54, -0.18, 0.18, 0.54];
 const half = one ? 0.26 : 0.72;
 g.fillStyle = "#7a5534";
 g.fillRect(-half + 0.04, -0.06, 2 * half - 0.08, 0.06);
-g.fillStyle = "#c3c9cf";
+g.fillStyle = "#7d868f";
 g.fillRect(-half, -0.64, 2 * half, 0.58);
-g.strokeStyle = "#8d949b";
+g.strokeStyle = "#5d656d";
 g.lineWidth = 0.014;
 g.strokeRect(-half, -0.64, 2 * half, 0.58);
 // the tag
@@ -39,19 +39,19 @@ X.forEach((x, i) => {
   const n = i + 1;
   // the shank showing under the head while it is out
   e.layer("shank" + n, { pivot: [x, -0.45] }, (g) => {
-    g.fillStyle = "#8d949b";
+    g.fillStyle = "#c3c9cf";
     g.fillRect(x - 0.03, -0.45, 0.06, 0.08);
-    g.fillStyle = "#6c737a";
+    g.fillStyle = "#8d949b";
     for (let k = 0; k < 4; k++) g.fillRect(x - 0.03, -0.43 + k * 0.016, 0.06, 0.006);
   });
   e.layer("head" + n, { pivot: [x, -0.45] }, (g) => {
-    g.fillStyle = "#7d848b";
+    g.fillStyle = "#3e4247";
     g.beginPath();
-    g.arc(x, -0.45, 0.058, 0, Math.PI * 2);
+    g.arc(x, -0.45, 0.064, 0, Math.PI * 2);
     g.fill();
-    g.fillStyle = "#dfe3e7";
+    g.fillStyle = "#f2f4f6";
     g.beginPath();
-    g.arc(x, -0.45, 0.048, 0, Math.PI * 2);
+    g.arc(x, -0.45, 0.054, 0, Math.PI * 2);
     g.fill();
   });
   e.layer("slot" + n, { pivot: [x, -0.45] }, (g) => {

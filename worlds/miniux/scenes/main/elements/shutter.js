@@ -29,10 +29,10 @@ e.layer("board", {}, (g) => {
   g.fillRect(-0.325, -0.875, 0.65, 0.53);
   g.fillStyle = "#9a6a38";
   for (let i = 1; i < 4; i++) g.fillRect(-0.325, -0.875 + i * 0.1325, 0.65, 0.012);
-  g.strokeStyle = "#3f4247";
-  g.lineWidth = 0.02;
+  g.strokeStyle = "#e8b53a";
+  g.lineWidth = 0.028;
   g.beginPath();
-  g.arc(0, -0.4, 0.045, 0, Math.PI);
+  g.arc(0, -0.4, 0.05, 0, Math.PI);
   g.stroke();
   g.fillStyle = "#3f4247";
   g.fillRect(-0.06, -0.415, 0.025, 0.025);

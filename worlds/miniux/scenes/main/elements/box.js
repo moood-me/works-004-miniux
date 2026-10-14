@@ -41,13 +41,13 @@ for (const name of order) {
     g.strokeStyle = "#8a5a30";
     g.lineWidth = 0.012;
     g.strokeRect(-0.3, y + 0.02, 0.6, 0.15);
-    g.fillStyle = "#efdcae";
+    g.fillStyle = "#f3e6c4";
     g.beginPath();
-    g.arc(0, y + 0.095, 0.03, 0, Math.PI * 2);
+    g.arc(0, y + 0.095, 0.036, 0, Math.PI * 2);
     g.fill();
-    g.fillStyle = "#a07a40";
+    g.fillStyle = "#3a2a1a";
     g.beginPath();
-    g.arc(0, y + 0.1, 0.014, 0, Math.PI * 2);
+    g.arc(0, y + 0.095, 0.024, 0, Math.PI * 2);
     g.fill();
   });
 }

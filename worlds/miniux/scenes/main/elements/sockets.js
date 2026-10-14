@@ -1,21 +1,23 @@
-// A board with three sockets (s1, s2, s3); in "sockets" also a peg — lying on the table to the left, or standing
-// in the socket `peg` names. In "bubbles" the board alone: the bubbles settle in its sockets
+// A board with three sockets (s1, s2, s3), standing upright and facing the eye (a card with no tilt: the game's
+// u, v — from s1 along s1→s3, and up, in |s1→s3| — are this card's own metres). In "sockets" also a peg: lying on
+// the table to the left (`peg` none), carried under the finger (held: a layer animate moves to peg_u, peg_v), or
+// standing in the socket `peg` names. In "bubbles" the board alone: the bubbles settle in its sockets
 if (!e.lib.show(e, "sockets", "bubbles")) return;
 const X = [-0.4, 0, 0.4];
-g.fillStyle = "#7a5534";
+g.fillStyle = "#6e4a2a";
 g.fillRect(-0.5, -0.04, 0.08, 0.04);
 g.fillRect(0.42, -0.04, 0.08, 0.04);
-g.fillStyle = "#c39563";
+g.fillStyle = "#b07a45";
 g.fillRect(-0.56, -0.35, 1.12, 0.31);
-g.strokeStyle = "#9a6d40";
+g.strokeStyle = "#7a5030";
 g.lineWidth = 0.014;
 g.strokeRect(-0.56, -0.35, 1.12, 0.31);
 X.forEach((x, i) => {
-  g.fillStyle = "#e0bd8c";
+  g.fillStyle = "#e8cfa4";
   g.beginPath();
-  g.arc(x, -0.2, 0.075, 0, Math.PI * 2);
+  g.arc(x, -0.2, 0.078, 0, Math.PI * 2);
   g.fill();
-  g.fillStyle = "#2e2016";
+  g.fillStyle = "#24170e";
   g.beginPath();
   g.arc(x, -0.2, 0.058, 0, Math.PI * 2);
   g.fill();
@@ -29,24 +31,24 @@ if (e.state.demo === "sockets") {
     g.beginPath();
     g.arc(at, -0.2, 0.058, 0, Math.PI * 2);
     g.fill();
-    g.fillStyle = "#e9c88f";
+    g.fillStyle = "#f0d6a0";
     g.beginPath();
     g.arc(at, -0.205, 0.045, 0, Math.PI * 2);
     g.fill();
-    g.fillStyle = "#f6dfb0";
+    g.fillStyle = "#c0503a";
     g.beginPath();
-    g.arc(at - 0.012, -0.217, 0.016, 0, Math.PI * 2);
+    g.arc(at, -0.205, 0.018, 0, Math.PI * 2);
     g.fill();
-  } else {
-    // the peg lying on the table
-    g.fillStyle = "#d9b47a";
-    g.fillRect(-0.85, -0.075, 0.24, 0.05);
-    g.fillStyle = "#e9c88f";
-    g.beginPath();
-    g.ellipse(-0.61, -0.05, 0.022, 0.036, 0, 0, Math.PI * 2);
-    g.fill();
-    g.fillStyle = "#a9814c";
-    g.fillRect(-0.85, -0.035, 0.24, 0.01);
   }
-  e.at(-0.72, -0.05, "peg");
+  // the peg itself, painted where it lies (its middle at (-0.72, -0.05)); animate carries it or hides it
+  e.layer("peg", { pivot: [-0.72, -0.05] }, (g) => {
+    g.fillStyle = "#f0d6a0";
+    g.fillRect(-0.85, -0.077, 0.24, 0.054);
+    g.fillStyle = "#c79a5c";
+    g.fillRect(-0.85, -0.035, 0.24, 0.012);
+    g.fillStyle = "#c0503a";
+    g.beginPath();
+    g.ellipse(-0.6, -0.05, 0.024, 0.038, 0, 0, Math.PI * 2);
+    g.fill();
+  });
 }

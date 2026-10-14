@@ -1,15 +1,15 @@
 // A rope stretched between two posts, tied in a knot in the middle: `knot` loosens it (the loops grow, the rope
 // sags — animate); `knot_off` true — it has come apart, each half hanging from its post
 if (!e.lib.show(e, "knot")) return;
-g.fillStyle = "#7a5534";
+g.fillStyle = "#6a5a4c";
 g.fillRect(-0.65, -0.55, 0.06, 0.55);
 g.fillRect(0.59, -0.55, 0.06, 0.55);
 g.fillStyle = "#5e3f24";
 g.fillRect(-0.665, -0.57, 0.09, 0.03);
 g.fillRect(0.575, -0.57, 0.09, 0.03);
 const rope = (g) => {
-  g.strokeStyle = "#c9a46a";
-  g.lineWidth = 0.024;
+  g.strokeStyle = "#d9b06a";
+  g.lineWidth = 0.026;
   g.lineCap = "round";
 };
 if (e.state.knot_off === true) {
@@ -38,9 +38,9 @@ e.layer("rope_r", { pivot: [0.62, -0.45] }, (g) => {
   g.stroke();
 });
 e.layer("knot", { pivot: [0, -0.45] }, (g) => {
-  g.fillStyle = "#b8935a";
+  g.fillStyle = "#f0c87a";
   g.beginPath();
-  g.arc(0, -0.45, 0.045, 0, Math.PI * 2);
+  g.arc(0, -0.45, 0.05, 0, Math.PI * 2);
   g.fill();
   g.strokeStyle = "#8a6a38";
   g.lineWidth = 0.016;
