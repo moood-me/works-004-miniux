@@ -330,7 +330,7 @@ export const DEMOS = [
     memo: ['Показ забыт перед этой демонстрацией: палец (светлый круг с тенью и следом) сам тянет груз к крюку — груз едет за ним; палец отпускает, и груз видимо возвращается на место.',
       'Касание прерывает показ. Ничего не делаешь 4 с — показ снова, дальше раз в 8 с.',
       'Проверить: показ понятен; время мини-игры начинается после показа.'],
-    async run(d) { d.b.minigame.forget(); const mg = await d.mg({ task: 'Груз не достаёт до крюка' }); await mg.pull('rope#weight', { to: 'rope#hook', progress: u => d.set('rope', u) }); d.result(await mg.end()); },
+    async run(d) { d.b.minigame.author?.forget(); const mg = await d.mg({ task: 'Груз не достаёт до крюка' }); await mg.pull('rope#weight', { to: 'rope#hook', progress: u => d.set('rope', u) }); d.result(await mg.end()); },
   },
   {
     id: 'frame-plate', group: 'Рамка', title: 'Плашка задачи', scene: WORKSHOP, demo: 'bell',
@@ -427,7 +427,7 @@ export const DEMOS = [
     memo: ['Показ забыт: жест встречается впервые за партию. Ошибки видны и звучат, но не считаются: щербинки нет, итог чистый.',
       'Отпусти рано пару раз, потом дотяни. Затем второй шаг — тот же жест: теперь ошибки считаются.'],
     async run(d) {
-      d.b.minigame.forget();
+      d.b.minigame.author?.forget();
       const mg = await d.mg({ steps: 2, task: 'Мех опал до дна' });
       await mg.hold('bellows#handle', { glow: 'bellows', seconds: 2, progress: u => d.set('bellows', u) });
       d.set('bellows', 0, 0.6);
