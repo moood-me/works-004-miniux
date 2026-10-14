@@ -1,10 +1,10 @@
 // The board of sounds (П45–П48): the language's library (bespoke.minigame — the page's sounds.js), by its groups
 // («Понравилось», then the families: Орган, Фисгармония…). Short sounds (samples): a big button each — its number, its
-// name and its role; pressed, it sounds. Processes (layers): a pad each — hold it and move along it: across, the
-// layer's u (ход, опасность, время, в зоне); for движение, how fast the finger goes; let go — it stops (налив: cut at
-// the right end, sinks before it). A heart beside each: Pavel's pick, kept in this browser; the numbers picked are
-// listed at the foot, to be said («беру 3, 7, 12»). Over the scene; gone when the player goes to another
-// demonstration (signal).
+// name, its role and what of the language's it is now; pressed, it sounds. Processes (layers): a pad each — hold it
+// and move along it: across, the layer's u (ход, опасность, время, в зоне); for движение, how fast the finger goes;
+// let go — it stops (налив: cut at the right end, sinks before it). A heart beside each: Pavel's pick, kept in this
+// browser; the numbers picked are listed at the foot, to be said («беру 3, 7, 12»). Over the scene; gone when the
+// player goes to another demonstration (signal).
 //   board(b, signal) → a promise, settled when it is gone
 const KEY = 'moood:miniux:sounds-picked:families'; // (the picks of the boards before — other sounds — are not carried over)
 const FAST = 1.2; // px per ms: as fast as a finger goes (speed 1)
@@ -36,11 +36,13 @@ export function board(b, signal) {
     paint();
   };
   // a number, the name and under it what it is for
-  const label = (parent, name, under) => {
+  // a number, the name, under it what it is for, and what of the language's it is now (language — [Russian…])
+  const label = (parent, name, under, language) => {
     el('b', '', parent).textContent = all.length;
     const words = el('span', 'sb-words', parent);
     el('span', '', words).textContent = name;
     el('small', '', words).textContent = under;
+    if (language.length) el('small', 'sb-lang', words).textContent = `в языке: ${language.join(', ')}`;
   };
   const hint = l => `${l.role} — ${l.param === 'скорость' ? 'веди то быстрее, то медленнее' : `${l.param}: веди слева направо`}`;
   const groups = [...new Set([...mg.samples, ...mg.layers].map(x => x.group))];
@@ -53,7 +55,7 @@ export function board(b, signal) {
       const cell = el('div', 'sb-cell', grid);
       const play = el('button', 'sb-play', cell);
       play.type = 'button';
-      label(play, s.name, s.role);
+      label(play, s.name, s.role, s.language);
       play.onclick = () => { mg.sample(s.id); play.animate([{ scale: 0.94 }, { scale: 1 }], { duration: 160, easing: 'ease-out' }); };
       heart(cell, s.id);
     }
@@ -64,7 +66,7 @@ export function board(b, signal) {
       all.push(l.id);
       const cell = el('div', 'sb-cell', pads);
       const pad = el('div', 'sb-pad', cell);
-      label(pad, l.name, hint(l));
+      label(pad, l.name, hint(l), l.language);
       const fill = el('i', '', pad);
       pad.addEventListener('pointerdown', e => hold(e, pad, fill, l), { signal });
       heart(cell, l.id);
