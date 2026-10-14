@@ -56,7 +56,7 @@ export default async function (b) {
     else b.cut(state);
     if (signal.aborted) return;
     const d = {
-      b,
+      b, signal,
       mg: o => b.minigame.start({ ...o, signal }),
       set: (key, value, seconds) => { if (!signal.aborted) b.set(key, value, seconds); },
       bump: key => { if (!signal.aborted) b.set(key, (Number(b.get(key)) || 0) + 1); },
