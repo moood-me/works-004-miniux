@@ -1,8 +1,8 @@
 // miniux — the playground of the language of mini-games (docs/miniux in moood's repository: language.md — what it is
 // for the player; playground.md — this game). Not a story: a list of demonstrations (demos.js), each a mini-game of
 // the language on the world's things, played once, again (↻) or the next (→); its memo (?) says what is meant, what to
-// check and what must work. The language is the page's (bespoke.minigame); the game only says what each mini-game is
-// made of and moves the scene's keys with the gestures' going.
+// check and what must work. The language is the page's (bespoke.minigame: a vocabulary, and its ready tricks); each
+// demonstration is the game's code on its words — what happens, what is done, what is an error is decided there.
 // What is kept of the play (bespoke.keep): {demo: the one shown, style: its index, switches: {mute,
 // debug}} — a reload comes back to it.
 import { DEMOS, RESET } from './demos.js';
@@ -55,13 +55,40 @@ export default async function (b) {
     if (shown !== demo.scene) { await b.show(demo.scene, { state, fade: shown !== null }); shown = demo.scene; }
     else b.cut(state);
     if (signal.aborted) return;
+    const left = new WeakSet(); // (the mini-games left already: skipped, or the demonstration gone)
     const d = {
-      b, signal,
-      mg: o => b.minigame.start({ ...o, signal }),
+      b, signal, tricks: b.minigame.tricks,
+      // a mini-game, left if the player goes to another demonstration; the author's ⏭ — left, «пропущено»
+      mg(o) {
+        const mg = b.minigame.start({ ...o, signal });
+        mg.on('skip', () => { d.result({ as: 'skipped' }); mg.leave(); });
+        mg.on('end', () => left.add(mg));
+        return mg;
+      },
       set: (key, value, seconds) => { if (!signal.aborted) b.set(key, value, seconds); },
       bump: key => { if (!signal.aborted) b.set(key, (Number(b.get(key)) || 0) + 1); },
       wait: seconds => new Promise(ok => setTimeout(ok, seconds * 1000)),
-      choose: (ref, actions, o) => b.minigame.choose(ref, actions, { ...o, signal }),
+      // the first `ev` of a word (a gesture, a mark's mini-game) that passes test → its data; null — the mini-game
+      // ended first
+      when: (mg, h, ev, test = () => true) => new Promise(ok => {
+        const offs = [h.on(ev, x => { if (test(x)) { offs.forEach(f => f()); ok(x ?? true); } }), mg.on('end', () => { offs.forEach(f => f()); ok(null); })];
+      }),
+      // each frame fn({t, dt}) till it returns true (→ true) or the mini-game ends (→ false)
+      loop: (mg, fn) => new Promise(ok => {
+        const offs = [mg.on('frame', e => { if (fn(e)) { offs.forEach(f => f()); ok(true); } }), mg.on('end', () => { offs.forEach(f => f()); ok(false); })];
+      }),
+      // errors the game counts: shown (a chip) and counted — or, soft, shown only
+      errors(mg, soft = false) {
+        const all = {};
+        return { all, add(reason, o) { mg.error(reason, { ...o, chip: !soft }); if (!soft) all[reason] = (all[reason] || 0) + 1; } };
+      },
+      // the end: as given, else clean or flawed by the errors; its outcome shown
+      async end(mg, { as, errors = {}, ...rest } = {}) {
+        if (left.has(mg)) return;
+        const how = as || (Object.keys(errors).length ? 'flawed' : 'clean');
+        await mg.end({ as: how });
+        d.result({ as: how, errors, ...rest });
+      },
       result: r => { if (!signal.aborted) view.result(r); },
       note: text => { if (!signal.aborted) view.note(text); },
     };
