@@ -53,8 +53,7 @@ export const DEMOS = [
     id: 'petals', group: 'Жесты', title: 'Нажать с лепестками', scene: WORKSHOP, demo: 'box',
     memo: ['У ящика три ящичка: нажми кольцо — вокруг раскроются три лепестка со словами.',
       'Выбор — на отпускании над лепестком (или тап по нему); касание мимо лепестков их закрывает.',
-      'Проверить: выбор — полоса без огонька, конец — ровный мягкий аккорд.',
-      'Клавиши: пробел раскрывает, ←→ выбирают, Enter — выбрать.'],
+      'Проверить: выбор — полоса без огонька, конец — ровный мягкий аккорд.'],
     async run(d) {
       const mg = await d.mg({ task: 'В одном из ящичков — то, что нужно' });
       const s = await mg.press('box#front', { glow: 'box', actions: [{ id: 'top', label: 'Верхний' }, { id: 'middle', label: 'Средний' }, { id: 'bottom', label: 'Нижний' }] });
@@ -139,7 +138,7 @@ export const DEMOS = [
     id: 'pull', group: 'Жесты', title: 'Тянуть', scene: WORKSHOP, demo: 'rope',
     memo: ['На грузе — кольцо с пунктиром. Нажми и тяни: груз идёт за пальцем с первого кадра; только теперь видны путь и цель у крюка.',
       'Сделано — когда отпустил груз в кольце цели (оно зеленеет, когда груз в нём). Само не доезжает и не прилипает.',
-      'Отпустил на полпути — груз стоит, путь и цель гаснут; можно продолжить. Клавиши: → / ↑, отпустить у цели.'],
+      'Отпустил на полпути — груз стоит, путь и цель гаснут; можно продолжить.'],
     async run(d) { const mg = await d.mg({ task: 'Груз не достаёт до крюка' }); await mg.pull('rope#weight', { to: 'rope#hook', progress: u => d.set('rope', u) }); d.result(await mg.end()); },
   },
   {
@@ -255,7 +254,7 @@ export const DEMOS = [
     id: 'rhythm', group: 'Жесты', title: 'Ритм', scene: WORKSHOP, demo: 'drum',
     memo: ['К кольцу на барабане сходится второе: жми (где угодно), когда оно коснётся края. Нужно 8 ударов в такт — не суперровно.',
       'Попал — вспышка, мягкий удар, засечка на полосе; рано или поздно — красная крапинка до или после края, промах не считается, но набранное не пропадает.',
-      'Проверить: видно заранее, когда жать; пробел тоже бьёт.'],
+      'Проверить: видно заранее, когда жать.'],
     async run(d) { const mg = await d.mg({ task: 'Барабан задаёт такт' }); await mg.rhythm('drum#skin', { glow: 'drum', bpm: 80, hits: 8, onHit: (i, ok) => ok && d.bump('drum_hits') }); d.result(await mg.end()); },
   },
   {
@@ -292,7 +291,7 @@ export const DEMOS = [
     id: 'lead', group: 'Жесты', title: 'Вести', scene: WORKSHOP, demo: 'boat', state: { zone_kind: 'zone' },
     memo: ['Красная стрелка от носа лодки — куда она смотрит. Нажми где угодно и веди вбок: стрелка идёт за смещением. Держи её в светлой зоне на шкале — зона плывёт.',
       'Отпустил — нос возвращается. 12 с; огонёк плашки — в зоне ли.',
-      'Проверить: в зоне — зона светится. Клавиши ←→.'],
+      'Проверить: в зоне — зона светится.'],
     async run(d) { const mg = await d.mg({ task: 'Лодку то и дело сносит' }); await mg.lead({ glow: 'boat', seconds: 12, zone: t => 0.55 * Math.sin(t * 0.45), width: 0.35, progress: (u, i) => boat(d, i) }); d.result(await mg.end()); },
   },
   {
@@ -432,18 +431,6 @@ export const DEMOS = [
       await mg.hold('bellows#handle', { glow: 'bellows', seconds: 2, progress: u => d.set('bellows', u) });
       d.set('bellows', 0, 0.6);
       await mg.hold('bellows#handle', { glow: 'bellows', seconds: 2, progress: u => d.set('bellows', u), task: 'Мех снова опал' });
-      d.result(await mg.end());
-    },
-  },
-  {
-    id: 'frame-keys', group: 'Рамка', title: 'Клавиши', scene: WORKSHOP, demo: 'rope',
-    memo: ['Нажми любую клавишу — в метках появляются знаки клавиш (␣, →); коснись или кликни — знаки пропадают.',
-      'Шаги: груз — стрелка → тянет, отпусти стрелку, когда груз в цели; затем пробел — держать где угодно (груз пульсирует — приглашение).',
-      'Проверить: о клавишах узнаёшь без надписи.'],
-    async run(d) {
-      const mg = await d.mg({ steps: 2, task: 'Груз не достаёт до крюка' });
-      await mg.pull('rope#weight', { to: 'rope#hook', progress: u => d.set('rope', u) });
-      await mg.hold(null, { at: 'rope', seconds: 1.2, task: 'Груз держится, пока его держат' });
       d.result(await mg.end());
     },
   },
