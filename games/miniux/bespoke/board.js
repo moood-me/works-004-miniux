@@ -1,6 +1,7 @@
 // The board of sounds (П45): every sound of the language's library (bespoke.minigame.samples — the page's sounds.js),
-// a big button each — its number and its name; pressed, it sounds. A heart beside it: Pavel's pick, kept in this
-// browser; the numbers picked are listed at the foot, to be said («беру 3, 7, 12»). Over the scene; gone when the
+// a big button each — its number, its name and what in the language it is a candidate for (use); pressed, it sounds.
+// A heart beside it: Pavel's pick, kept in this browser; the numbers picked are listed at the foot, to be said
+// («беру 3, 7, 12»). Over the scene; gone when the
 // player goes to another demonstration (signal).
 //   board(b, signal) → a promise, settled when it is gone
 const KEY = 'moood:miniux:sounds-picked';
@@ -25,7 +26,9 @@ export function board(b, signal) {
     const play = el('button', 'sb-play', cell);
     play.type = 'button';
     el('b', '', play).textContent = i + 1;
-    el('span', '', play).textContent = s.name;
+    const words = el('span', 'sb-words', play);
+    el('span', '', words).textContent = s.name;
+    el('small', '', words).textContent = s.use;
     play.onclick = () => { b.minigame.sample(s.id); play.animate([{ scale: 0.94 }, { scale: 1 }], { duration: 160, easing: 'ease-out' }); };
     const heart = el('button', 'sb-heart', cell);
     heart.type = 'button';
