@@ -49,7 +49,8 @@ function flame(g, x, y, w, h) {
   g.fill();
 }
 
-// a drum standing on the table at x: its body and its skin are layers (the skin jumps when struck)
+// a drum standing on the table at x: its body, its skin and a light over it are layers (the skin jumps and lights up
+// when struck)
 function drum(g, e, x, body, cord) {
   e.layer("body", { pivot: [x, 0] }, (g) => {
     g.fillStyle = "#6b4a2c";
@@ -84,16 +85,26 @@ function drum(g, e, x, body, cord) {
     g.ellipse(x, -0.322, 0.185, 0.04, 0, 0, Math.PI * 2);
     g.fill();
   });
+  // a light over the skin: it lights up for a moment as the drum is struck (drumMotion)
+  e.layer("shine", { pivot: [x, -0.32] }, (g) => {
+    g.fillStyle = "#fffaf0";
+    g.beginPath();
+    g.ellipse(x, -0.322, 0.19, 0.045, 0, 0, Math.PI * 2);
+    g.fill();
+  });
   e.at(x, -0.32, "skin");
 }
 
-// the drum's answer to its counter: the skin jumps, the body gives a little
+// the drum's answer to its counter: the skin jumps and lights up for a moment, the body gives a little
 function drumMotion(e, key) {
   const s = since(e, key);
   const jump = flash(s, 14);
   const skin = e.layer("skin");
   skin.y = -0.035 * jump;
   skin.scaleY = 1 + 0.4 * ring(s, 45, 9);
+  const shine = e.layer("shine");
+  shine.y = skin.y;
+  shine.alpha = 0.85 * flash(s, 9);
   const body = e.layer("body");
   body.scaleY = 1 - 0.04 * jump;
   body.scaleX = 1 + 0.025 * jump;
