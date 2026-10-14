@@ -8,6 +8,8 @@
 // outcome shown, d.note(text) — a line shown, d.b — bespoke.
 // Each step says its task (the plate's phrase) and, where its point is on the thing itself, the thing to glow (glow:
 // the element's id — §2.12: not where the point is one of many on a bigger thing).
+import { board } from './board.js';
+
 export const WORKSHOP = 'Мастерская', DECK = 'Палуба';
 
 // what each scene's keys are at the start of a demonstration (all of them: what one left is not seen in the next)
@@ -520,6 +522,15 @@ export const DEMOS = [
       }
       d.result(await mg.end());
     },
+  },
+
+  // ── the board of sounds: the library heard one by one, Pavel picks (П45) ──
+  {
+    id: 'sounds', group: 'Звуки', title: 'Доска звуков', scene: WORKSHOP, demo: 'none',
+    memo: ['Тридцать с лишним коротких звуков для игр — без нот и мелодий: щелчки, лопанье, капли, дерево, стекло, щипки.',
+      'Нажми кнопку — звучит (громкость — ползунок «звуки» сайта). Сердечко — отметить, что нравится; внизу — номера выбранных.',
+      'Язык пока звучит прежним набором — выбранные пойдут в него.'],
+    run: d => board(d.b, d.signal),
   },
 ];
 
