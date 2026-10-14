@@ -1,0 +1,383 @@
+{
+ "engine": 3,
+ "title": "Палуба",
+ "horizon": 0.55,
+ "camera": {
+  "mode": "picture",
+  "on": "ship"
+ },
+ "light": {
+  "ambient": 1,
+  "haze": 0.03,
+  "hazeColor": "#dfe8ee",
+  "vignette": 0.1,
+  "wind": [
+   0.4,
+   1,
+   0.5
+  ]
+ },
+ "objects": [
+  {
+   "id": "sky",
+   "name": "Небо",
+   "sky": true
+  },
+  {
+   "id": "sea",
+   "name": "Море",
+   "plane": true,
+   "across": 0,
+   "distance": 4000,
+   "elevation": -1.5,
+   "width": 30000,
+   "depth": 30000,
+   "reflect": {
+    "strength": 0.35,
+    "fade": 0,
+    "rough": 0.5,
+    "ripple": 0.4
+   }
+  },
+  {
+   "id": "coast",
+   "name": "Дальний берег",
+   "across": 0,
+   "distance": 2600,
+   "elevation": -1.5,
+   "facing": 180,
+   "height": 45,
+   "box": [
+    -5000,
+    -45,
+    5000,
+    0.5
+   ]
+  },
+  {
+   "id": "lighthouse",
+   "name": "Маяк",
+   "across": 0,
+   "distance": 1000,
+   "elevation": -1.5,
+   "facing": 180,
+   "height": 71,
+   "box": [
+    -80,
+    -96,
+    80,
+    0.5
+   ]
+  },
+  {
+   "id": "course",
+   "name": "Курс корабля",
+   "unseen": true,
+   "across": 0,
+   "distance": 0,
+   "elevation": 0,
+   "facing": 180,
+   "place": {
+    "across": "ship_x",
+    "distance": "ship_d",
+    "facing": "ship_f"
+   }
+  },
+  {
+   "id": "hull",
+   "name": "Киль",
+   "unseen": true,
+   "on": "course",
+   "across": -1.2,
+   "elevation": -2.0,
+   "facing": 90,
+   "place": {
+    "tilt": "heel"
+   }
+  },
+  {
+   "id": "ship",
+   "name": "Корабль",
+   "unseen": true,
+   "on": "hull",
+   "distance": -1.2,
+   "elevation": 2.0,
+   "facing": 270
+  },
+  {
+   "id": "deck",
+   "name": "Палуба",
+   "plane": true,
+   "on": "ship",
+   "across": -1.2,
+   "distance": 6.75,
+   "elevation": 0,
+   "width": 4.4,
+   "depth": 16.5
+  },
+  {
+   "id": "bulwark_port",
+   "name": "Левый фальшборт",
+   "on": "ship",
+   "across": -3.4,
+   "distance": 5.25,
+   "elevation": 0,
+   "facing": 90,
+   "height": 0.92,
+   "box": [
+    -6.8,
+    -0.95,
+    6.8,
+    0.02
+   ]
+  },
+  {
+   "id": "bulwark_starboard",
+   "name": "Правый фальшборт",
+   "on": "ship",
+   "across": 1.0,
+   "distance": 5.25,
+   "elevation": 0,
+   "facing": 270,
+   "height": 0.92,
+   "box": [
+    -6.8,
+    -0.95,
+    6.8,
+    0.02
+   ]
+  },
+  {
+   "id": "bow_port",
+   "name": "Левая скула",
+   "on": "ship",
+   "across": -2.3,
+   "distance": 13.5,
+   "elevation": 0,
+   "facing": 126,
+   "height": 0.92,
+   "box": [
+    -1.9,
+    -0.95,
+    1.9,
+    0.02
+   ]
+  },
+  {
+   "id": "bow_starboard",
+   "name": "Правая скула",
+   "on": "ship",
+   "across": -0.1,
+   "distance": 13.5,
+   "elevation": 0,
+   "facing": 234,
+   "height": 0.92,
+   "box": [
+    -1.9,
+    -0.95,
+    1.9,
+    0.02
+   ]
+  },
+  {
+   "id": "bow",
+   "name": "Нос",
+   "on": "ship",
+   "across": -1.2,
+   "distance": 15.0,
+   "elevation": 0,
+   "facing": 180,
+   "height": 1.42,
+   "box": [
+    -0.3,
+    -1.46,
+    0.4,
+    0.02
+   ],
+   "flicker": 0.15
+  },
+  {
+   "id": "mast",
+   "name": "Мачта",
+   "on": "ship",
+   "across": -1.2,
+   "distance": 10,
+   "elevation": 0,
+   "facing": 180,
+   "height": 11,
+   "box": [
+    -0.2,
+    -11.05,
+    0.2,
+    0.02
+   ]
+  },
+  {
+   "id": "sail",
+   "name": "Парус",
+   "on": "ship",
+   "across": -1.2,
+   "distance": 10,
+   "elevation": 0,
+   "facing": 115,
+   "height": 9.7,
+   "box": [
+    -5.6,
+    -9.9,
+    0.3,
+    -2.8
+   ],
+   "translucent": 0.3
+  },
+  {
+   "id": "bell",
+   "name": "Судовой колокол",
+   "on": "ship",
+   "across": -1.2,
+   "distance": 4.0,
+   "elevation": 0,
+   "facing": 180,
+   "height": 2.3,
+   "box": [
+    -0.35,
+    -2.32,
+    0.35,
+    0.02
+   ]
+  },
+  {
+   "id": "closeup",
+   "name": "Крупно: кофель-нагели",
+   "insert": "closeup",
+   "iris": [
+    0.889,
+    0.42,
+    0.5,
+    0.3
+   ]
+  }
+ ],
+ "state": {
+  "heading": 0,
+  "on_course": 1,
+  "under_way": 1,
+  "roll": 0.5,
+  "sail": 1,
+  "bell_hits": 0,
+  "closeup": 0,
+  "rig1": 0,
+  "rig2": 0,
+  "rig3": 0,
+  "rig4": 0,
+  "ship_x": 0,
+  "ship_d": 0,
+  "ship_f": 180,
+  "heel": 0
+ },
+ "states": {
+  "heading": {
+   "range": [
+    -1,
+    1
+   ],
+   "smooth": true,
+   "means": "куда смотрит нос относительно маяка: 0 — прямо на маяк, 1 — нос повернут вправо на 25° (маяк уходит влево), −1 — влево на 25° (маяк вправо); корабль поворачивается, мир уходит в сторону"
+  },
+  "on_course": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "нос на маяке: 0 — нет (огонь маяка тусклее, фонарь на носу не горит), 1 — да (маяк светит ярко, с лучами; фонарь на носу горит)"
+  },
+  "under_way": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "корабль идёт: 0 — стоит, 1 — идёт (1.2 м/с вперёд по носу; море бежит мимо, качка сильнее)"
+  },
+  "roll": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "сила качки: 0 — нет, 1 — сильная (качка мягкая, медленная; на ходу втрое больше, чем на месте)"
+  },
+  "sail": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "парус: 0 — спущен на гик, 1 — поднят (ползёт вверх по мачте, гафель на его голове)"
+  },
+  "bell_hits": {
+   "type": "number",
+   "means": "судовой колокол: счётчик ударов (целое, игра прибавляет 1) — колокол качается и звенит"
+  },
+  "closeup": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "вставка-крупный план кофель-нагелей: 0 — закрыта, 1 — открыта (диафрагма-овал посреди кадра)"
+  },
+  "rig1": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "первый (левый) конец во вставке: 0 — висит свободно, 1 — обнесён восьмёркой вокруг нагеля и затянут"
+  },
+  "rig2": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "второй конец: как rig1"
+  },
+  "rig3": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "третий конец: как rig1"
+  },
+  "rig4": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "четвёртый (правый) конец: как rig1"
+  },
+  "ship_x": {
+   "type": "number",
+   "smooth": true,
+   "means": "движет скрипт сцены (игре не трогать): где корабль поперёк, метры"
+  },
+  "ship_d": {
+   "type": "number",
+   "smooth": true,
+   "means": "движет скрипт сцены (игре не трогать): где корабль вдоль пути к маяку, метры"
+  },
+  "ship_f": {
+   "type": "number",
+   "smooth": true,
+   "means": "движет скрипт сцены (игре не трогать): поворот корабля в мире, градусы (180 + 25 × heading)"
+  },
+  "heel": {
+   "type": "number",
+   "smooth": true,
+   "means": "движет скрипт сцены (игре не трогать): крен, градусы (качка по roll)"
+  }
+ }
+}

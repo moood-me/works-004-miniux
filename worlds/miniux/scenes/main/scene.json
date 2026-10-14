@@ -1,3 +1,804 @@
 {
-  "engine": 3
+ "engine": 3,
+ "title": "Мастерская",
+ "horizon": 0.3,
+ "camera": {
+  "mode": "picture"
+ },
+ "light": {
+  "vignette": 0.1,
+  "ambient": 1
+ },
+ "objects": [
+  {
+   "id": "wall",
+   "name": "Стена",
+   "across": 0,
+   "distance": 3.0,
+   "elevation": 0,
+   "facing": 180,
+   "height": 4,
+   "box": [
+    -4.6,
+    -4.0,
+    4.6,
+    0.01
+   ]
+  },
+  {
+   "id": "table_top",
+   "name": "Стол",
+   "plane": true,
+   "across": 0,
+   "distance": 2.2,
+   "elevation": 1.0,
+   "width": 4.4,
+   "depth": 1.6
+  },
+  {
+   "id": "table_front",
+   "name": "Край стола",
+   "across": 0,
+   "distance": 1.4,
+   "elevation": 0,
+   "facing": 180,
+   "height": 1.0,
+   "box": [
+    -2.2,
+    -1.0,
+    2.2,
+    0.01
+   ]
+  },
+  {
+   "id": "bell",
+   "name": "Колокольчик",
+   "across": 0,
+   "distance": 2.2,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 0.78,
+   "box": [
+    -0.4,
+    -0.82,
+    0.4,
+    0.02
+   ]
+  },
+  {
+   "id": "box",
+   "name": "Ящичек с тремя ящиками",
+   "across": 0,
+   "distance": 2.2,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 0.72,
+   "box": [
+    -0.48,
+    -0.86,
+    0.48,
+    0.08
+   ]
+  },
+  {
+   "id": "door",
+   "name": "Дверца в стене",
+   "across": 0,
+   "distance": 2.95,
+   "elevation": 1.15,
+   "facing": 180,
+   "height": 0.87,
+   "box": [
+    -0.72,
+    -0.92,
+    0.72,
+    0.02
+   ]
+  },
+  {
+   "id": "bellows",
+   "name": "Мех",
+   "across": 0,
+   "distance": 2.2,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 0.5,
+   "box": [
+    -0.6,
+    -0.55,
+    0.7,
+    0.02
+   ]
+  },
+  {
+   "id": "lantern",
+   "name": "Фонарь на крюке",
+   "across": 0,
+   "distance": 2.95,
+   "elevation": 1.3,
+   "facing": 180,
+   "height": 0.84,
+   "box": [
+    -0.5,
+    -0.88,
+    0.5,
+    0.02
+   ],
+   "flicker": 0.15
+  },
+  {
+   "id": "candle",
+   "name": "Свеча",
+   "across": 0,
+   "distance": 2.2,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 0.5,
+   "box": [
+    -0.18,
+    -0.56,
+    0.18,
+    0.02
+   ],
+   "flicker": 0.2
+  },
+  {
+   "id": "wicks",
+   "name": "Три фитиля",
+   "across": 0,
+   "distance": 2.2,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 0.95,
+   "box": [
+    -0.65,
+    -1.0,
+    0.65,
+    0.02
+   ],
+   "flicker": 0.2
+  },
+  {
+   "id": "brackets",
+   "name": "Скобы и верёвка с грузом",
+   "across": 0,
+   "distance": 2.95,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 0.9,
+   "box": [
+    -0.85,
+    -0.92,
+    0.85,
+    0.02
+   ]
+  },
+  {
+   "id": "rope",
+   "name": "Груз и крюк",
+   "across": 0,
+   "distance": 2.95,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 1.0,
+   "box": [
+    -0.65,
+    -1.05,
+    0.65,
+    0.02
+   ]
+  },
+  {
+   "id": "shutter",
+   "name": "Окошко с заслонкой",
+   "across": 0,
+   "distance": 2.95,
+   "elevation": 1.1,
+   "facing": 180,
+   "height": 1.47,
+   "box": [
+    -0.42,
+    -1.5,
+    0.42,
+    0.02
+   ]
+  },
+  {
+   "id": "crate",
+   "name": "Тяжёлый ящик",
+   "across": 0,
+   "distance": 2.2,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 0.42,
+   "box": [
+    -0.68,
+    -0.48,
+    0.68,
+    0.02
+   ]
+  },
+  {
+   "id": "knot",
+   "name": "Узел на верёвке",
+   "across": 0,
+   "distance": 2.2,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 0.6,
+   "box": [
+    -0.72,
+    -0.62,
+    0.72,
+    0.02
+   ]
+  },
+  {
+   "id": "sockets",
+   "name": "Доска с гнёздами",
+   "across": 0,
+   "distance": 2.2,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 0.36,
+   "box": [
+    -0.9,
+    -0.4,
+    0.6,
+    0.02
+   ]
+  },
+  {
+   "id": "bubbles",
+   "name": "Пузыри",
+   "across": 0,
+   "distance": 2.2,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 1.0,
+   "box": [
+    -0.68,
+    -1.0,
+    0.68,
+    -0.1
+   ],
+   "inFront": [
+    "sockets"
+   ]
+  },
+  {
+   "id": "crack",
+   "name": "Доска с трещиной",
+   "across": 0,
+   "distance": 2.2,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 0.62,
+   "box": [
+    -0.78,
+    -0.66,
+    0.78,
+    0.02
+   ],
+   "uniforms": {
+    "edge": -0.7
+   }
+  },
+  {
+   "id": "screws",
+   "name": "Пластина с винтами",
+   "across": 0,
+   "distance": 2.2,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 0.64,
+   "box": [
+    -0.76,
+    -0.68,
+    0.76,
+    0.02
+   ]
+  },
+  {
+   "id": "plate",
+   "name": "Пыльная табличка",
+   "across": 0,
+   "distance": 2.2,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 0.64,
+   "box": [
+    -0.48,
+    -0.68,
+    0.48,
+    0.02
+   ],
+   "uniforms": {
+    "clean": 0
+   }
+  },
+  {
+   "id": "floor",
+   "name": "Половицы",
+   "across": 0,
+   "distance": 2.0,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 1.12,
+   "box": [
+    -0.86,
+    -1.14,
+    0.86,
+    0.02
+   ],
+   "tilt": 50
+  },
+  {
+   "id": "shells",
+   "name": "Три ракушки",
+   "across": 0,
+   "distance": 2.2,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 0.2,
+   "box": [
+    -0.65,
+    -0.3,
+    0.65,
+    0.02
+   ]
+  },
+  {
+   "id": "drum",
+   "name": "Барабан",
+   "across": 0,
+   "distance": 2.2,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 0.45,
+   "box": [
+    -0.72,
+    -0.5,
+    0.24,
+    0.02
+   ]
+  },
+  {
+   "id": "drum2",
+   "name": "Второй барабан",
+   "across": 0,
+   "distance": 2.2,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 0.45,
+   "box": [
+    0.22,
+    -0.5,
+    0.72,
+    0.02
+   ]
+  },
+  {
+   "id": "boat",
+   "name": "Модель лодки со шкалой",
+   "across": 0,
+   "distance": 1.9,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 1.27,
+   "box": [
+    -0.87,
+    -1.3,
+    0.87,
+    0.02
+   ],
+   "tilt": 45
+  },
+  {
+   "id": "hourglass",
+   "name": "Песочные часы",
+   "across": 0,
+   "distance": 2.2,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 0.58,
+   "box": [
+    -0.2,
+    -0.62,
+    0.2,
+    0.02
+   ]
+  }
+ ],
+ "state": {
+  "demo": "none",
+  "bell_hits": 0,
+  "drawer": "none",
+  "drawer_open": 0,
+  "door_knocks": 0,
+  "door_reply": 0,
+  "door_open": 0,
+  "bellows": 0,
+  "lantern": 0,
+  "wind": 0,
+  "candle": 0,
+  "candle_shake": 0,
+  "wick1": 0,
+  "wick2": 0,
+  "wick3": 0,
+  "climb": 0,
+  "grip": "none",
+  "rope": 0,
+  "shutter": 0,
+  "crate": 0,
+  "knot": 0,
+  "knot_off": false,
+  "peg": "none",
+  "bubble1": "free",
+  "bubble2": "free",
+  "bubble3": "free",
+  "crack": 0,
+  "screw1": 0,
+  "screw2": 0,
+  "screw3": 0,
+  "screw4": 0,
+  "plate": 0,
+  "floor_found": false,
+  "shell": "none",
+  "shell_odd": "s2",
+  "shell_found": false,
+  "drum_hits": 0,
+  "drum2_hits": 0,
+  "boat_heading": 0,
+  "zone_center": 0,
+  "zone_kind": "zone",
+  "zone_lit": 0,
+  "sand": 0
+ },
+ "states": {
+  "demo": {
+   "values": [
+    "none",
+    "bell",
+    "box",
+    "door",
+    "bellows",
+    "breath",
+    "lantern",
+    "candle",
+    "wicks",
+    "brackets",
+    "rope",
+    "shutter",
+    "crate",
+    "knot",
+    "sockets",
+    "bubbles",
+    "crack",
+    "screw",
+    "screws",
+    "plate",
+    "floor",
+    "shells",
+    "drum",
+    "drum2",
+    "boat",
+    "hourglass"
+   ],
+   "means": "какая демонстрация на столе: видны только её вещи (остальные не рисуются), смена — сразу. none — пустой стол; bellows и breath — мех; sockets — колышек и гнёзда; bubbles — пузыри и те же гнёзда; screw — один винт s1, screws — четыре; drum — один барабан, drum2 — два"
+  },
+  "bell_hits": {
+   "type": "number",
+   "means": "колокольчик: счётчик ударов (целое, игра прибавляет 1) — на каждый он качается и звенит"
+  },
+  "drawer": {
+   "values": [
+    "none",
+    "top",
+    "middle",
+    "bottom"
+   ],
+   "means": "какой ящичек выдвигается (меняется сразу)"
+  },
+  "drawer_open": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "насколько выдвинут ящичек, названный в drawer: 0 — задвинут, 1 — выдвинут"
+  },
+  "door_knocks": {
+   "type": "number",
+   "means": "дверца: счётчик стуков в неё (целое, +1 на касание) — дверца дрожит"
+  },
+  "door_reply": {
+   "type": "number",
+   "means": "дверца: счётчик ответных стуков изнутри (целое, +1) — дверца вздрагивает сильнее, полоска света под ней вспыхивает"
+  },
+  "door_open": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "дверца: 0 — закрыта, 1 — открыта"
+  },
+  "bellows": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "мех: 0 — сдут, 1 — раздут (верхняя доска с ручкой поднимается)"
+  },
+  "lantern": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "фонарь: огонь от искры (0) до полного (1)"
+  },
+  "wind": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "порыв ветра у фонаря: 0 — тихо, 1 — сильный (фонарь качается на крюке, пламя клонится)"
+  },
+  "candle": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "свеча: пламя от маленького (0) до полного (1)"
+  },
+  "candle_shake": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "свеча: 0 — пламя ровное, 1 — дрожит и мечется"
+  },
+  "wick1": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "первый (левый) фитиль: 0 — ровный тихий огонёк, 1 — чадит: высокое коптящее пламя мечется, над ним дым"
+  },
+  "wick2": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "второй (средний) фитиль: 0 — тихий огонёк, 1 — чадит"
+  },
+  "wick3": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "третий (правый) фитиль: 0 — тихий огонёк, 1 — чадит"
+  },
+  "climb": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "скобы: груз на верёвке между скобами поднимается: 0 — внизу, 1 — вверху"
+  },
+  "grip": {
+   "values": [
+    "none",
+    "left",
+    "right"
+   ],
+   "means": "скобы: какая сейчас держит — она светлеет (меняется сразу, светлеет за долю секунды)"
+  },
+  "rope": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "груз к крюку: 0 — груз на месте (точка rope#weight), 1 — его петля на крюке (rope#hook); идёт по прямой, точка rope#weight — с ним"
+  },
+  "shutter": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "заслонка: 0 — опущена, 1 — поднята до метки (ручка shutter#handle — у точки shutter#top)"
+  },
+  "crate": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "тяжёлый ящик: 0 — на месте, 1 — на меловом контуре справа (crate#goal); ручка crate#handle идёт с ним"
+  },
+  "knot": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "узел: 0 — затянут, 1 — ослаб (петли больше, верёвка провисла)"
+  },
+  "knot_off": {
+   "type": "boolean",
+   "means": "узел распался: обе половины верёвки висят со столбиков"
+  },
+  "peg": {
+   "values": [
+    "none",
+    "s1",
+    "s2",
+    "s3"
+   ],
+   "means": "колышек: none — лежит на столе слева (sockets#peg), sN — стоит в гнезде sN (меняется сразу)"
+  },
+  "bubble1": {
+   "values": [
+    "free",
+    "held",
+    "s1",
+    "s2",
+    "s3"
+   ],
+   "means": "первый пузырь: free — плывёт по своему кругу, held — не виден (его несёт палец), sN — сидит в гнезде sN"
+  },
+  "bubble2": {
+   "values": [
+    "free",
+    "held",
+    "s1",
+    "s2",
+    "s3"
+   ],
+   "means": "второй пузырь: как bubble1"
+  },
+  "bubble3": {
+   "values": [
+    "free",
+    "held",
+    "s1",
+    "s2",
+    "s3"
+   ],
+   "means": "третий пузырь: как bubble1"
+  },
+  "crack": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "трещина: клей заливает её от левого конца (p0) до правого (p6): 0 — нет клея, 1 — вся залита"
+  },
+  "screw1": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "винт s1: 0 — вывернут, 1 — закручен (шлиц повернулся на два оборота, головка села)"
+  },
+  "screw2": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "винт s2: как screw1"
+  },
+  "screw3": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "винт s3: как screw1"
+  },
+  "screw4": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "винт s4: как screw1"
+  },
+  "plate": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "пыльная табличка: 0 — вся в пыли, 1 — пыль стёрта, видна надпись «Мастерская» и кораблик (пыль сходит пятнами)"
+  },
+  "floor_found": {
+   "type": "boolean",
+   "means": "половицы: доска над тайником (floor#hidden) сдвинута, в ямке виден ключ"
+  },
+  "shell": {
+   "values": [
+    "none",
+    "s1",
+    "s2",
+    "s3"
+   ],
+   "means": "ракушка, которой коснулись (меняется сразу): она качается, а «не такая» (shell_odd) светится. Отвечает на смену значения: повторное касание той же — через none"
+  },
+  "shell_odd": {
+   "values": [
+    "s1",
+    "s2",
+    "s3"
+   ],
+   "means": "какая ракушка «не такая»: на касание она светится, а не качается"
+  },
+  "shell_found": {
+   "type": "boolean",
+   "means": "«не такая» ракушка найдена: она раскрылась, в ней жемчужина"
+  },
+  "drum_hits": {
+   "type": "number",
+   "means": "барабан (drum): счётчик ударов (целое, +1) — кожа подпрыгивает"
+  },
+  "drum2_hits": {
+   "type": "number",
+   "means": "второй барабан (drum2): счётчик ударов (целое, +1)"
+  },
+  "boat_heading": {
+   "range": [
+    -1,
+    1
+   ],
+   "smooth": true,
+   "means": "лодка: куда повёрнут нос по шкале: −1 — левый край шкалы (−60°), 0 — середина, 1 — правый край"
+  },
+  "zone_center": {
+   "range": [
+    -1,
+    1
+   ],
+   "smooth": true,
+   "means": "лодка: где на шкале зона (или светлячок, или шмель): −1 — левый край, 1 — правый"
+  },
+  "zone_kind": {
+   "values": [
+    "zone",
+    "firefly",
+    "bee"
+   ],
+   "means": "что на шкале у zone_center: zone — светлая полоса на шкале, firefly — светлячок над шкалой, bee — шмель над шкалой"
+  },
+  "zone_lit": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "лодка: зона (светлячок) светится ярче — нос в ней: 0 — нет, 1 — да"
+  },
+  "sand": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "песочные часы: 0 — весь песок наверху, 1 — пересыпался; пока ключ движется, видна струйка"
+  }
+ }
 }
