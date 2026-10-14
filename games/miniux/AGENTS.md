@@ -7,5 +7,6 @@ https://github.com/moood-me/docs.
 
 - Each deployment of moood has a branch of its own here: env/dev — moood's own, env/<computer>/<stack> — a
   stack on someone's computer. There is no main. Work in a branch of your own, begun from the
-  branch of the deployment you work for (the MCP's game_repo says which); never push to theirs.
-- merge_game_branch (an MCP tool) puts your branch into the deployment's.
+  branch of the deployment you work for (the MCP's game_repo says which).
+- Merge your branch into the deployment's with git and push — never rewrite a deployment's branch — or
+  merge_game_branch (an MCP tool), which checks it first.
