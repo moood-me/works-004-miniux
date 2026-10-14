@@ -20,8 +20,8 @@ const button = (parent, text, title, onclick, cls = '') => {
   return b;
 };
 const SWITCHES = [['mute', 'без звука'], ['debug', 'отладка']];
-const REASONS = { miss: 'мимо', early: 'рано отпустил', danger: 'в опасность', off: 'сошёл', wrong: 'не туда', timing: 'не в долю', often: 'часто', against: 'против', jerk: 'сорвал' };
-const OUTCOMES = { success: 'успех', choice: 'выбор', loss: 'проигрыш', skipped: 'пропущено' };
+const REASONS = { miss: 'мимо', early: 'рано отпустил', danger: 'в опасность', off: 'сошёл', behind: 'отстал', wrong: 'не туда', timing: 'не в долю', often: 'часто', against: 'против', jerk: 'сорвал' };
+const OUTCOMES = { clean: 'успех', flawed: 'успех с ошибками', neutral: 'выбор', loss: 'проигрыш', skipped: 'пропущено' };
 
 export function ui(layer, { demos, styles, on }) {
   const root = el('div', 'pg', layer);
@@ -66,10 +66,11 @@ export function ui(layer, { demos, styles, on }) {
       memo.replaceChildren(...demo.memo.map(line => Object.assign(el('p'), { textContent: line })));
       result.textContent = '';
     },
+    // r: {as, errors, choice, share} — what the demonstration's code made of it
     result(r) {
-      const errors = Object.entries(r.errors).map(([k, n]) => `${REASONS[k] || k} ×${n}`).join(', ');
-      const chosen = r.steps.filter(s => s.choice !== undefined).map(s => s.choice ?? 'ничего').join(', ');
-      result.textContent = `итог: ${OUTCOMES[r.outcome] || r.outcome}${errors ? ` · ошибки: ${errors}` : ' · без ошибок'}${chosen ? ` · выбор: ${chosen}` : ''}`;
+      const errors = Object.entries(r.errors || {}).map(([k, n]) => `${REASONS[k] || k} ×${n}`).join(', ');
+      const more = [errors ? `ошибки: ${errors}` : r.as === 'skipped' ? '' : 'без ошибок', 'choice' in r ? `выбор: ${r.choice ?? 'ничего'}` : '', r.share != null ? `в зоне: ${Math.round(r.share * 100)}%` : ''];
+      result.textContent = [`итог: ${OUTCOMES[r.as] || r.as}`, ...more.filter(Boolean)].join(' · ');
     },
     note(text) { result.textContent = text; },
     styled(i) { styleButton.textContent = ['◐', '☀', '☾'][i] || '◐'; styleButton.title = `стиль: ${styles[i]}`; },
