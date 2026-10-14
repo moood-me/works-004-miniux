@@ -82,12 +82,12 @@ export default async function (b) {
         const all = {};
         return { all, add(reason, o) { mg.error(reason, { ...o, chip: !soft }); if (!soft) all[reason] = (all[reason] || 0) + 1; } };
       },
-      // the end: as given, else clean or flawed by the errors; its outcome shown
+      // the end: as given, else clean or flawed by the errors; its outcome shown at once, as the end begins
       async end(mg, { as, errors = {}, ...rest } = {}) {
         if (left.has(mg)) return;
         const how = as || (Object.keys(errors).length ? 'flawed' : 'clean');
-        await mg.end({ as: how });
         d.result({ as: how, errors, ...rest });
+        await mg.end({ as: how });
       },
       result: r => { if (!signal.aborted) view.result(r); },
       note: text => { if (!signal.aborted) view.note(text); },
