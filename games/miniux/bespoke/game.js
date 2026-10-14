@@ -23,7 +23,7 @@ export default async function (b) {
 
   const settle = () => {
     const s = kept.switches;
-    b.minigame.settings({ sound: !s.mute, motion: s.less ? 'less' : null, keys: s.keys ? 'only' : null, debug: !!s.debug });
+    b.minigame.author?.settings({ sound: !s.mute, motion: s.less ? 'less' : null, keys: s.keys ? 'only' : null, debug: !!s.debug });
   };
   const view = ui(b.layer, {
     demos: DEMOS, styles: STYLES.map(s => s.name),
@@ -33,7 +33,7 @@ export default async function (b) {
       next: () => go(DEMOS[(DEMOS.findIndex(x => x.id === kept.demo) + 1) % DEMOS.length].id),
       style: () => { kept.style = (kept.style + 1) % STYLES.length; b.minigame.style(STYLES[kept.style].style); view.styled(kept.style); keep(); },
       switch: (name, value) => { kept.switches = { ...kept.switches, [name]: value }; settle(); keep(); },
-      forget: () => b.minigame.forget(),
+      forget: () => b.minigame.author?.forget(),
       pause: () => { b.pause(!b.paused); view.paused(b.paused); },
     },
   });
@@ -61,11 +61,12 @@ export default async function (b) {
       set: (key, value, seconds) => { if (!signal.aborted) b.set(key, value, seconds); },
       bump: key => { if (!signal.aborted) b.set(key, (Number(b.get(key)) || 0) + 1); },
       wait: seconds => new Promise(ok => setTimeout(ok, seconds * 1000)),
-      choose: (ref, actions, o) => (signal.aborted ? Promise.resolve(null) : b.minigame.choose(ref, actions, o)),
+      choose: (ref, actions, o) => b.minigame.choose(ref, actions, { ...o, signal }),
       result: r => { if (!signal.aborted) view.result(r); },
       note: text => { if (!signal.aborted) view.note(text); },
     };
-    try { await demo.run(d); } catch (e) { if (!signal.aborted) b.trouble(`демонстрация сломалась: ${e.message || e}`); }
+    // (broken: said, and its mini-game taken away — the scene answers again)
+    try { await demo.run(d); } catch (e) { if (!signal.aborted) b.trouble(`демонстрация сломалась: ${e.message || e}`); run.abort(); }
   }
   await go(kept.demo);
 }

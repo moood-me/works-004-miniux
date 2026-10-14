@@ -1,11 +1,14 @@
-// The board of sounds (П45–П48): the language's library (bespoke.minigame — the page's sounds.js), by its groups
-// («Понравилось», then the families: Орган, Фисгармония…). Short sounds (samples): a big button each — its number, its
+// The board of sounds (П45–П48): the playground's library of candidates (sounds.js), by its groups («Понравилось»,
+// then the families: Орган, Фисгармония…), heard as the language is heard — through a small room, as loud as the
+// site's «звуки» slider (MooodVolume). Short sounds (samples): a big button each — its number, its
 // name, its role and what of the language's it is now; pressed, it sounds. Processes (layers): a pad each — hold it
 // and move along it: across, the layer's u (ход, опасность, время, в зоне); for движение, how fast the finger goes;
 // let go — it stops (налив: cut at the right end, sinks before it). A heart beside each: Pavel's pick, kept in this
 // browser; the numbers picked are listed at the foot, to be said («беру 3, 7, 12»). Over the scene; gone when the
 // player goes to another demonstration (signal).
 //   board(b, signal) → a promise, settled when it is gone
+import { SOUNDS, LAYERS, load } from './sounds.js';
+
 const KEY = 'moood:miniux:sounds-picked:families'; // (the picks of the boards before — other sounds — are not carried over)
 const FAST = 1.2; // px per ms: as fast as a finger goes (speed 1)
 const el = (tag, cls, parent) => {
@@ -15,8 +18,40 @@ const el = (tag, cls, parent) => {
   return e;
 };
 
+// the board's audio, once something on it is pressed (a browser lets it start only then): the sounds → dry and a small
+// room → as loud as the site says
+let audio = null;
+function hearing() {
+  if (!audio) {
+    const ctx = new AudioContext(), out = ctx.createGain(), room = ctx.createConvolver(), wet = ctx.createGain(), level = MooodVolume.output(ctx);
+    out.gain.value = 1.1; wet.gain.value = 0.28; room.buffer = roomOf(ctx);
+    out.connect(level);
+    out.connect(room).connect(wet).connect(level);
+    level.connect(ctx.destination);
+    load(ctx);
+    audio = { ctx, out };
+  }
+  if (audio.ctx.state === 'suspended') audio.ctx.resume();
+  return audio;
+}
+// a small room's answer: half a second of noise fading away, darker as it fades
+function roomOf(ctx) {
+  const n = Math.round(ctx.sampleRate * 0.6), b = ctx.createBuffer(2, n, ctx.sampleRate);
+  for (let ch = 0; ch < 2; ch++) {
+    const c = b.getChannelData(ch);
+    let last = 0;
+    for (let i = 0; i < n; i++) {
+      const k = i / n, x = (Math.random() * 2 - 1) * (1 - k) ** 3;
+      last += (x - last) * (0.6 - 0.45 * k);
+      c[i] = last;
+    }
+  }
+  return b;
+}
+const sample = id => { const { ctx, out } = hearing(); SOUNDS.find(s => s.id === id)?.play(ctx, out, ctx.currentTime + 0.005).catch(() => {}); };
+const layerOf = id => { const { ctx, out } = hearing(); return LAYERS.find(l => l.id === id).make(ctx, out); };
+
 export function board(b, signal) {
-  const mg = b.minigame;
   let picked;
   try { picked = new Set(JSON.parse(localStorage.getItem(KEY)) || []); } catch { picked = new Set(); }
   const keep = () => { try { localStorage.setItem(KEY, JSON.stringify([...picked])); } catch {} };
@@ -45,21 +80,21 @@ export function board(b, signal) {
     if (language.length) el('small', 'sb-lang', words).textContent = `в языке: ${language.join(', ')}`;
   };
   const hint = l => `${l.role} — ${l.param === 'скорость' ? 'веди то быстрее, то медленнее' : `${l.param}: веди слева направо`}`;
-  const groups = [...new Set([...mg.samples, ...mg.layers].map(x => x.group))];
+  const groups = [...new Set([...SOUNDS, ...LAYERS].map(x => x.group))];
 
   for (const group of groups) {
     el('h2', '', list).textContent = group;
     const grid = el('div', 'sb-grid', list);
-    for (const s of mg.samples.filter(x => x.group === group)) {
+    for (const s of SOUNDS.filter(x => x.group === group)) {
       all.push(s.id);
       const cell = el('div', 'sb-cell', grid);
       const play = el('button', 'sb-play', cell);
       play.type = 'button';
       label(play, s.name, s.role, s.language);
-      play.onclick = () => { mg.sample(s.id); play.animate([{ scale: 0.94 }, { scale: 1 }], { duration: 160, easing: 'ease-out' }); };
+      play.onclick = () => { sample(s.id); play.animate([{ scale: 0.94 }, { scale: 1 }], { duration: 160, easing: 'ease-out' }); };
       heart(cell, s.id);
     }
-    const layers = mg.layers.filter(x => x.group === group);
+    const layers = LAYERS.filter(x => x.group === group);
     if (!layers.length) continue;
     const pads = el('div', 'sb-grid sb-layers', list);
     for (const l of layers) {
@@ -78,7 +113,7 @@ export function board(b, signal) {
   function hold(e, pad, fill, l) {
     e.preventDefault();
     pad.setPointerCapture(e.pointerId);
-    const layer = mg.layer(l.id), box = pad.getBoundingClientRect(), bySpeed = l.param === 'скорость';
+    const layer = layerOf(l.id), box = pad.getBoundingClientRect(), bySpeed = l.param === 'скорость';
     let x = e.clientX, last = { x, t: performance.now() }, speed = 0, frame = 0;
     const lead = () => {
       const now = performance.now(), v = Math.abs(x - last.x) / Math.max(1, now - last.t);
