@@ -5,12 +5,12 @@ const cx = e.aspect / 2;
 const X = [cx - 0.36, cx - 0.12, cx + 0.12, cx + 0.36];
 const Y = 0.5;
 // the bulwark's planking behind the rail
-g.fillStyle = "#d8c6a2";
+g.fillStyle = "#5e4630";
 g.fillRect(cx - 0.62, 0.05, 1.24, 0.75);
-g.fillStyle = "#c6b28a";
+g.fillStyle = "#4e3a26";
 for (let y = 0.12; y < 0.8; y += 0.11) g.fillRect(cx - 0.62, y, 1.24, 0.006);
 // the rail
-g.fillStyle = "#8a6038";
+g.fillStyle = "#9a6c3e";
 g.fillRect(cx - 0.55, Y - 0.035, 1.1, 0.07);
 g.fillStyle = "#a57848";
 g.fillRect(cx - 0.55, Y - 0.035, 1.1, 0.015);
@@ -29,7 +29,7 @@ const rope = (g, draw) => {
 X.forEach((x, i) => {
   const n = i + 1;
   // the pin: its handle over the rail, its shank under it
-  g.fillStyle = "#e2c08a";
+  g.fillStyle = "#f0d8a8";
   g.beginPath();
   g.moveTo(x - 0.012, Y - 0.035);
   g.lineTo(x - 0.02, Y - 0.12);

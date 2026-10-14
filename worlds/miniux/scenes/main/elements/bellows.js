@@ -40,6 +40,8 @@ e.layer("top", { pivot: [-0.3, -0.1] }, (g) => {
   g.fillRect(-0.3, -0.14, 0.76, 0.04);
   g.fillStyle = "#6b4a2c";
   g.fillRect(0.44, -0.13, 0.14, 0.02);
-  g.fillStyle = "#d9b27a";
-  g.fillRect(0.56, -0.15, 0.07, 0.06);
+  g.fillStyle = "#c0503a";
+  g.fillRect(0.555, -0.155, 0.08, 0.07);
+  g.fillStyle = "#e07a60";
+  g.fillRect(0.565, -0.15, 0.06, 0.015);
 });

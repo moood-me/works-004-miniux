@@ -7,11 +7,11 @@ const P0 = [0, -0.3];
 const L0 = Math.hypot(0.75, 0.45);
 const bracket = (g, x, plate, ring) => {
   g.fillStyle = plate;
-  g.fillRect(x - 0.045, -0.88, 0.09, 0.22);
+  g.fillRect(x - 0.055, -0.9, 0.11, 0.26);
   g.strokeStyle = ring;
-  g.lineWidth = 0.022;
+  g.lineWidth = 0.03;
   g.beginPath();
-  g.arc(x, -0.75, 0.04, 0, Math.PI * 2);
+  g.arc(x, -0.75, 0.06, 0, Math.PI * 2);
   g.stroke();
 };
 bracket(g, BL[0], "#4d4f55", "#3a3c40");

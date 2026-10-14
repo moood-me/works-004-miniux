@@ -31,8 +31,8 @@ const line = (g) => {
   g.lineTo(0.68, -0.35);
   g.stroke();
 };
-g.strokeStyle = "#3a2414";
-g.lineWidth = 0.02;
+g.strokeStyle = "#2a160a";
+g.lineWidth = 0.026;
 g.lineJoin = "round";
 line(g);
 P.forEach(([x, y], i) => e.at(x, y, "p" + i));

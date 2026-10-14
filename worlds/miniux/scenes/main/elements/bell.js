@@ -1,6 +1,6 @@
 // A bell on a little gallows stand: struck (bell_hits), it swings on its hook and rings (animate)
 if (!e.lib.show(e, "bell")) return;
-g.fillStyle = "#8a5a32";
+g.fillStyle = "#7d7266";
 g.fillRect(-0.34, -0.04, 0.68, 0.04);
 g.fillRect(-0.3, -0.74, 0.045, 0.72);
 g.fillRect(0.255, -0.74, 0.045, 0.72);
@@ -23,6 +23,9 @@ e.layer("bell", { pivot: [0, -0.73] }, (g) => {
   g.quadraticCurveTo(0.11, -0.61, 0.05, -0.63);
   g.closePath();
   g.fill();
+  g.strokeStyle = "#7a5a18";
+  g.lineWidth = 0.012;
+  g.stroke();
   g.fillStyle = "#b8862a";
   g.fillRect(-0.19, -0.32, 0.38, 0.025);
   g.fillStyle = "#f6d987";

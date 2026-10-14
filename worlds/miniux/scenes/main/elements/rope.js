@@ -15,8 +15,8 @@ g.stroke();
 e.at(0.5, -0.85, "hook");
 // the weight and its loop (the loop's top at (-0.5, -0.28))
 e.layer("weight", {}, (g) => {
-  g.strokeStyle = "#b48d55";
-  g.lineWidth = 0.022;
+  g.strokeStyle = "#e0b060";
+  g.lineWidth = 0.028;
   g.beginPath();
   g.ellipse(-0.5, -0.235, 0.035, 0.045, 0, 0, Math.PI * 2);
   g.stroke();
