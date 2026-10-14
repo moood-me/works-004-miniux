@@ -1,11 +1,12 @@
-// The board of sounds (П45–П47): the language's library (bespoke.minigame — the page's sounds.js), grouped by role.
-// Short sounds (samples): a big button each — its number and name; pressed, it sounds. Processes (layers): a pad each —
-// hold it and move along it: across, the layer's u (ход, опасность, время, в зоне); for движение and трещотка, how fast
-// the finger goes; let go — it stops (налив: cut at the right end, sinks before it). A heart beside each: Pavel's pick,
-// kept in this browser; the numbers picked are listed at the foot, to be said («беру 3, 7, 12»). Over the scene; gone
-// when the player goes to another demonstration (signal).
+// The board of sounds (П45–П48): the language's library (bespoke.minigame — the page's sounds.js), by its groups
+// («Понравилось», then the families: Орган, Фисгармония…). Short sounds (samples): a big button each — its number, its
+// name and its role; pressed, it sounds. Processes (layers): a pad each — hold it and move along it: across, the
+// layer's u (ход, опасность, время, в зоне); for движение, how fast the finger goes; let go — it stops (налив: cut at
+// the right end, sinks before it). A heart beside each: Pavel's pick, kept in this browser; the numbers picked are
+// listed at the foot, to be said («беру 3, 7, 12»). Over the scene; gone when the player goes to another
+// demonstration (signal).
 //   board(b, signal) → a promise, settled when it is gone
-const KEY = 'moood:miniux:sounds-picked:roles'; // (the picks of the board before — other sounds — are not carried over)
+const KEY = 'moood:miniux:sounds-picked:families'; // (the picks of the boards before — other sounds — are not carried over)
 const FAST = 1.2; // px per ms: as fast as a finger goes (speed 1)
 const el = (tag, cls, parent) => {
   const e = document.createElement(tag);
@@ -13,7 +14,6 @@ const el = (tag, cls, parent) => {
   parent?.append(e);
   return e;
 };
-const byRole = list => list.reduce((m, x) => m.set(x.role, [...(m.get(x.role) || []), x]), new Map());
 
 export function board(b, signal) {
   const mg = b.minigame;
@@ -35,33 +35,36 @@ export function board(b, signal) {
     h.onclick = () => { if (picked.has(id)) picked.delete(id); else picked.add(id); keep(); paint(); tell(); };
     paint();
   };
-  const label = (parent, s) => {
-    el('b', '', parent).textContent = all.push(s.id);
-    el('span', '', parent).textContent = s.name;
+  // a number, the name and under it what it is for
+  const label = (parent, name, under) => {
+    el('b', '', parent).textContent = all.length;
+    const words = el('span', 'sb-words', parent);
+    el('span', '', words).textContent = name;
+    el('small', '', words).textContent = under;
   };
+  const hint = l => `${l.role} — ${l.param === 'скорость' ? 'веди то быстрее, то медленнее' : `${l.param}: веди слева направо`}`;
+  const groups = [...new Set([...mg.samples, ...mg.layers].map(x => x.group))];
 
-  for (const [role, sounds] of byRole(mg.samples)) {
-    el('h3', '', list).textContent = role;
+  for (const group of groups) {
+    el('h2', '', list).textContent = group;
     const grid = el('div', 'sb-grid', list);
-    for (const s of sounds) {
+    for (const s of mg.samples.filter(x => x.group === group)) {
+      all.push(s.id);
       const cell = el('div', 'sb-cell', grid);
       const play = el('button', 'sb-play', cell);
       play.type = 'button';
-      label(play, s);
+      label(play, s.name, s.role);
       play.onclick = () => { mg.sample(s.id); play.animate([{ scale: 0.94 }, { scale: 1 }], { duration: 160, easing: 'ease-out' }); };
       heart(cell, s.id);
     }
-  }
-
-  el('h2', '', list).textContent = 'Процессы';
-  for (const [role, layers] of byRole(mg.layers)) {
-    const param = layers[0].param;
-    el('h3', '', list).textContent = `${role} — ${param === 'скорость' ? 'веди то быстрее, то медленнее' : `${param}: веди слева направо`}`;
-    const grid = el('div', 'sb-grid sb-layers', list);
+    const layers = mg.layers.filter(x => x.group === group);
+    if (!layers.length) continue;
+    const pads = el('div', 'sb-grid sb-layers', list);
     for (const l of layers) {
-      const cell = el('div', 'sb-cell', grid);
+      all.push(l.id);
+      const cell = el('div', 'sb-cell', pads);
       const pad = el('div', 'sb-pad', cell);
-      label(pad, l);
+      label(pad, l.name, hint(l));
       const fill = el('i', '', pad);
       pad.addEventListener('pointerdown', e => hold(e, pad, fill, l), { signal });
       heart(cell, l.id);
