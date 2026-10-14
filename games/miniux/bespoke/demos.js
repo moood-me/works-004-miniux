@@ -161,13 +161,20 @@ export const DEMOS = [
   {
     id: 'pull-where', group: 'Жесты', title: 'Тянуть куда', scene: WORKSHOP, demo: 'sockets',
     memo: ['Колышек — в одно из гнёзд. Взял — колышек в пальце (в сцене, не только метка), появляются гнёзда: пустые кольца — можно, бледное пунктирное — нельзя.',
-      'Отпустил у «нельзя» — гнездо качает «нет» (ошибка «не туда»), колышек возвращается на место. В пустом месте — тоже просто возвращается, без ошибки.',
+      'Отпустил у «нельзя» — гнездо качает «нет» (ошибка «не туда»), колышек видимо едет обратно на место. В пустом месте — тоже едет обратно, без ошибки.',
       'Проверить: колышек не пропадает и не прыгает.'],
     async run(d) {
       const mg = await d.mg({ task: 'Вставь колышек в гнездо' });
+      let rest = null; // (where the peg lay when it was taken: u, v between the sockets)
       const s = await mg.pull('sockets#peg', {
         variant: 'where', targets: [{ ref: sockets[0] }, { ref: sockets[1], ok: false }, { ref: sockets[2] }],
-        progress: (u, i) => { if (!i) return; if (i.held) { carried(d, 'peg', i.at); d.set('peg', 'held'); } else if (i.back) d.set('peg', 'none'); },
+        progress: (u, i) => {
+          if (!i) return;
+          // taken: where it lay (to go back to); carried: under the finger; let go astray: it goes back, seen (П37), and
+          // lies down there
+          if (i.held) { rest ??= d.b.minigame.relative(i.at, 'sockets#s1', 'sockets#s3'); carried(d, 'peg', i.at); d.set('peg', 'held'); }
+          else if (i.back && rest) { d.set('peg_u', rest.u, 0.4); d.set('peg_v', rest.v, 0.4); const was = rest; rest = null; d.wait(0.45).then(() => { if (!rest && was) d.set('peg', 'none'); }); }
+        },
       });
       if (s.choice) d.set('peg', s.choice.split('#')[1]);
       d.result(await mg.end());
