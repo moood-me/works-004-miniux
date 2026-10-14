@@ -307,7 +307,7 @@ export const DEMOS = [
   {
     id: 'lead-smooth', group: 'Жесты', title: 'Вести плавно', scene: WORKSHOP, demo: 'boat', state: { zone_kind: 'zone' },
     memo: ['То же, но рывки нельзя: резкое движение пальца — дорожка рвётся (ошибка «сорвал»).', 'Проверить: плавно можно вести без ошибок.'],
-    async run(d) { const mg = await d.mg({ task: 'Лодку рыскает от резких движений' }); await mg.lead({ glow: 'boat', seconds: 12, smooth: true, zone: t => 0.5 * Math.sin(t * 0.4), width: 0.35, progress: (u, i) => boat(d, i) }); d.result(await mg.end()); },
+    async run(d) { const mg = await d.mg({ task: 'Лодка рыскает от резких движений' }); await mg.lead({ glow: 'boat', seconds: 12, smooth: true, zone: t => 0.5 * Math.sin(t * 0.4), width: 0.35, progress: (u, i) => boat(d, i) }); d.result(await mg.end()); },
   },
   {
     id: 'wait', group: 'Жесты', title: 'Ждать', scene: WORKSHOP, demo: 'hourglass',
