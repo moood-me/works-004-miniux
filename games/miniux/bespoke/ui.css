@@ -1,6 +1,6 @@
 /* The playground's buttons (ui.js): top left under the site's header, ⏸ bottom right; quiet, small, out of the way of
-   the window's middle where the gestures go. */
-#layer .pg { position: absolute; top: calc(env(safe-area-inset-top, 0px) + 50px); left: calc(env(safe-area-inset-left, 0px) + 12px);
+   the window's middle where the gestures go. Over the board of sounds (its list opened over it). */
+#layer .pg { position: absolute; z-index: 1; top: calc(env(safe-area-inset-top, 0px) + 50px); left: calc(env(safe-area-inset-left, 0px) + 12px);
   display: flex; flex-direction: column; align-items: flex-start; gap: 8px; max-width: min(420px, 60vw); pointer-events: none;
   font: 14px/1.35 system-ui, sans-serif; color: #eef0f4; }
 #layer .pg > * { pointer-events: auto; }
@@ -8,7 +8,8 @@
 #layer .pg button, #layer .pg-pause { min-width: 36px; height: 36px; padding: 0 9px; border: 0; border-radius: 10px; background: rgba(10, 12, 18, 0.6);
   color: inherit; font: 17px/1 system-ui, sans-serif; cursor: pointer; -webkit-tap-highlight-color: transparent; }
 #layer .pg button:hover, #layer .pg button.on { background: rgba(40, 46, 60, 0.8); }
-#layer .pg-title { margin-left: 6px; padding: 3px 8px; border-radius: 8px; background: rgba(10, 12, 18, 0.45); font-size: 13px; opacity: 0.9;
+/* (the title on a line of its own under the buttons: kept out of the task plate's way at the window's top middle) */
+#layer .pg-title { flex-basis: 100%; padding: 3px 8px; border-radius: 8px; background: rgba(10, 12, 18, 0.45); font-size: 13px; opacity: 0.9;
   pointer-events: none; }
 #layer .pg-list, #layer .pg-memo, #layer .pg-switches { padding: 10px 12px; border-radius: 12px; background: rgba(10, 12, 18, 0.86);
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4); }

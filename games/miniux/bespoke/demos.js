@@ -44,8 +44,9 @@ export const DEMOS = [
   {
     id: 'press', group: 'Жесты', title: 'Нажать', scene: WORKSHOP, demo: 'bell',
     memo: ['Колокольчик светится сам (мягкий пульс) — он твой; на нём кольцо. Нажми — срабатывает сразу, на касании.',
-      'Проверить: вверху плашка «Позвони в колокольчик»; от касания кольцо сжимается, вокруг пальца — светлое кольцо, мягкий стук дерева.',
-      'Нажми мимо — рябь у пальца, кольцо дёргается к нему, глухой звук; на полосе плашки тихо появляется щербинка (первая встреча не считается).'],
+      'Проверить: вверху плашка «Колокольчик давно молчит»; от касания кольцо сжимается, вокруг пальца — светлое кольцо, мягкий стук дерева.',
+      'Нажми мимо — рябь у пальца, кольцо дёргается к нему, глухой звук; на полосе плашки тихо появляется щербинка.',
+      'Первая встреча с жестом за партию (когда палец показывает его впервые) — мягкая проба: ошибка видна, но не считается, щербинки нет. Повторный прогон считает; ⚙ «забыть показ» — снова первая встреча.'],
     async run(d) { const mg = await d.mg({ task: 'Колокольчик давно молчит' }); if ((await mg.press('bell#top', { glow: 'bell' })).state === 'done') bell(d); d.result(await mg.end()); },
   },
   {
@@ -78,8 +79,8 @@ export const DEMOS = [
     id: 'hold', group: 'Жесты', title: 'Держать', scene: WORKSHOP, demo: 'bellows',
     memo: ['Кольцо с желобом на ручке меха — нажми и держи, пока желоб не нальётся (1.5 с). Мех раздувается.',
       'Проверить: держишь — мех светится ровно; налив виден из-под пальца, слышно дыхание; полно — защёлка, дальше держать не надо.',
-      'Отпусти раньше — налив стекает назад, мех пульсирует снова (первый раз — без счёта ошибки).'],
-    async run(d) { const mg = await d.mg({ task: 'Горну не хватает воздуха' }); await mg.hold('bellows#handle', { glow: 'bellows', seconds: 1.5, progress: u => d.set('bellows', u) }); d.result(await mg.end()); },
+      'Отпусти раньше — налив стекает назад, мех пульсирует снова (первая встреча за партию — без счёта ошибки).'],
+    async run(d) { const mg = await d.mg({ task: 'Мех совсем пустой' }); await mg.hold('bellows#handle', { glow: 'bellows', seconds: 1.5, progress: u => d.set('bellows', u) }); d.result(await mg.end()); },
   },
   {
     id: 'hold-anywhere', group: 'Жесты', title: 'Держать где угодно', scene: WORKSHOP, demo: 'bellows',
@@ -128,7 +129,7 @@ export const DEMOS = [
       'Шесть перехватов — шесть засечек на полосе. Груз поднимается.',
       'Проверить: видна всегда одна метка; отпустить рано — «срыв».'],
     async run(d) {
-      const mg = await d.mg({ task: 'Скобы уходят вверх, одна за другой' });
+      const mg = await d.mg({ task: 'Груз висит низко, скобы — по сторонам' });
       await mg.hold(null, { variant: 'catch', refs: ['brackets#left', 'brackets#right'], count: 6, progress: (u, i) => { d.set('climb', u, 0.3); d.set('grip', i?.side ? 'left' : 'right'); } });
       d.set('grip', 'none');
       d.result(await mg.end());
@@ -143,13 +144,13 @@ export const DEMOS = [
   },
   {
     id: 'pull-spring', group: 'Жесты', title: 'Тянуть с пружиной', scene: WORKSHOP, demo: 'shutter',
-    memo: ['Подними заслонку до верха и отпусти там. Отпустишь раньше — она видимо возвращается вниз.',
+    memo: ['Подними заслонку до верха и отпусти там. Отпустишь раньше — она видимо возвращается вниз (около 0.7 с, откуда ни отпусти).',
       'Проверить: это не ошибка (нет звука срыва) — просто пружина; цель видна, только пока тянешь.'],
     async run(d) { const mg = await d.mg({ task: 'За заслонкой свет' }); await mg.pull('shutter#handle', { to: 'shutter#top', variant: 'spring', progress: u => d.set('shutter', u) }); d.result(await mg.end()); },
   },
   {
     id: 'pull-resist', group: 'Жесты', title: 'Тянуть с сопротивлением', scene: WORKSHOP, demo: 'crate',
-    memo: ['Тяжёлый ящик: тяни вперёд — между ящиком и пальцем натягивается красная нить. Ящик идёт, пока натяжение сильное.',
+    memo: ['Тяжёлый ящик: тяни вперёд — между ящиком и пальцем натягивается красная нить, толще и ярче с натяжением. Ящик идёт, пока палец заметно впереди него.',
       'Отпустил — ящик откатывается назад. Сделано — отпустить, когда ящик в кольце цели.',
       'Проверить: натяжение видно (толще и ярче нить); ящик не прыгает за пальцем.'],
     async run(d) { const mg = await d.mg({ task: 'Ящик тяжёлый и стоит не на месте' }); await mg.pull('crate#handle', { glow: 'crate', to: 'crate#goal', variant: 'resist', progress: u => d.set('crate', u) }); d.result(await mg.end()); },
@@ -234,11 +235,11 @@ export const DEMOS = [
     memo: ['Пятно над досками: веди с нажатием — под пальцем линза. Ближе к спрятанному она теплеет (краснее, светлее) и гул ближе.',
       'Нашёл — задержи палец, линза нальётся — место вспыхивает. Без нажатия не ищется.',
       'Проверить: тепло-холодно видно глазами, без звука тоже можно найти.'],
-    async run(d) { const mg = await d.mg({ task: 'Под досками что-то скребётся' }); const s = await mg.seek('floor#area', { target: 'floor#hidden' }); if (s.state === 'done') d.set('floor_found', true); d.result(await mg.end()); },
+    async run(d) { const mg = await d.mg({ task: 'Под досками что-то спрятано' }); const s = await mg.seek('floor#area', { target: 'floor#hidden' }); if (s.state === 'done') d.set('floor_found', true); d.result(await mg.end()); },
   },
   {
     id: 'inspect', group: 'Жесты', title: 'Осмотреть', scene: WORKSHOP, demo: 'shells',
-    memo: ['Три ракушки. Коснись — она качнётся; «не такая» отвечает иначе (светится). Задержи палец на ней — найдено.',
+    memo: ['Три ракушки. Коснись — обычная качнётся; «не такая» на секунду приоткрывается — под ней жемчужина, вокруг тёплый свет. Задержи палец на ней — найдено.',
       'Задержал на обычной — она качает «нет» (ошибка «не то»).',
       'Проверить: «не такая» видна глазами, без подписи.'],
     async run(d) {
@@ -255,7 +256,7 @@ export const DEMOS = [
     memo: ['К кольцу на барабане сходится второе: жми (где угодно), когда оно коснётся края. Нужно 8 ударов в такт — не суперровно.',
       'Попал — вспышка, мягкий удар, засечка на полосе; рано или поздно — красная крапинка до или после края, промах не считается, но набранное не пропадает.',
       'Проверить: видно заранее, когда жать; пробел тоже бьёт.'],
-    async run(d) { const mg = await d.mg({ task: 'Барабан ведёт счёт' }); await mg.rhythm('drum#skin', { glow: 'drum', bpm: 80, hits: 8, onHit: (i, ok) => ok && d.bump('drum_hits') }); d.result(await mg.end()); },
+    async run(d) { const mg = await d.mg({ task: 'Барабан ждёт ровного счёта' }); await mg.rhythm('drum#skin', { glow: 'drum', bpm: 80, hits: 8, onHit: (i, ok) => ok && d.bump('drum_hits') }); d.result(await mg.end()); },
   },
   {
     id: 'rhythm-hold', group: 'Жесты', title: 'Держать в ритм', scene: WORKSHOP, demo: 'breath',
@@ -276,13 +277,13 @@ export const DEMOS = [
   },
   {
     id: 'rhythm-own', group: 'Жесты', title: 'Свой ритм', scene: WORKSHOP, demo: 'drum2',
-    memo: ['Левый барабан бьёт свой ритм. Жми где угодно: твои касания рисуют твоё кольцо рядом, твой барабан бьёт.',
-      'Совпало с его долями — кольца сливаются («за ним»); нет — бьются врозь («свой»); не жал — третий путь.',
+    memo: ['Левый барабан бьёт свой ритм. Жми где угодно: твой — правый (голубой) барабан, на нём с первым касанием появляется твоё кольцо, он бьёт.',
+      'Совпало с его долями — твоё кольцо зеленеет («за ним»); нет — бьются врозь («свой»); не жал — третий путь.',
       'Проверить: оба пути нейтральны, ошибок нет; палец показывает оба.'],
     async run(d) {
       const mg = await d.mg({ task: 'Барабану нужен второй голос. Можно и свой' });
       let taps = 0;
-      await mg.rhythm('drum#skin', { variant: 'own', bpm: 72, beats: 12, onBeat: () => d.bump('drum_hits'), progress: (u, i) => { if (i?.tap && i.tap > taps) { taps = i.tap; d.bump('drum2_hits'); } } });
+      await mg.rhythm('drum#skin', { variant: 'own', own: 'drum2#skin', bpm: 72, beats: 12, onBeat: () => d.bump('drum_hits'), progress: (u, i) => { if (i?.tap && i.tap > taps) { taps = i.tap; d.bump('drum2_hits'); } } });
       d.result(await mg.end());
     },
   },
@@ -291,7 +292,7 @@ export const DEMOS = [
     memo: ['Красная стрелка от носа лодки — куда она смотрит. Нажми где угодно и веди вбок: стрелка идёт за смещением. Держи её в светлой зоне на шкале — зона плывёт.',
       'Отпустил — нос возвращается. 12 с; огонёк плашки — в зоне ли.',
       'Проверить: в зоне — зона светится. Клавиши ←→.'],
-    async run(d) { const mg = await d.mg({ task: 'Лодку сносит с курса' }); await mg.lead({ glow: 'boat', seconds: 12, zone: t => 0.55 * Math.sin(t * 0.45), width: 0.35, progress: (u, i) => boat(d, i) }); d.result(await mg.end()); },
+    async run(d) { const mg = await d.mg({ task: 'Курс лодки всё время уходит' }); await mg.lead({ glow: 'boat', seconds: 12, zone: t => 0.55 * Math.sin(t * 0.45), width: 0.35, progress: (u, i) => boat(d, i) }); d.result(await mg.end()); },
   },
   {
     id: 'lead-follow', group: 'Жесты', title: 'Вести за движущимся', scene: WORKSHOP, demo: 'boat', state: { zone_kind: 'firefly' },
@@ -325,7 +326,7 @@ export const DEMOS = [
   },
   {
     id: 'frame-ghost', group: 'Рамка', title: 'Призрачный палец', scene: WORKSHOP, demo: 'rope',
-    memo: ['Показ забыт перед этой демонстрацией: полупрозрачный палец сам тянет груз к крюку и отпускает у цели — раз, на настоящей метке.',
+    memo: ['Показ забыт перед этой демонстрацией: палец (светлый круг с тенью и следом) сам тянет груз к крюку — груз едет за ним; палец отпускает, и груз видимо возвращается на место.',
       'Касание прерывает показ. Ничего не делаешь 4 с — показ снова, дальше раз в 8 с.',
       'Проверить: показ понятен; время мини-игры начинается после показа.'],
     async run(d) { d.b.minigame.forget(); const mg = await d.mg({ task: 'Груз не достаёт до крюка' }); await mg.pull('rope#weight', { to: 'rope#hook', progress: u => d.set('rope', u) }); d.result(await mg.end()); },
@@ -362,14 +363,15 @@ export const DEMOS = [
   {
     id: 'frame-errors', group: 'Рамка', title: 'Ошибки', scene: WORKSHOP, demo: 'bell',
     memo: ['Каждая ошибка — своим видом и звуком, там, где случилась; на полосе — тихая щербинка (здесь мягкой пробы нет — всё считается).',
-      'Шаги: колокольчик (нажми мимо — «мимо»), держать (отпусти рано — «рано отпустил»), держать где угодно с ветром («в опасность»), колокольчик с повтором 3.',
+      'Шаги: колокольчик (нажми мимо — «мимо»), держать (отпусти рано — «рано отпустил»), держать где угодно с ветром — колокольчик раскачивается на порывах («в опасность»), колокольчик с повтором 3.',
       'Звуков ошибок три, все тихие: глухой «мимо», ткань «срыв», два низких стука «сбой».',
       'Остальные ошибки — в своих жестах: «сошёл» (линия), «не туда» (куда), «рано или поздно» и «слишком часто» (ритм), «против» (крутить), «сорвал» (плавно).'],
     async run(d) {
       const mg = await d.mg({ steps: 4, soft: false, task: 'Колокольчик давно молчит' });
       await mg.press('bell#top', { glow: 'bell' }); bell(d);
       await mg.hold('bell#top', { glow: 'bell', seconds: 2, task: 'Колокольчику хочется звучать дольше' });
-      await mg.hold(null, { at: 'bell', seconds: 3, danger: windy(1.2), task: 'Ветер раскачивает колокольчик' });
+      await mg.hold(null, { at: 'bell', seconds: 3, danger: s => { d.set('wind', gust(s.t)); return windy(1.2)(s); }, task: 'Ветер раскачивает колокольчик' });
+      d.set('wind', 0, 0.5);
       await mg.press('bell#top', { glow: 'bell', repeat: 3, onTouch: () => bell(d), task: 'Колокольчик звонят трижды' });
       d.result(await mg.end());
     },
@@ -390,14 +392,14 @@ export const DEMOS = [
     id: 'frame-limit', group: 'Рамка', title: 'Время на исходе', scene: WORKSHOP, demo: 'plate',
     memo: ['Предел — время (10 с): тень справа ползёт, пока время идёт. Не успел стереть — проигрыш.',
       'Проверить: краем глаза видно, тороплюсь ли я.'],
-    async run(d) { const mg = await d.mg({ task: 'Пыль оседает быстрее, чем кажется' }); await mg.rub('plate#dust', { glow: 'plate', limit: 10, progress: u => d.set('plate', u) }); d.result(await mg.end()); },
+    async run(d) { const mg = await d.mg({ task: 'На пыль совсем мало времени' }); await mg.rub('plate#dust', { glow: 'plate', limit: 10, progress: u => d.set('plate', u) }); d.result(await mg.end()); },
   },
   {
     id: 'frame-pause', group: 'Рамка', title: 'Пауза', scene: WORKSHOP, demo: 'drum',
     memo: ['Ритм: нужно 20 ударов в такт. Посреди нажми ⏸ (правый нижний угол): стоит всё — кольцо, время, звук, пульс барабана.',
       'Нажми ▶ — ритм даёт отсчёт в три тика и продолжает с того же места.',
       'Проверить: на паузе не теряешь удары; то же — если свернуть вкладку и вернуться.'],
-    async run(d) { const mg = await d.mg({ task: 'Барабан ведёт счёт' }); await mg.rhythm('drum#skin', { glow: 'drum', bpm: 80, hits: 20, onHit: (i, ok) => ok && d.bump('drum_hits') }); d.result(await mg.end()); },
+    async run(d) { const mg = await d.mg({ task: 'Барабан ждёт ровного счёта' }); await mg.rhythm('drum#skin', { glow: 'drum', bpm: 80, hits: 20, onHit: (i, ok) => ok && d.bump('drum_hits') }); d.result(await mg.end()); },
   },
   {
     id: 'frame-choice', group: 'Рамка', title: 'Обычный выбор', scene: WORKSHOP, demo: 'box',
@@ -421,14 +423,14 @@ export const DEMOS = [
   },
   {
     id: 'frame-soft', group: 'Рамка', title: 'Мягкая проба', scene: WORKSHOP, demo: 'bellows',
-    memo: ['Показ забыт: жест встречается впервые. Ошибки видны и звучат, но не считаются: щербинки нет, итог чистый.',
+    memo: ['Показ забыт: жест встречается впервые за партию. Ошибки видны и звучат, но не считаются: щербинки нет, итог чистый.',
       'Отпусти рано пару раз, потом дотяни. Затем второй шаг — тот же жест: теперь ошибки считаются.'],
     async run(d) {
       d.b.minigame.forget();
-      const mg = await d.mg({ steps: 2, task: 'Горну не хватает воздуха' });
+      const mg = await d.mg({ steps: 2, task: 'Мех совсем пустой' });
       await mg.hold('bellows#handle', { glow: 'bellows', seconds: 2, progress: u => d.set('bellows', u) });
       d.set('bellows', 0, 0.6);
-      await mg.hold('bellows#handle', { glow: 'bellows', seconds: 2, progress: u => d.set('bellows', u), task: 'Горн снова остывает' });
+      await mg.hold('bellows#handle', { glow: 'bellows', seconds: 2, progress: u => d.set('bellows', u), task: 'Мех опять опал' });
       d.result(await mg.end());
     },
   },
@@ -482,7 +484,7 @@ export const DEMOS = [
     async run(d) {
       const mg = await d.mg({ task: 'Барабану нужен второй голос. Можно и свой' });
       let taps = 0;
-      await mg.rhythm('drum#skin', { variant: 'own', bpm: 96, beats: 16, onBeat: () => d.bump('drum_hits'), progress: (u, i) => { if (i?.tap && i.tap > taps) { taps = i.tap; d.bump('drum2_hits'); } } });
+      await mg.rhythm('drum#skin', { variant: 'own', own: 'drum2#skin', bpm: 96, beats: 16, onBeat: () => d.bump('drum_hits'), progress: (u, i) => { if (i?.tap && i.tap > taps) { taps = i.tap; d.bump('drum2_hits'); } } });
       d.result(await mg.end());
     },
   },
@@ -492,7 +494,7 @@ export const DEMOS = [
       'Было: «она шевелится» — только слухом. Стало: опасность — дуга на краю метки, видно глазами.',
       'Проверить: можно пройти, отпуская на порывах.'],
     async run(d) {
-      const mg = await d.mg({ task: 'Она спит чутко' });
+      const mg = await d.mg({ task: 'Огонёк чуток к ветру' });
       await mg.hold('lantern#flame', { glow: 'lantern', seconds: 5, danger: s => { d.set('wind', gust(s.t)); return windy(0.8)(s); }, progress: u => d.set('lantern', u) });
       d.set('wind', 0, 0.5);
       d.result(await mg.end());
@@ -503,11 +505,11 @@ export const DEMOS = [
     memo: ['«Ашеры», Слушать: найти место под полом. Было: водить мышью без нажатия — на телефоне нельзя, только слухом.',
       'Стало: искать с нажатием, линза теплеет глазами и звуком.',
       'Проверить: на телефоне и без звука находится.'],
-    async run(d) { const mg = await d.mg({ task: 'Под досками что-то скребётся' }); const s = await mg.seek('floor#area', { target: 'floor#hidden', radius: 170 }); if (s.state === 'done') d.set('floor_found', true); d.result(await mg.end()); },
+    async run(d) { const mg = await d.mg({ task: 'Под досками что-то спрятано' }); const s = await mg.seek('floor#area', { target: 'floor#hidden', radius: 170 }); if (s.state === 'done') d.set('floor_found', true); d.result(await mg.end()); },
   },
   {
     id: 'kurs', group: 'Мини-игры', title: 'Курс', scene: DECK, state: { under_way: 1, sail: 1 },
-    memo: ['«Алые паруса», Курс: держать нос (красный круг на форштевне) на маяке, ветер сносит. Камера едет вместе с кораблём — жест без точки, ему это не мешает.',
+    memo: ['«Алые паруса», Курс: держать нос (крупный красный диск на форштевне) на маяке, ветер сносит. Камера едет вместе с кораблём — жест без точки, ему это не мешает.',
       'Три отрезка по 12 с — три отрезка полосы; огонёк — на курсе ли. Веди вбок — это руль: смещение пальца поворачивает нос.',
       'Было: итог выбрасывался. Стало: итог виден (здесь — строкой итога).'],
     async run(d) {
