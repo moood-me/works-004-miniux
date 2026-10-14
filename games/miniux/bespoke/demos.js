@@ -256,7 +256,7 @@ export const DEMOS = [
     memo: ['К кольцу на барабане сходится второе: жми (где угодно), когда оно коснётся края. Нужно 8 ударов в такт — не суперровно.',
       'Попал — вспышка, мягкий удар, засечка на полосе; рано или поздно — красная крапинка до или после края, промах не считается, но набранное не пропадает.',
       'Проверить: видно заранее, когда жать; пробел тоже бьёт.'],
-    async run(d) { const mg = await d.mg({ task: 'Барабан ведёт счёт' }); await mg.rhythm('drum#skin', { glow: 'drum', bpm: 80, hits: 8, onHit: (i, ok) => ok && d.bump('drum_hits') }); d.result(await mg.end()); },
+    async run(d) { const mg = await d.mg({ task: 'Барабан задаёт такт' }); await mg.rhythm('drum#skin', { glow: 'drum', bpm: 80, hits: 8, onHit: (i, ok) => ok && d.bump('drum_hits') }); d.result(await mg.end()); },
   },
   {
     id: 'rhythm-hold', group: 'Жесты', title: 'Держать в ритм', scene: WORKSHOP, demo: 'breath',
@@ -399,7 +399,7 @@ export const DEMOS = [
     memo: ['Ритм: нужно 20 ударов в такт. Посреди нажми ⏸ (правый нижний угол): стоит всё — кольцо, время, звук, пульс барабана.',
       'Нажми ▶ — ритм даёт отсчёт в три тика и продолжает с того же места.',
       'Проверить: на паузе не теряешь удары; то же — если свернуть вкладку и вернуться.'],
-    async run(d) { const mg = await d.mg({ task: 'Барабан ведёт счёт' }); await mg.rhythm('drum#skin', { glow: 'drum', bpm: 80, hits: 20, onHit: (i, ok) => ok && d.bump('drum_hits') }); d.result(await mg.end()); },
+    async run(d) { const mg = await d.mg({ task: 'Барабан задаёт такт' }); await mg.rhythm('drum#skin', { glow: 'drum', bpm: 80, hits: 20, onHit: (i, ok) => ok && d.bump('drum_hits') }); d.result(await mg.end()); },
   },
   {
     id: 'frame-choice', group: 'Рамка', title: 'Обычный выбор', scene: WORKSHOP, demo: 'box',
