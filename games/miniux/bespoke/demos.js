@@ -80,7 +80,7 @@ export const DEMOS = [
     memo: ['Кольцо с желобом на ручке меха — нажми и держи, пока желоб не нальётся (1.5 с). Мех раздувается.',
       'Проверить: держишь — мех светится ровно; налив виден из-под пальца, слышно дыхание; полно — защёлка, дальше держать не надо.',
       'Отпусти раньше — налив стекает назад, мех пульсирует снова (первая встреча за партию — без счёта ошибки).'],
-    async run(d) { const mg = await d.mg({ task: 'Мех совсем пустой' }); await mg.hold('bellows#handle', { glow: 'bellows', seconds: 1.5, progress: u => d.set('bellows', u) }); d.result(await mg.end()); },
+    async run(d) { const mg = await d.mg({ task: 'Меху нечем дышать' }); await mg.hold('bellows#handle', { glow: 'bellows', seconds: 1.5, progress: u => d.set('bellows', u) }); d.result(await mg.end()); },
   },
   {
     id: 'hold-anywhere', group: 'Жесты', title: 'Держать где угодно', scene: WORKSHOP, demo: 'bellows',
@@ -129,7 +129,7 @@ export const DEMOS = [
       'Шесть перехватов — шесть засечек на полосе. Груз поднимается.',
       'Проверить: видна всегда одна метка; отпустить рано — «срыв».'],
     async run(d) {
-      const mg = await d.mg({ task: 'Груз висит низко, скобы — по сторонам' });
+      const mg = await d.mg({ task: 'До верха далеко' });
       await mg.hold(null, { variant: 'catch', refs: ['brackets#left', 'brackets#right'], count: 6, progress: (u, i) => { d.set('climb', u, 0.3); d.set('grip', i?.side ? 'left' : 'right'); } });
       d.set('grip', 'none');
       d.result(await mg.end());
@@ -235,7 +235,7 @@ export const DEMOS = [
     memo: ['Пятно над досками: веди с нажатием — под пальцем линза. Ближе к спрятанному она теплеет (краснее, светлее) и гул ближе.',
       'Нашёл — задержи палец, линза нальётся — место вспыхивает. Без нажатия не ищется.',
       'Проверить: тепло-холодно видно глазами, без звука тоже можно найти.'],
-    async run(d) { const mg = await d.mg({ task: 'Под досками что-то спрятано' }); const s = await mg.seek('floor#area', { target: 'floor#hidden' }); if (s.state === 'done') d.set('floor_found', true); d.result(await mg.end()); },
+    async run(d) { const mg = await d.mg({ task: 'Под досками что-то скребётся' }); const s = await mg.seek('floor#area', { target: 'floor#hidden' }); if (s.state === 'done') d.set('floor_found', true); d.result(await mg.end()); },
   },
   {
     id: 'inspect', group: 'Жесты', title: 'Осмотреть', scene: WORKSHOP, demo: 'shells',
@@ -256,7 +256,7 @@ export const DEMOS = [
     memo: ['К кольцу на барабане сходится второе: жми (где угодно), когда оно коснётся края. Нужно 8 ударов в такт — не суперровно.',
       'Попал — вспышка, мягкий удар, засечка на полосе; рано или поздно — красная крапинка до или после края, промах не считается, но набранное не пропадает.',
       'Проверить: видно заранее, когда жать; пробел тоже бьёт.'],
-    async run(d) { const mg = await d.mg({ task: 'Барабан ждёт ровного счёта' }); await mg.rhythm('drum#skin', { glow: 'drum', bpm: 80, hits: 8, onHit: (i, ok) => ok && d.bump('drum_hits') }); d.result(await mg.end()); },
+    async run(d) { const mg = await d.mg({ task: 'Барабан ведёт счёт' }); await mg.rhythm('drum#skin', { glow: 'drum', bpm: 80, hits: 8, onHit: (i, ok) => ok && d.bump('drum_hits') }); d.result(await mg.end()); },
   },
   {
     id: 'rhythm-hold', group: 'Жесты', title: 'Держать в ритм', scene: WORKSHOP, demo: 'breath',
@@ -292,7 +292,7 @@ export const DEMOS = [
     memo: ['Красная стрелка от носа лодки — куда она смотрит. Нажми где угодно и веди вбок: стрелка идёт за смещением. Держи её в светлой зоне на шкале — зона плывёт.',
       'Отпустил — нос возвращается. 12 с; огонёк плашки — в зоне ли.',
       'Проверить: в зоне — зона светится. Клавиши ←→.'],
-    async run(d) { const mg = await d.mg({ task: 'Курс лодки всё время уходит' }); await mg.lead({ glow: 'boat', seconds: 12, zone: t => 0.55 * Math.sin(t * 0.45), width: 0.35, progress: (u, i) => boat(d, i) }); d.result(await mg.end()); },
+    async run(d) { const mg = await d.mg({ task: 'Лодку то и дело сносит' }); await mg.lead({ glow: 'boat', seconds: 12, zone: t => 0.55 * Math.sin(t * 0.45), width: 0.35, progress: (u, i) => boat(d, i) }); d.result(await mg.end()); },
   },
   {
     id: 'lead-follow', group: 'Жесты', title: 'Вести за движущимся', scene: WORKSHOP, demo: 'boat', state: { zone_kind: 'firefly' },
@@ -392,14 +392,14 @@ export const DEMOS = [
     id: 'frame-limit', group: 'Рамка', title: 'Время на исходе', scene: WORKSHOP, demo: 'plate',
     memo: ['Предел — время (10 с): тень справа ползёт, пока время идёт. Не успел стереть — проигрыш.',
       'Проверить: краем глаза видно, тороплюсь ли я.'],
-    async run(d) { const mg = await d.mg({ task: 'На пыль совсем мало времени' }); await mg.rub('plate#dust', { glow: 'plate', limit: 10, progress: u => d.set('plate', u) }); d.result(await mg.end()); },
+    async run(d) { const mg = await d.mg({ task: 'Надпись вот-вот затянет пылью' }); await mg.rub('plate#dust', { glow: 'plate', limit: 10, progress: u => d.set('plate', u) }); d.result(await mg.end()); },
   },
   {
     id: 'frame-pause', group: 'Рамка', title: 'Пауза', scene: WORKSHOP, demo: 'drum',
     memo: ['Ритм: нужно 20 ударов в такт. Посреди нажми ⏸ (правый нижний угол): стоит всё — кольцо, время, звук, пульс барабана.',
       'Нажми ▶ — ритм даёт отсчёт в три тика и продолжает с того же места.',
       'Проверить: на паузе не теряешь удары; то же — если свернуть вкладку и вернуться.'],
-    async run(d) { const mg = await d.mg({ task: 'Барабан ждёт ровного счёта' }); await mg.rhythm('drum#skin', { glow: 'drum', bpm: 80, hits: 20, onHit: (i, ok) => ok && d.bump('drum_hits') }); d.result(await mg.end()); },
+    async run(d) { const mg = await d.mg({ task: 'Барабан ведёт счёт' }); await mg.rhythm('drum#skin', { glow: 'drum', bpm: 80, hits: 20, onHit: (i, ok) => ok && d.bump('drum_hits') }); d.result(await mg.end()); },
   },
   {
     id: 'frame-choice', group: 'Рамка', title: 'Обычный выбор', scene: WORKSHOP, demo: 'box',
@@ -427,10 +427,10 @@ export const DEMOS = [
       'Отпусти рано пару раз, потом дотяни. Затем второй шаг — тот же жест: теперь ошибки считаются.'],
     async run(d) {
       d.b.minigame.forget();
-      const mg = await d.mg({ steps: 2, task: 'Мех совсем пустой' });
+      const mg = await d.mg({ steps: 2, task: 'Меху нечем дышать' });
       await mg.hold('bellows#handle', { glow: 'bellows', seconds: 2, progress: u => d.set('bellows', u) });
       d.set('bellows', 0, 0.6);
-      await mg.hold('bellows#handle', { glow: 'bellows', seconds: 2, progress: u => d.set('bellows', u), task: 'Мех опять опал' });
+      await mg.hold('bellows#handle', { glow: 'bellows', seconds: 2, progress: u => d.set('bellows', u), task: 'Мех опять выдохся' });
       d.result(await mg.end());
     },
   },
@@ -505,7 +505,7 @@ export const DEMOS = [
     memo: ['«Ашеры», Слушать: найти место под полом. Было: водить мышью без нажатия — на телефоне нельзя, только слухом.',
       'Стало: искать с нажатием, линза теплеет глазами и звуком.',
       'Проверить: на телефоне и без звука находится.'],
-    async run(d) { const mg = await d.mg({ task: 'Под досками что-то спрятано' }); const s = await mg.seek('floor#area', { target: 'floor#hidden', radius: 170 }); if (s.state === 'done') d.set('floor_found', true); d.result(await mg.end()); },
+    async run(d) { const mg = await d.mg({ task: 'Под досками что-то скребётся' }); const s = await mg.seek('floor#area', { target: 'floor#hidden', radius: 170 }); if (s.state === 'done') d.set('floor_found', true); d.result(await mg.end()); },
   },
   {
     id: 'kurs', group: 'Мини-игры', title: 'Курс', scene: DECK, state: { under_way: 1, sail: 1 },
