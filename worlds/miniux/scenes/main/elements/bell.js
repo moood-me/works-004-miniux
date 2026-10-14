@@ -1,4 +1,4 @@
-// A bell on a little gallows stand: struck (bell_hits), it swings on its hook and rings (animate)
+// A bell on a little gallows stand: struck (bell_hits), it swings on its hook and rings; the wind (`wind`) sways it (animate)
 if (!e.lib.show(e, "bell")) return;
 g.fillStyle = "#7d7266";
 g.fillRect(-0.34, -0.04, 0.68, 0.04);

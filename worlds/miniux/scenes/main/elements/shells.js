@@ -1,5 +1,6 @@
 // Three shells in a row (s1..s3). The one touched (`shell`) sways — unless it is the odd one (`shell_odd`): that one
-// glows instead (animate). `shell_found` — the odd one lies open, a pearl in it
+// opens a little instead, a pearl seen in it, a warm light round it (animate). `shell_found` — the odd one lies open,
+// a pearl in it
 if (!e.lib.show(e, "shells")) return;
 const X = [-0.45, 0, 0.45];
 const odd = e.state.shell_odd;
@@ -25,12 +26,25 @@ const fan = (g, x, y, r, fill, rib) => {
 };
 X.forEach((x, i) => {
   const id = "s" + (i + 1);
-  e.layer("glow_" + id, { blend: "add" }, (g) => {
-    const r = g.createRadialGradient(x, -0.08, 0, x, -0.08, 0.2);
-    r.addColorStop(0, "rgba(255, 230, 150, 0.9)");
-    r.addColorStop(1, "rgba(255, 230, 150, 0)");
+  // (a warm light, not added: seen on the light wall)
+  e.layer("glow_" + id, (g) => {
+    const r = g.createRadialGradient(x, -0.07, 0, x, -0.07, 0.24);
+    r.addColorStop(0, "rgba(255, 176, 40, 0.85)");
+    r.addColorStop(1, "rgba(255, 176, 40, 0)");
     g.fillStyle = r;
-    g.fillRect(x - 0.2, -0.28, 0.4, 0.28);
+    g.fillRect(x - 0.24, -0.31, 0.48, 0.31);
+  });
+  // under the shell: its lower half and a pearl — seen as it opens
+  e.layer("inner_" + id, (g) => {
+    fan(g, x, -0.005, 0.13, "#c9785a", "#9c4f32");
+    g.fillStyle = "#fbf8f2";
+    g.beginPath();
+    g.arc(x, -0.045, 0.03, 0, Math.PI * 2);
+    g.fill();
+    g.fillStyle = "#ffffff";
+    g.beginPath();
+    g.arc(x - 0.01, -0.055, 0.009, 0, Math.PI * 2);
+    g.fill();
   });
   e.layer(id, { pivot: [x, -0.01] }, (g) => {
     if (found && id === odd) {
