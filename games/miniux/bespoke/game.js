@@ -3,7 +3,7 @@
 // the language on the world's things, played once, again (↻) or the next (→); its memo (?) says what is meant, what to
 // check and what must work. The language is the page's (bespoke.minigame); the game only says what each mini-game is
 // made of and moves the scene's keys with the gestures' going.
-// What is kept of the play (bespoke.keep): {demo: the one shown, style: its index, switches: {mute, less, keys,
+// What is kept of the play (bespoke.keep): {demo: the one shown, style: its index, switches: {mute,
 // debug}} — a reload comes back to it.
 import { DEMOS, RESET } from './demos.js';
 import { ui } from './ui.js';
@@ -23,7 +23,7 @@ export default async function (b) {
 
   const settle = () => {
     const s = kept.switches;
-    b.minigame.author?.settings({ sound: !s.mute, motion: s.less ? 'less' : null, keys: s.keys ? 'only' : null, debug: !!s.debug });
+    b.minigame.author?.settings({ sound: !s.mute, debug: !!s.debug });
   };
   const view = ui(b.layer, {
     demos: DEMOS, styles: STYLES.map(s => s.name),

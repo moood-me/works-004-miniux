@@ -12,14 +12,14 @@ const el = (tag, cls, parent) => {
   parent?.append(e);
   return e;
 };
-// (a button never keeps the focus: the keys are the mini-games')
+// (a button never keeps the focus)
 const button = (parent, text, title, onclick, cls = '') => {
   const b = el('button', cls, parent);
   Object.assign(b, { type: 'button', textContent: text, title, onclick });
   b.onmousedown = e => e.preventDefault();
   return b;
 };
-const SWITCHES = [['mute', 'без звука'], ['less', 'меньше движения'], ['keys', 'только клавиатура'], ['debug', 'отладка']];
+const SWITCHES = [['mute', 'без звука'], ['debug', 'отладка']];
 const REASONS = { miss: 'мимо', early: 'рано отпустил', danger: 'в опасность', off: 'сошёл', wrong: 'не туда', timing: 'не в долю', often: 'часто', against: 'против', jerk: 'сорвал' };
 const OUTCOMES = { success: 'успех', choice: 'выбор', loss: 'проигрыш', skipped: 'пропущено' };
 
