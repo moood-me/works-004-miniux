@@ -8,7 +8,8 @@
 #layer .pg button, #layer .pg-pause { min-width: 36px; height: 36px; padding: 0 9px; border: 0; border-radius: 10px; background: rgba(10, 12, 18, 0.6);
   color: inherit; font: 17px/1 system-ui, sans-serif; cursor: pointer; -webkit-tap-highlight-color: transparent; }
 #layer .pg button:hover, #layer .pg button.on { background: rgba(40, 46, 60, 0.8); }
-#layer .pg-title { margin-left: 6px; padding: 3px 8px; border-radius: 8px; background: rgba(10, 12, 18, 0.45); font-size: 13px; opacity: 0.9;
+/* (the title on a line of its own under the buttons: kept out of the task plate's way at the window's top middle) */
+#layer .pg-title { flex-basis: 100%; padding: 3px 8px; border-radius: 8px; background: rgba(10, 12, 18, 0.45); font-size: 13px; opacity: 0.9;
   pointer-events: none; }
 #layer .pg-list, #layer .pg-memo, #layer .pg-switches { padding: 10px 12px; border-radius: 12px; background: rgba(10, 12, 18, 0.86);
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4); }
