@@ -1,6 +1,26 @@
 {
  "engine": 3,
  "title": "Палуба",
+ "music": {
+  "prompts": [
+   {
+    "text": "Sparse felt piano and soft woodwinds, a light airy forest by the sea at midday, modern indie game score",
+    "weight": 1.2
+   },
+   {
+    "text": "Gentle flowing harp arpeggios like a stream over stones, bright and clear, minimalist",
+    "weight": 0.8
+   },
+   {
+    "text": "Airy ambient pads with distant sea, breathing slowly, pearl grey morning light",
+    "weight": 0.7
+   }
+  ],
+  "bpm": 72,
+  "density": 0.25,
+  "brightness": 0.55,
+  "scale": "C_MAJOR_A_MINOR"
+ },
  "horizon": 0.55,
  "camera": {
   "mode": "picture",
