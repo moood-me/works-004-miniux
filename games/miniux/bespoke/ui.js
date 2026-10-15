@@ -1,9 +1,9 @@
 // The playground's own buttons over the scene (bespoke.layer), top left, under the site's header (the language's panel
-// is top right, ⏸ bottom right, with ⏭ left of it for the author): ≡ — the list of demonstrations; ↻ — this one again; → — the next; ? — its memo
+// is top right, ⏸ bottom right, with ⏭ left of it): ≡ — the list of demonstrations; ↻ — this one again; → — the next; ? — its memo
 // (closed at first: try first, read after); ◐ — the language's style (the game's look of it); ⚙ — the switches; and the
 // line of the last outcome (what the language gives the game).
 //   const view = ui(layer, { demos, styles, on: {go(id), again(), next(), style(i), switch(name, value), forget(),
-//     pause(), skip() (given only to the author: then ⏭ is shown)} })
+//     pause(), skip() (⏭, every player's)} })
 //   view.at(demo) — this one is shown (its title, its memo); view.result(r) — its outcome; view.note(text) — a line
 //   view.styled(i) — the style picked; view.switched(switches) — the switches as they are; view.paused(on)
 const el = (tag, cls, parent) => {
@@ -21,7 +21,7 @@ const button = (parent, text, title, onclick, cls = '') => {
 };
 const SWITCHES = [['mute', 'без звука'], ['debug', 'отладка']];
 const REASONS = { miss: 'мимо', early: 'рано отпустил', danger: 'в опасность', off: 'сошёл', behind: 'отстал', wrong: 'не туда', timing: 'не в долю', often: 'часто', against: 'против', jerk: 'сорвал' };
-const OUTCOMES = { clean: 'успех', flawed: 'успех с ошибками', neutral: 'выбор', loss: 'проигрыш', skipped: 'пропущено' };
+const OUTCOMES = { clean: 'успех', flawed: 'успех с ошибками', neutral: 'выбор', loss: 'проигрыш' };
 
 export function ui(layer, { demos, styles, on }) {
   const root = el('div', 'pg', layer);
@@ -58,8 +58,9 @@ export function ui(layer, { demos, styles, on }) {
   button(switches, 'забыть показ', 'палец покажет каждый жест снова, как в первый раз', () => on.forget(), 'pg-forget');
   // ⏸: the play's pause, for the pause's demonstration and any other
   const pause = button(layer, '⏸', 'пауза', () => on.pause(), 'pg-pause');
-  // ⏭: the author's skip of the mini-game going (the language asks the game for it; players have none)
-  if (on.skip) button(layer, '⏭', 'пропустить мини-игру', () => on.skip(), 'pg-pause pg-skip');
+  // ⏭: the skip of the mini-game going, every player's — a safety net if it glitches, not a way through (the language
+  // asks the game for it)
+  button(layer, '⏭', 'пропустить мини-игру', () => on.skip(), 'pg-pause pg-skip');
 
   return {
     at(demo) {
@@ -68,10 +69,10 @@ export function ui(layer, { demos, styles, on }) {
       memo.replaceChildren(...demo.memo.map(line => Object.assign(el('p'), { textContent: line })));
       result.textContent = '';
     },
-    // r: {as, errors, choice, share} — what the demonstration's code made of it
+    // r: {as, errors, choice, share, skipped} — what the demonstration's code made of it (skipped: by ⏭, as played)
     result(r) {
       const errors = Object.entries(r.errors || {}).map(([k, n]) => `${REASONS[k] || k} ×${n}`).join(', ');
-      const more = [errors ? `ошибки: ${errors}` : r.as === 'skipped' ? '' : 'без ошибок', 'choice' in r ? `выбор: ${r.choice ?? 'ничего'}` : '', r.share != null ? `в зоне: ${Math.round(r.share * 100)}%` : ''];
+      const more = [errors ? `ошибки: ${errors}` : r.skipped ? 'пропущено ⏭, как сыгранная' : 'без ошибок', 'choice' in r ? `выбор: ${r.choice ?? 'ничего'}` : '', r.share != null ? `в зоне: ${Math.round(r.share * 100)}%` : ''];
       result.textContent = [`итог: ${OUTCOMES[r.as] || r.as}`, ...more.filter(Boolean)].join(' · ');
     },
     note(text) { result.textContent = text; },
