@@ -35,7 +35,7 @@ export default async function (b) {
       switch: (name, value) => { kept.switches = { ...kept.switches, [name]: value }; settle(); keep(); },
       forget: () => b.minigame.author?.forget(),
       pause: () => { b.pause(!b.paused); view.paused(b.paused); },
-      ...(b.game.mine ? { skip: () => b.minigame.skip() } : {}),
+      skip: () => b.minigame.skip(),
     },
   });
   b.minigame.style(STYLES[kept.style]?.style || {});
@@ -59,10 +59,10 @@ export default async function (b) {
     const left = new WeakSet(); // (the mini-games left already: skipped, or the demonstration gone)
     const d = {
       b, signal, tricks: b.minigame.tricks,
-      // a mini-game, left if the player goes to another demonstration; the author's ⏭ — left, «пропущено»
+      // a mini-game, left if the player goes to another demonstration; the ⏭ — left, its outcome as played: «успех»
       mg(o) {
         const mg = b.minigame.start({ ...o, signal });
-        mg.on('skip', () => { d.result({ as: 'skipped' }); mg.leave(); });
+        mg.on('skip', () => { d.result({ as: 'clean', skipped: true }); mg.leave(); });
         mg.on('end', () => left.add(mg));
         return mg;
       },
