@@ -6,7 +6,7 @@
 // A demonstration: {id, group, title, scene, demo (the workshop's `demo`), state (more of the scene's values), memo
 // (what is meant, what to check, what must work — 3–6 lines), run(d)} — run plays it once; d (game.js): d.mg(o) — a
 // mini-game (bespoke.minigame.start, left if the player goes to another demonstration), d.tricks, d.set(key, value,
-// seconds), d.bump(key) — a counter of the scene +1, d.wait(seconds), d.when(mg, h, event, test), d.loop(mg, fn),
+// seconds), d.bump(key) — a counter of the scene +1, d.key — the playground's key, d.wait(seconds), d.when(mg, h, event, test), d.loop(mg, fn),
 // d.errors(mg, soft), d.end(mg, {as, errors, choice, share}), d.result(r), d.note(text), d.b — bespoke.
 import { board } from './board.js';
 
@@ -955,12 +955,12 @@ export const DEMOS = [
     },
   },
 
-  // ── the board of sounds: the library heard one by one, Pavel picks (П45) ──
+  // ── the board of sounds: the language's own, heard one by one on the playground's key; Pavel picks (П45) ──
   {
     id: 'sounds', group: 'Звуки', title: 'Доска звуков', scene: WORKSHOP, demo: 'none',
-    memo: ['Тридцать с лишним коротких звуков для игр — без нот и мелодий: щелчки, лопанье, капли, дерево, стекло, щипки.',
-      'Нажми кнопку — звучит (громкость — ползунок «звуки» сайта). Сердечко — отметить, что нравится; внизу — номера выбранных.',
-      'Язык звучит выбранным с доски.'],
-    run: d => board(d.b, d.signal),
+    memo: ['Только звуки, которые язык мини-игр делает сейчас, по ролям, — в тональности площадки (до); фоном — музыка площадки в той же тональности.',
+      'Короткие: нажми — звучит. Процессы: ▶ — пошёл, ползунок — его ход (опасность, близость…), ■ — стоп.',
+      'Сердечко — отметить, что нравится; внизу — номера выбранных: их и сказать.'],
+    run: d => board(d.b, d.signal, d.key),
   },
 ];
