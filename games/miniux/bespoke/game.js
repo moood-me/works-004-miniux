@@ -8,6 +8,8 @@
 import { DEMOS, RESET } from './demos.js';
 import { ui } from './ui.js';
 
+// the playground's key: its music's (the world's scenes, `scale`) and the language's tonal sounds' (style.key) — до
+const KEY = 'C_MAJOR_A_MINOR';
 // the language's look (§7): moood's own, a light warm one, a dark cold one — the same meaning in each
 const STYLES = [
   { name: 'moood', style: {} },
@@ -31,14 +33,14 @@ export default async function (b) {
       go: id => go(id),
       again: () => go(kept.demo),
       next: () => go(DEMOS[(DEMOS.findIndex(x => x.id === kept.demo) + 1) % DEMOS.length].id),
-      style: () => { kept.style = (kept.style + 1) % STYLES.length; b.minigame.style(STYLES[kept.style].style); view.styled(kept.style); keep(); },
+      style: () => { kept.style = (kept.style + 1) % STYLES.length; b.minigame.style({ key: KEY, ...STYLES[kept.style].style }); view.styled(kept.style); keep(); },
       switch: (name, value) => { kept.switches = { ...kept.switches, [name]: value }; settle(); keep(); },
       forget: () => b.minigame.author?.forget(),
       pause: () => { b.pause(!b.paused); view.paused(b.paused); },
       skip: () => b.minigame.skip(),
     },
   });
-  b.minigame.style(STYLES[kept.style]?.style || {});
+  b.minigame.style({ key: KEY, ...STYLES[kept.style]?.style });
   view.styled(kept.style);
   view.switched(kept.switches);
   settle();
@@ -58,7 +60,7 @@ export default async function (b) {
     if (signal.aborted) return;
     const left = new WeakSet(); // (the mini-games left already: skipped, or the demonstration gone)
     const d = {
-      b, signal, tricks: b.minigame.tricks,
+      b, signal, tricks: b.minigame.tricks, key: KEY,
       // a mini-game, left if the player goes to another demonstration; the ⏭ — left, its outcome as played: «успех»
       mg(o) {
         const mg = b.minigame.start({ ...o, signal });

@@ -6,7 +6,7 @@
 // A demonstration: {id, group, title, scene, demo (the workshop's `demo`), state (more of the scene's values), memo
 // (what is meant, what to check, what must work — 3–6 lines), run(d)} — run plays it once; d (game.js): d.mg(o) — a
 // mini-game (bespoke.minigame.start, left if the player goes to another demonstration), d.tricks, d.set(key, value,
-// seconds), d.bump(key) — a counter of the scene +1, d.wait(seconds), d.when(mg, h, event, test), d.loop(mg, fn),
+// seconds), d.bump(key) — a counter of the scene +1, d.key — the playground's key, d.wait(seconds), d.when(mg, h, event, test), d.loop(mg, fn),
 // d.errors(mg, soft), d.end(mg, {as, errors, choice, share}), d.result(r), d.note(text), d.b — bespoke.
 import { board } from './board.js';
 
@@ -44,6 +44,18 @@ const carried = (d, key, at) => {
 const boat = (d, s) => { d.set('boat_heading', s.arrow); d.set('zone_center', s.zone); d.set('zone_lit', s.in ? 1 : 0, 0.3); };
 
 // ── the game's own small pieces, on the language's words ──
+// steps (for tricks.steps) that say «полпути» (the language's halfway): when the step that brings the bar to half — not
+// the last — is done with no error counted so far
+const halfway = (mg, list) => {
+  const at = Math.ceil(list.length / 2) - 1;
+  let erred = false;
+  return list.map((step, i) => async bar => {
+    const r = await step(bar);
+    erred ||= Object.values(r.errors || {}).some(n => n > 0);
+    if (i === at && i < list.length - 1 && r.state === 'done' && !erred) mg.sound('halfway');
+    return r;
+  });
+};
 
 // one press on a mark: the thing glows, a touch beside it is «мимо»; teach — the ghost shows it at its first meeting
 async function pressOnce(d, mg, { at, glow, bar, soft = false, teach = null }) {
@@ -301,13 +313,13 @@ export const DEMOS = [
     id: 'hold-catch', group: 'Жесты', title: 'Перехват', scene: WORKSHOP, demo: 'brackets',
     memo: ['Две скобы слева и справа, по очереди: держи короткий налив (0.3 с) — защёлка — метка переходит на другую сторону.',
       'Шесть перехватов — шесть отрезков полосы с засечками (приём «шаги по очереди» из «держать до налива»). Груз поднимается.',
-      'Проверить: видна всегда одна метка; отпустить рано — «рано отпустил».'],
+      'Проверить: видна всегда одна метка; отпустить рано — «рано отпустил»; к третьему перехвату без засчитанных ошибок — «полпути».'],
     async run(d) {
       const mg = d.mg({ phrase: 'До верха далеко' });
-      const r = await d.tricks.steps(mg, Array.from({ length: 6 }, (_, i) => bar => d.tricks.holdTillFull(mg, {
+      const r = await d.tricks.steps(mg, halfway(mg, Array.from({ length: 6 }, (_, i) => bar => d.tricks.holdTillFull(mg, {
         at: i % 2 ? 'brackets#right' : 'brackets#left', seconds: 0.3, bar,
         progress: u => { d.set('climb', (i + u) / 6, 0.3); if (u >= 1) d.set('grip', i % 2 ? 'right' : 'left'); },
-      })));
+      }))));
       d.set('grip', 'none');
       await d.end(mg, r);
     },
@@ -825,12 +837,12 @@ export const DEMOS = [
     id: 'osnastka', group: 'Мини-игры', title: 'Оснастка', scene: DECK,
     memo: ['«Алые паруса», Оснастка: четыре крепления во вставке-крупном плане, одна метка за раз, держать до защёлки (приёмы «шаги по очереди» и «держать до налива»).',
       'Было: держать «у точки» без метки, рука девочки далеко от точки. Стало: метка там, где крепят; первое крепление — мягкая проба (без счёта срыва).',
-      'Проверить: метки живут только во вставке (пока она открыта); четыре отрезка полосы.'],
+      'Проверить: метки живут только во вставке (пока она открыта); четыре отрезка полосы; два крепления без срыва — «полпути».'],
     async run(d) {
       d.set('closeup', 1, 0.6);
       await d.wait(0.8);
       const mg = d.mg({ phrase: 'Паруса ещё не закреплены' });
-      const r = await d.tricks.steps(mg, [1, 2, 3, 4].map(i => bar => d.tricks.holdTillFull(mg, { at: `closeup#k${i}`, seconds: 1.4, bar, progress: u => d.set(`rig${i}`, u) })));
+      const r = await d.tricks.steps(mg, halfway(mg, [1, 2, 3, 4].map(i => bar => d.tricks.holdTillFull(mg, { at: `closeup#k${i}`, seconds: 1.4, bar, progress: u => d.set(`rig${i}`, u) }))));
       await d.end(mg, r);
       d.set('closeup', 0, 0.6);
     },
@@ -955,12 +967,12 @@ export const DEMOS = [
     },
   },
 
-  // ── the board of sounds: the library heard one by one, Pavel picks (П45) ──
+  // ── the board of sounds: the language's own, heard one by one on the playground's key; Pavel picks (П45) ──
   {
     id: 'sounds', group: 'Звуки', title: 'Доска звуков', scene: WORKSHOP, demo: 'none',
-    memo: ['Тридцать с лишним коротких звуков для игр — без нот и мелодий: щелчки, лопанье, капли, дерево, стекло, щипки.',
-      'Нажми кнопку — звучит (громкость — ползунок «звуки» сайта). Сердечко — отметить, что нравится; внизу — номера выбранных.',
-      'Язык звучит выбранным с доски.'],
-    run: d => board(d.b, d.signal),
+    memo: ['Только звуки, которые язык мини-игр делает сейчас, по ролям, — в тональности площадки (до); фоном — музыка площадки в той же тональности.',
+      'Короткие: нажми — звучит. Процессы: ▶ — пошёл, ползунок — его ход (опасность, близость…), ■ — стоп.',
+      'Сердечко — отметить, что нравится; внизу — номера выбранных: их и сказать.'],
+    run: d => board(d.b, d.signal, d.key),
   },
 ];
