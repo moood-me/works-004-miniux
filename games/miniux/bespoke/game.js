@@ -35,6 +35,7 @@ export default async function (b) {
       switch: (name, value) => { kept.switches = { ...kept.switches, [name]: value }; settle(); keep(); },
       forget: () => b.minigame.author?.forget(),
       pause: () => { b.pause(!b.paused); view.paused(b.paused); },
+      ...(b.game.mine ? { skip: () => b.minigame.skip() } : {}),
     },
   });
   b.minigame.style(STYLES[kept.style]?.style || {});

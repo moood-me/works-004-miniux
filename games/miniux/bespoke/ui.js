@@ -1,9 +1,9 @@
 // The playground's own buttons over the scene (bespoke.layer), top left, under the site's header (the language's panel
-// is top right, ⏸ bottom right): ≡ — the list of demonstrations; ↻ — this one again; → — the next; ? — its memo
+// is top right, ⏸ bottom right, with ⏭ left of it for the author): ≡ — the list of demonstrations; ↻ — this one again; → — the next; ? — its memo
 // (closed at first: try first, read after); ◐ — the language's style (the game's look of it); ⚙ — the switches; and the
 // line of the last outcome (what the language gives the game).
 //   const view = ui(layer, { demos, styles, on: {go(id), again(), next(), style(i), switch(name, value), forget(),
-//     pause()} })
+//     pause(), skip() (given only to the author: then ⏭ is shown)} })
 //   view.at(demo) — this one is shown (its title, its memo); view.result(r) — its outcome; view.note(text) — a line
 //   view.styled(i) — the style picked; view.switched(switches) — the switches as they are; view.paused(on)
 const el = (tag, cls, parent) => {
@@ -58,6 +58,8 @@ export function ui(layer, { demos, styles, on }) {
   button(switches, 'забыть показ', 'палец покажет каждый жест снова, как в первый раз', () => on.forget(), 'pg-forget');
   // ⏸: the play's pause, for the pause's demonstration and any other
   const pause = button(layer, '⏸', 'пауза', () => on.pause(), 'pg-pause');
+  // ⏭: the author's skip of the mini-game going (the language asks the game for it; players have none)
+  if (on.skip) button(layer, '⏭', 'пропустить мини-игру', () => on.skip(), 'pg-pause pg-skip');
 
   return {
     at(demo) {
