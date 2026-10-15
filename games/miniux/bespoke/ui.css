@@ -47,6 +47,10 @@
 #layer .sb-play b, #layer .sb-proc b { min-width: 24px; font-size: 18px; opacity: 0.7; }
 #layer .sb-words { display: flex; flex-direction: column; gap: 2px; }
 #layer .sb-words small { font-size: 12px; opacity: 0.6; }
+#layer .sb-mark { align-self: flex-start; padding: 1px 6px; border-radius: 6px; font: 600 11px/1.4 system-ui, sans-serif; font-style: normal; }
+#layer .sb-new { background: rgba(150, 220, 160, 0.22); }
+#layer .sb-tried { background: rgba(255, 210, 120, 0.22); }
+#layer .sb-was { background: rgba(255, 255, 255, 0.1); opacity: 0.8; }
 #layer .sb-proc { flex-direction: column; align-items: stretch; cursor: default; }
 #layer .sb-proc-head { display: flex; align-items: center; gap: 10px; }
 #layer .sb-go { width: 40px; height: 40px; border: 0; border-radius: 10px; background: rgba(255, 220, 150, 0.18); color: inherit; font-size: 18px; cursor: pointer; }
