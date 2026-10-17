@@ -1,6 +1,6 @@
 {
  "engine": 3,
- "title": "Мастерская",
+ "title": "Workshop",
  "music": {
   "prompts": [
    {
@@ -32,7 +32,7 @@
  "objects": [
   {
    "id": "wall",
-   "name": "Стена",
+   "name": "Wall",
    "across": 0,
    "distance": 3.0,
    "elevation": 0,
@@ -47,7 +47,7 @@
   },
   {
    "id": "table_top",
-   "name": "Стол",
+   "name": "Table",
    "plane": true,
    "across": 0,
    "distance": 2.2,
@@ -57,7 +57,7 @@
   },
   {
    "id": "table_front",
-   "name": "Край стола",
+   "name": "Table edge",
    "across": 0,
    "distance": 1.4,
    "elevation": 0,
@@ -72,7 +72,7 @@
   },
   {
    "id": "bell",
-   "name": "Колокольчик",
+   "name": "Bell",
    "across": 0,
    "distance": 1.8,
    "elevation": 1.0,
@@ -87,7 +87,7 @@
   },
   {
    "id": "box",
-   "name": "Ящичек с тремя ящиками",
+   "name": "Box with three drawers",
    "across": 0,
    "distance": 2.2,
    "elevation": 1.0,
@@ -102,7 +102,7 @@
   },
   {
    "id": "door",
-   "name": "Дверца в стене",
+   "name": "Little door in the wall",
    "across": 0,
    "distance": 2.95,
    "elevation": 1.15,
@@ -117,7 +117,7 @@
   },
   {
    "id": "bellows",
-   "name": "Мех",
+   "name": "Bellows",
    "across": 0,
    "distance": 1.8,
    "elevation": 1.0,
@@ -132,7 +132,7 @@
   },
   {
    "id": "lantern",
-   "name": "Фонарь на крюке",
+   "name": "Lantern on a hook",
    "across": 0,
    "distance": 2.95,
    "elevation": 1.3,
@@ -148,7 +148,7 @@
   },
   {
    "id": "candle",
-   "name": "Свеча",
+   "name": "Candle",
    "across": 0,
    "distance": 1.8,
    "elevation": 1.0,
@@ -164,7 +164,7 @@
   },
   {
    "id": "wicks",
-   "name": "Три фитиля",
+   "name": "Three wicks",
    "across": 0,
    "distance": 1.8,
    "elevation": 1.0,
@@ -180,7 +180,7 @@
   },
   {
    "id": "brackets",
-   "name": "Скобы и верёвка с грузом",
+   "name": "Brackets and a rope with a weight",
    "across": 0,
    "distance": 2.95,
    "elevation": 1.0,
@@ -195,7 +195,7 @@
   },
   {
    "id": "rope",
-   "name": "Груз и крюк",
+   "name": "Weight and hook",
    "across": 0,
    "distance": 2.95,
    "elevation": 1.0,
@@ -210,7 +210,7 @@
   },
   {
    "id": "shutter",
-   "name": "Окошко с заслонкой",
+   "name": "Window with a shutter",
    "across": 0,
    "distance": 2.95,
    "elevation": 1.1,
@@ -225,7 +225,7 @@
   },
   {
    "id": "crate",
-   "name": "Тяжёлый ящик",
+   "name": "Heavy crate",
    "across": 0,
    "distance": 2.2,
    "elevation": 1.0,
@@ -240,7 +240,7 @@
   },
   {
    "id": "knot",
-   "name": "Узел на верёвке",
+   "name": "Knot on a rope",
    "across": 0,
    "distance": 1.8,
    "elevation": 1.0,
@@ -255,7 +255,7 @@
   },
   {
    "id": "sockets",
-   "name": "Доска с гнёздами",
+   "name": "Board with sockets",
    "across": 0,
    "distance": 1.8,
    "elevation": 1.0,
@@ -270,7 +270,7 @@
   },
   {
    "id": "bubbles",
-   "name": "Пузыри",
+   "name": "Bubbles",
    "across": 0,
    "distance": 1.8,
    "elevation": 1.0,
@@ -288,7 +288,7 @@
   },
   {
    "id": "crack",
-   "name": "Доска с трещиной",
+   "name": "Cracked board",
    "across": 0,
    "distance": 1.8,
    "elevation": 1.0,
@@ -306,7 +306,7 @@
   },
   {
    "id": "screws",
-   "name": "Пластина с винтами",
+   "name": "Plate with screws",
    "across": 0,
    "distance": 1.8,
    "elevation": 1.0,
@@ -321,7 +321,7 @@
   },
   {
    "id": "plate",
-   "name": "Пыльная табличка",
+   "name": "Dusty plaque",
    "across": 0,
    "distance": 2.2,
    "elevation": 1.0,
@@ -339,7 +339,7 @@
   },
   {
    "id": "floor",
-   "name": "Половицы",
+   "name": "Floorboards",
    "across": 0,
    "distance": 2.0,
    "elevation": 1.0,
@@ -355,7 +355,7 @@
   },
   {
    "id": "shells",
-   "name": "Три ракушки",
+   "name": "Three shells",
    "across": 0,
    "distance": 1.8,
    "elevation": 1.0,
@@ -370,7 +370,7 @@
   },
   {
    "id": "drum",
-   "name": "Барабан",
+   "name": "Drum",
    "across": 0,
    "distance": 1.8,
    "elevation": 1.0,
@@ -385,7 +385,7 @@
   },
   {
    "id": "drum2",
-   "name": "Второй барабан",
+   "name": "Second drum",
    "across": 0,
    "distance": 1.8,
    "elevation": 1.0,
@@ -400,7 +400,7 @@
   },
   {
    "id": "boat",
-   "name": "Модель лодки со шкалой",
+   "name": "Model boat with a scale",
    "across": 0,
    "distance": 1.9,
    "elevation": 1.0,
@@ -416,7 +416,7 @@
   },
   {
    "id": "hourglass",
-   "name": "Песочные часы",
+   "name": "Hourglass",
    "across": 0,
    "distance": 1.8,
    "elevation": 1.0,
@@ -513,11 +513,11 @@
     "boat",
     "hourglass"
    ],
-   "means": "какая демонстрация на столе: видны только её вещи (остальные не рисуются), смена — сразу. none — пустой стол; bellows и breath — мех; sockets — колышек и гнёзда; bubbles — пузыри и те же гнёзда; screw — один винт s1, screws — четыре; drum — один барабан, drum2 — два"
+   "means": "which demonstration is on the table: only its things are seen (the others are not painted), a change is at once. none — an empty table; bellows and breath — the bellows; sockets — the peg and the sockets; bubbles — the bubbles and the same sockets; screw — one screw s1, screws — four; drum — one drum, drum2 — two"
   },
   "bell_hits": {
    "type": "number",
-   "means": "колокольчик: счётчик ударов (целое, игра прибавляет 1) — на каждый он качается и звенит"
+   "means": "the bell: a counter of strikes (an integer, the game adds 1) — at each it swings and rings"
   },
   "drawer": {
    "values": [
@@ -526,7 +526,7 @@
     "middle",
     "bottom"
    ],
-   "means": "какой ящичек выдвигается (меняется сразу)"
+   "means": "which drawer slides out (changes at once)"
   },
   "drawer_open": {
    "range": [
@@ -534,15 +534,15 @@
     1
    ],
    "smooth": true,
-   "means": "насколько выдвинут ящичек, названный в drawer: 0 — задвинут, 1 — выдвинут"
+   "means": "how far the drawer named in drawer is out: 0 — pushed in, 1 — pulled out"
   },
   "door_knocks": {
    "type": "number",
-   "means": "дверца: счётчик стуков в неё (целое, +1 на касание) — дверца дрожит"
+   "means": "the little door: a counter of knocks on it (an integer, +1 a touch) — the door trembles"
   },
   "door_reply": {
    "type": "number",
-   "means": "дверца: счётчик ответных стуков изнутри (целое, +1) — дверца вздрагивает сильнее, полоска света под ней вспыхивает"
+   "means": "the little door: a counter of knocks back from inside (an integer, +1) — the door jolts harder, the strip of light under it flares"
   },
   "door_open": {
    "range": [
@@ -550,7 +550,7 @@
     1
    ],
    "smooth": true,
-   "means": "дверца: 0 — закрыта, 1 — открыта"
+   "means": "the little door: 0 — shut, 1 — open"
   },
   "bellows": {
    "range": [
@@ -558,7 +558,7 @@
     1
    ],
    "smooth": true,
-   "means": "мех: 0 — сдут, 1 — раздут (верхняя доска с ручкой поднимается)"
+   "means": "the bellows: 0 — empty, 1 — full (the top board with the handle rises)"
   },
   "lantern": {
    "range": [
@@ -566,7 +566,7 @@
     1
    ],
    "smooth": true,
-   "means": "фонарь: огонь от искры (0) до полного (1)"
+   "means": "the lantern: its fire from a spark (0) to full (1)"
   },
   "wind": {
    "range": [
@@ -574,7 +574,7 @@
     1
    ],
    "smooth": true,
-   "means": "порыв ветра: 0 — тихо, 1 — сильный (фонарь качается на крюке, пламя клонится; колокольчик раскачивается)"
+   "means": "a gust of wind: 0 — calm, 1 — strong (the lantern swings on its hook, the flame leans; the bell sways)"
   },
   "candle": {
    "range": [
@@ -582,7 +582,7 @@
     1
    ],
    "smooth": true,
-   "means": "свеча: пламя от маленького (0) до полного (1)"
+   "means": "the candle: its flame from small (0) to full (1)"
   },
   "candle_shake": {
    "range": [
@@ -590,7 +590,7 @@
     1
    ],
    "smooth": true,
-   "means": "свеча: 0 — пламя ровное, 1 — дрожит и мечется"
+   "means": "the candle: 0 — the flame is steady, 1 — it trembles and thrashes"
   },
   "wick1": {
    "range": [
@@ -598,7 +598,7 @@
     1
    ],
    "smooth": true,
-   "means": "первый (левый) фитиль: 0 — ровный тихий огонёк, 1 — чадит: высокое коптящее пламя мечется, над ним дым"
+   "means": "the first (left) wick: 0 — an even quiet flame, 1 — smoking: a tall sooty flame thrashes, smoke above it"
   },
   "wick2": {
    "range": [
@@ -606,7 +606,7 @@
     1
    ],
    "smooth": true,
-   "means": "второй (средний) фитиль: 0 — тихий огонёк, 1 — чадит"
+   "means": "the second (middle) wick: 0 — a quiet flame, 1 — smoking"
   },
   "wick3": {
    "range": [
@@ -614,7 +614,7 @@
     1
    ],
    "smooth": true,
-   "means": "третий (правый) фитиль: 0 — тихий огонёк, 1 — чадит"
+   "means": "the third (right) wick: 0 — a quiet flame, 1 — smoking"
   },
   "climb": {
    "range": [
@@ -622,7 +622,7 @@
     1
    ],
    "smooth": true,
-   "means": "скобы: груз на верёвке между скобами поднимается: 0 — внизу, 1 — вверху"
+   "means": "the brackets: the weight on the rope between them rises: 0 — at the bottom, 1 — at the top"
   },
   "grip": {
    "values": [
@@ -630,7 +630,7 @@
     "left",
     "right"
    ],
-   "means": "скобы: какая сейчас держит — она светлеет (меняется сразу, светлеет за долю секунды)"
+   "means": "the brackets: which one holds now — it lightens (changes at once, lightens in a fraction of a second)"
   },
   "rope": {
    "range": [
@@ -638,7 +638,7 @@
     1
    ],
    "smooth": true,
-   "means": "груз к крюку: 0 — груз на месте (точка rope#weight), 1 — его петля на крюке (rope#hook); идёт по прямой, точка rope#weight — с ним"
+   "means": "the weight to the hook: 0 — the weight in its place (the point rope#weight), 1 — its loop on the hook (rope#hook); it goes in a straight line, the point rope#weight with it"
   },
   "shutter": {
    "range": [
@@ -646,7 +646,7 @@
     1
    ],
    "smooth": true,
-   "means": "заслонка: 0 — опущена, 1 — поднята до метки (ручка shutter#handle — у точки shutter#top)"
+   "means": "the shutter: 0 — down, 1 — raised to the mark (the handle shutter#handle at the point shutter#top)"
   },
   "crate": {
    "range": [
@@ -654,7 +654,7 @@
     1
    ],
    "smooth": true,
-   "means": "тяжёлый ящик: 0 — на месте, 1 — на меловом контуре справа (crate#goal); ручка crate#handle идёт с ним"
+   "means": "the heavy crate: 0 — in its place, 1 — on the chalk outline to the right (crate#goal); the handle crate#handle moves with it"
   },
   "knot": {
    "range": [
@@ -662,11 +662,11 @@
     1
    ],
    "smooth": true,
-   "means": "узел: 0 — затянут, 1 — ослаб (петли больше, верёвка провисла)"
+   "means": "the knot: 0 — tight, 1 — loose (bigger loops, the rope sags)"
   },
   "knot_off": {
    "type": "boolean",
-   "means": "узел распался: обе половины верёвки висят со столбиков"
+   "means": "the knot has come apart: both halves of the rope hang from the posts"
   },
   "peg": {
    "values": [
@@ -676,17 +676,17 @@
     "s2",
     "s3"
    ],
-   "means": "колышек (меняется сразу): none — лежит на столе слева, held — в руке: нарисован под пальцем, в точке peg_u, peg_v; sN — стоит в гнезде sN. Точка sockets#peg — там, где он нарисован сейчас"
+   "means": "the peg (changes at once): none — lies on the table to the left, held — in hand: painted under the finger, at the point peg_u, peg_v; sN — stands in the socket sN. The point sockets#peg is where it is painted now"
   },
   "peg_u": {
    "type": "number",
    "smooth": true,
-   "means": "колышек в руке (peg = held): где он, вдоль доски — 0 в sockets#s1, 1 в sockets#s3 (может выходить за 0..1)"
+   "means": "the peg in hand (peg = held): where it is along the board — 0 at sockets#s1, 1 at sockets#s3 (may go beyond 0..1)"
   },
   "peg_v": {
    "type": "number",
    "smooth": true,
-   "means": "колышек в руке: где он, вверх от линии s1→s3, в длинах |s1→s3| (вниз — меньше 0); доска и колышек — в одной вертикальной карточке лицом к камере"
+   "means": "the peg in hand: where it is up from the line s1→s3, in lengths |s1→s3| (down — below 0); the board and the peg are on one upright card facing the camera"
   },
   "bubble1": {
    "values": [
@@ -696,17 +696,17 @@
     "s2",
     "s3"
    ],
-   "means": "первый пузырь: free — плывёт по своему кругу (отпущенный — плывёт дальше оттуда, медленно возвращаясь к кругу), held — в руке: нарисован под пальцем, в точке bubble1_u, bubble1_v; sN — сидит в гнезде sN. Точка bubbles#b1 — там, где он нарисован"
+   "means": "the first bubble: free — floats round its circle (let go, it floats on from there, slowly coming back to the circle), held — in hand: painted under the finger, at the point bubble1_u, bubble1_v; sN — sits in the socket sN. The point bubbles#b1 is where it is painted"
   },
   "bubble1_u": {
    "type": "number",
    "smooth": true,
-   "means": "пузырь 1 в руке: вдоль доски с гнёздами — 0 в sockets#s1, 1 в sockets#s3"
+   "means": "bubble 1 in hand: along the board with the sockets — 0 at sockets#s1, 1 at sockets#s3"
   },
   "bubble1_v": {
    "type": "number",
    "smooth": true,
-   "means": "пузырь 1 в руке: вверх от линии s1→s3, в длинах |s1→s3|"
+   "means": "bubble 1 in hand: up from the line s1→s3, in lengths |s1→s3|"
   },
   "bubble2": {
    "values": [
@@ -716,17 +716,17 @@
     "s2",
     "s3"
    ],
-   "means": "второй пузырь: free — плывёт по своему кругу (отпущенный — плывёт дальше оттуда, медленно возвращаясь к кругу), held — в руке: нарисован под пальцем, в точке bubble2_u, bubble2_v; sN — сидит в гнезде sN. Точка bubbles#b2 — там, где он нарисован"
+   "means": "the second bubble: free — floats round its circle (let go, it floats on from there, slowly coming back to the circle), held — in hand: painted under the finger, at the point bubble2_u, bubble2_v; sN — sits in the socket sN. The point bubbles#b2 is where it is painted"
   },
   "bubble2_u": {
    "type": "number",
    "smooth": true,
-   "means": "пузырь 2 в руке: вдоль доски с гнёздами — 0 в sockets#s1, 1 в sockets#s3"
+   "means": "bubble 2 in hand: along the board with the sockets — 0 at sockets#s1, 1 at sockets#s3"
   },
   "bubble2_v": {
    "type": "number",
    "smooth": true,
-   "means": "пузырь 2 в руке: вверх от линии s1→s3, в длинах |s1→s3|"
+   "means": "bubble 2 in hand: up from the line s1→s3, in lengths |s1→s3|"
   },
   "bubble3": {
    "values": [
@@ -736,17 +736,17 @@
     "s2",
     "s3"
    ],
-   "means": "третий пузырь: free — плывёт по своему кругу (отпущенный — плывёт дальше оттуда, медленно возвращаясь к кругу), held — в руке: нарисован под пальцем, в точке bubble3_u, bubble3_v; sN — сидит в гнезде sN. Точка bubbles#b3 — там, где он нарисован"
+   "means": "the third bubble: free — floats round its circle (let go, it floats on from there, slowly coming back to the circle), held — in hand: painted under the finger, at the point bubble3_u, bubble3_v; sN — sits in the socket sN. The point bubbles#b3 is where it is painted"
   },
   "bubble3_u": {
    "type": "number",
    "smooth": true,
-   "means": "пузырь 3 в руке: вдоль доски с гнёздами — 0 в sockets#s1, 1 в sockets#s3"
+   "means": "bubble 3 in hand: along the board with the sockets — 0 at sockets#s1, 1 at sockets#s3"
   },
   "bubble3_v": {
    "type": "number",
    "smooth": true,
-   "means": "пузырь 3 в руке: вверх от линии s1→s3, в длинах |s1→s3|"
+   "means": "bubble 3 in hand: up from the line s1→s3, in lengths |s1→s3|"
   },
   "crack": {
    "range": [
@@ -754,7 +754,7 @@
     1
    ],
    "smooth": true,
-   "means": "трещина: клей заливает её от левого конца (p0) до правого (p6): 0 — нет клея, 1 — вся залита"
+   "means": "the crack: the glue fills it from the left end (p0) to the right (p6): 0 — no glue, 1 — filled all through"
   },
   "screw1": {
    "range": [
@@ -762,7 +762,7 @@
     1
    ],
    "smooth": true,
-   "means": "винт s1: 0 — вывернут, 1 — закручен (шлиц повернулся на два оборота, головка села)"
+   "means": "the screw s1: 0 — out, 1 — driven home (the slot turned two turns, the head seated)"
   },
   "screw2": {
    "range": [
@@ -770,7 +770,7 @@
     1
    ],
    "smooth": true,
-   "means": "винт s2: как screw1"
+   "means": "the screw s2: as screw1"
   },
   "screw3": {
    "range": [
@@ -778,7 +778,7 @@
     1
    ],
    "smooth": true,
-   "means": "винт s3: как screw1"
+   "means": "the screw s3: as screw1"
   },
   "screw4": {
    "range": [
@@ -786,7 +786,7 @@
     1
    ],
    "smooth": true,
-   "means": "винт s4: как screw1"
+   "means": "the screw s4: as screw1"
   },
   "plate": {
    "range": [
@@ -794,11 +794,11 @@
     1
    ],
    "smooth": true,
-   "means": "пыльная табличка: 0 — вся в пыли, 1 — пыль стёрта, видна надпись «Мастерская» и кораблик (пыль сходит пятнами)"
+   "means": "the dusty plaque: 0 — all in dust, 1 — the dust wiped off, the word “Workshop” and a little ship are seen (the dust comes off in patches)"
   },
   "floor_found": {
    "type": "boolean",
-   "means": "половицы: доска над тайником (floor#hidden) сдвинута, в ямке виден ключ"
+   "means": "the floorboards: the board over the hiding place (floor#hidden) is moved aside, a key is seen in the hollow"
   },
   "shell": {
    "values": [
@@ -807,7 +807,7 @@
     "s2",
     "s3"
    ],
-   "means": "ракушка, которой коснулись (меняется сразу): она качается, а «не такая» (shell_odd) светится. Отвечает на смену значения: повторное касание той же — через none"
+   "means": "the shell touched (changes at once): it rocks, and “the odd one” (shell_odd) glows. It answers a change of the value: a second touch of the same one goes through none"
   },
   "shell_odd": {
    "values": [
@@ -815,19 +815,19 @@
     "s2",
     "s3"
    ],
-   "means": "какая ракушка «не такая»: на касание она светится, а не качается"
+   "means": "which shell is “the odd one”: at a touch it glows instead of rocking"
   },
   "shell_found": {
    "type": "boolean",
-   "means": "«не такая» ракушка найдена: она раскрылась, в ней жемчужина"
+   "means": "“the odd one” is found: it has opened, a pearl in it"
   },
   "drum_hits": {
    "type": "number",
-   "means": "барабан (drum): счётчик ударов (целое, +1) — кожа подпрыгивает"
+   "means": "the drum (drum): a counter of hits (an integer, +1) — the skin jumps"
   },
   "drum2_hits": {
    "type": "number",
-   "means": "второй барабан (drum2): счётчик ударов (целое, +1)"
+   "means": "the second drum (drum2): a counter of hits (an integer, +1)"
   },
   "boat_heading": {
    "range": [
@@ -835,7 +835,7 @@
     1
    ],
    "smooth": true,
-   "means": "лодка: куда повёрнут нос по шкале: −1 — левый край шкалы (−60°), 0 — середина, 1 — правый край"
+   "means": "the boat: where the bow points on the scale: −1 — the scale's left end (−60°), 0 — the middle, 1 — the right end"
   },
   "zone_center": {
    "range": [
@@ -843,7 +843,7 @@
     1
    ],
    "smooth": true,
-   "means": "лодка: где на шкале зона (или светлячок, или шмель): −1 — левый край, 1 — правый"
+   "means": "the boat: where the zone (or the firefly, or the bumblebee) is on the scale: −1 — the left end, 1 — the right"
   },
   "zone_kind": {
    "values": [
@@ -851,7 +851,7 @@
     "firefly",
     "bee"
    ],
-   "means": "что на шкале у zone_center: zone — светлая полоса на шкале, firefly — светлячок над шкалой, bee — шмель над шкалой"
+   "means": "what is on the scale at zone_center: zone — a light band on the scale, firefly — a firefly over the scale, bee — a bumblebee over the scale"
   },
   "zone_lit": {
    "range": [
@@ -859,7 +859,7 @@
     1
    ],
    "smooth": true,
-   "means": "лодка: зона (светлячок) светится ярче — нос в ней: 0 — нет, 1 — да"
+   "means": "the boat: the zone (the firefly) glows brighter — the bow is in it: 0 — no, 1 — yes"
   },
   "sand": {
    "range": [
@@ -867,7 +867,7 @@
     1
    ],
    "smooth": true,
-   "means": "песочные часы: 0 — весь песок наверху, 1 — пересыпался; пока ключ движется, видна струйка"
+   "means": "the hourglass: 0 — all the sand on top, 1 — run through; while the key moves, a trickle is seen"
   }
  }
 }

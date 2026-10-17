@@ -1,4 +1,4 @@
-// A dusty brass plate on a little stand; under the dust (a layer) its engraving — the word «Мастерская» and a ship.
+// A dusty brass plate on a little stand; under the dust (a layer) its engraving — the word “Workshop” (translated: tr) and a ship.
 // `plate` wipes the dust off in patches (the shader, by the edge animate sets)
 if (!e.lib.show(e, "plate")) return;
 g.fillStyle = "#7a5534";
@@ -17,7 +17,7 @@ g.font = "bold 80px Georgia, 'Times New Roman', serif";
 g.textAlign = "center";
 g.textBaseline = "middle";
 g.fillStyle = "#6a4a1a";
-g.fillText("Мастерская", 0, 0);
+g.fillText(tr("Workshop"), 0, 0);
 g.restore();
 g.fillStyle = "#6a4a1a";
 g.beginPath();

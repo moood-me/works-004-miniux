@@ -1,6 +1,6 @@
 {
  "engine": 3,
- "title": "Палуба",
+ "title": "Deck",
  "music": {
   "prompts": [
    {
@@ -40,12 +40,12 @@
  "objects": [
   {
    "id": "sky",
-   "name": "Небо",
+   "name": "Sky",
    "sky": true
   },
   {
    "id": "sea",
-   "name": "Море",
+   "name": "Sea",
    "plane": true,
    "across": 0,
    "distance": 4000,
@@ -61,7 +61,7 @@
   },
   {
    "id": "coast",
-   "name": "Дальний берег",
+   "name": "Far shore",
    "across": 0,
    "distance": 2600,
    "elevation": -1.5,
@@ -76,7 +76,7 @@
   },
   {
    "id": "lighthouse",
-   "name": "Маяк",
+   "name": "Lighthouse",
    "across": 0,
    "distance": 1000,
    "elevation": -1.5,
@@ -91,7 +91,7 @@
   },
   {
    "id": "course",
-   "name": "Курс корабля",
+   "name": "The ship's course",
    "unseen": true,
    "across": 0,
    "distance": 0,
@@ -105,7 +105,7 @@
   },
   {
    "id": "hull",
-   "name": "Киль",
+   "name": "Keel",
    "unseen": true,
    "on": "course",
    "across": -1.2,
@@ -117,7 +117,7 @@
   },
   {
    "id": "ship",
-   "name": "Корабль",
+   "name": "Ship",
    "unseen": true,
    "on": "hull",
    "distance": -1.2,
@@ -126,7 +126,7 @@
   },
   {
    "id": "deck",
-   "name": "Палуба",
+   "name": "Deck",
    "plane": true,
    "on": "ship",
    "across": -1.2,
@@ -137,7 +137,7 @@
   },
   {
    "id": "bulwark_port",
-   "name": "Левый фальшборт",
+   "name": "Port bulwark",
    "on": "ship",
    "across": -3.4,
    "distance": 5.25,
@@ -153,7 +153,7 @@
   },
   {
    "id": "bulwark_starboard",
-   "name": "Правый фальшборт",
+   "name": "Starboard bulwark",
    "on": "ship",
    "across": 1.0,
    "distance": 5.25,
@@ -169,7 +169,7 @@
   },
   {
    "id": "bow_port",
-   "name": "Левая скула",
+   "name": "Port bow",
    "on": "ship",
    "across": -2.3,
    "distance": 13.5,
@@ -185,7 +185,7 @@
   },
   {
    "id": "bow_starboard",
-   "name": "Правая скула",
+   "name": "Starboard bow",
    "on": "ship",
    "across": -0.1,
    "distance": 13.5,
@@ -201,7 +201,7 @@
   },
   {
    "id": "bow",
-   "name": "Нос",
+   "name": "Bow",
    "on": "ship",
    "across": -1.2,
    "distance": 15.0,
@@ -218,7 +218,7 @@
   },
   {
    "id": "mast",
-   "name": "Мачта",
+   "name": "Mast",
    "on": "ship",
    "across": -1.2,
    "distance": 10,
@@ -234,7 +234,7 @@
   },
   {
    "id": "sail",
-   "name": "Парус",
+   "name": "Sail",
    "on": "ship",
    "across": -1.2,
    "distance": 10,
@@ -251,7 +251,7 @@
   },
   {
    "id": "bell",
-   "name": "Судовой колокол",
+   "name": "Ship's bell",
    "on": "ship",
    "across": -1.0,
    "distance": 3.0,
@@ -267,7 +267,7 @@
   },
   {
    "id": "closeup",
-   "name": "Крупно: кофель-нагели",
+   "name": "Close-up: belaying pins",
    "insert": "closeup",
    "iris": [
     0.889,
@@ -301,7 +301,7 @@
     1
    ],
    "smooth": true,
-   "means": "куда смотрит нос относительно маяка: 0 — прямо на маяк, 1 — нос повернут вправо на 25° (маяк уходит влево), −1 — влево на 25° (маяк вправо); корабль поворачивается, мир уходит в сторону"
+   "means": "where the bow points against the lighthouse: 0 — straight at the lighthouse, 1 — the bow turned 25° to the right (the lighthouse goes left), −1 — 25° to the left (the lighthouse goes right); the ship turns, the world moves aside"
   },
   "on_course": {
    "range": [
@@ -309,7 +309,7 @@
     1
    ],
    "smooth": true,
-   "means": "нос на маяке: 0 — нет (огонь маяка тусклее, фонарь на носу не горит), 1 — да (маяк светит ярко, с лучами; фонарь на носу горит)"
+   "means": "the bow on the lighthouse: 0 — no (the lighthouse's light dimmer, the lantern on the bow unlit), 1 — yes (the lighthouse shines brightly, with rays; the lantern on the bow lit)"
   },
   "under_way": {
    "range": [
@@ -317,7 +317,7 @@
     1
    ],
    "smooth": true,
-   "means": "корабль идёт: 0 — стоит, 1 — идёт (1.2 м/с вперёд по носу; море бежит мимо, качка сильнее)"
+   "means": "the ship under way: 0 — standing, 1 — under way (1.2 m/s forward along the bow; the sea runs past, it rocks harder)"
   },
   "roll": {
    "range": [
@@ -325,7 +325,7 @@
     1
    ],
    "smooth": true,
-   "means": "сила качки: 0 — нет, 1 — сильная (качка мягкая, медленная; на ходу втрое больше, чем на месте)"
+   "means": "how hard it rocks: 0 — not at all, 1 — hard (a soft, slow rocking; three times more under way than standing)"
   },
   "sail": {
    "range": [
@@ -333,11 +333,11 @@
     1
    ],
    "smooth": true,
-   "means": "парус: 0 — спущен на гик, 1 — поднят (ползёт вверх по мачте, гафель на его голове)"
+   "means": "the sail: 0 — lowered onto the boom, 1 — hoisted (it creeps up the mast, the gaff at its head)"
   },
   "bell_hits": {
    "type": "number",
-   "means": "судовой колокол: счётчик ударов (целое, игра прибавляет 1) — колокол качается и звенит"
+   "means": "the ship's bell: a counter of strikes (an integer, the game adds 1) — the bell swings and rings"
   },
   "closeup": {
    "range": [
@@ -345,7 +345,7 @@
     1
    ],
    "smooth": true,
-   "means": "вставка-крупный план кофель-нагелей: 0 — закрыта, 1 — открыта (диафрагма-овал посреди кадра)"
+   "means": "the close-up insert of the belaying pins: 0 — shut, 1 — open (an oval iris in the middle of the frame)"
   },
   "rig1": {
    "range": [
@@ -353,7 +353,7 @@
     1
    ],
    "smooth": true,
-   "means": "первый (левый) конец во вставке: 0 — висит свободно, 1 — обнесён восьмёркой вокруг нагеля и затянут"
+   "means": "the first (left) line in the insert: 0 — hangs free, 1 — taken round the pin in a figure of eight and made fast"
   },
   "rig2": {
    "range": [
@@ -361,7 +361,7 @@
     1
    ],
    "smooth": true,
-   "means": "второй конец: как rig1"
+   "means": "the second line: as rig1"
   },
   "rig3": {
    "range": [
@@ -369,7 +369,7 @@
     1
    ],
    "smooth": true,
-   "means": "третий конец: как rig1"
+   "means": "the third line: as rig1"
   },
   "rig4": {
    "range": [
@@ -377,27 +377,27 @@
     1
    ],
    "smooth": true,
-   "means": "четвёртый (правый) конец: как rig1"
+   "means": "the fourth (right) line: as rig1"
   },
   "ship_x": {
    "type": "number",
    "smooth": true,
-   "means": "движет скрипт сцены (игре не трогать): где корабль поперёк, метры"
+   "means": "moved by the scene's script (the game leaves it alone): where the ship is across, metres"
   },
   "ship_d": {
    "type": "number",
    "smooth": true,
-   "means": "движет скрипт сцены (игре не трогать): где корабль вдоль пути к маяку, метры"
+   "means": "moved by the scene's script (the game leaves it alone): where the ship is along the way to the lighthouse, metres"
   },
   "ship_f": {
    "type": "number",
    "smooth": true,
-   "means": "движет скрипт сцены (игре не трогать): поворот корабля в мире, градусы (180 + 25 × heading)"
+   "means": "moved by the scene's script (the game leaves it alone): the ship's turn in the world, degrees (180 + 25 × heading)"
   },
   "heel": {
    "type": "number",
    "smooth": true,
-   "means": "движет скрипт сцены (игре не трогать): крен, градусы (качка по roll)"
+   "means": "moved by the scene's script (the game leaves it alone): the heel, degrees (rocking by roll)"
   }
  }
 }
