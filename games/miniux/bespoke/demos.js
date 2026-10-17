@@ -208,7 +208,7 @@ export const DEMOS = [
       tr('Check: during the answer there are no marks and no glow; the plate’s glow breathes slowly.'),
       tr('Chose “walk away” — a fork, a neutral end.')],
     async run(d) {
-      const mg = d.mg({ phrase: tr('Someone is behind the door. You need not knock') });
+      const mg = d.mg({ phrase: tr('Someone is behind the little door. You need not knock') });
       const knock = mg.mark({ at: 'door#knock' }), away = mg.mark({ at: 'door#away', quiet: true });
       const g = mg.press({ on: knock }), leave = mg.press({ on: away });
       mg.plate.set({ notches: [1 / 3, 2 / 3] });
