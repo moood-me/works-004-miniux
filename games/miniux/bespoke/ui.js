@@ -20,7 +20,7 @@ const button = (parent, text, title, onclick, cls = '') => {
   return b;
 };
 const SWITCHES = [['mute', tr('mute')], ['debug', tr('debug')]];
-const REASONS = { miss: tr('missed'), early: tr('let go early'), danger: tr('into danger'), off: tr('off the way'), behind: tr('fell behind'), wrong: tr('wrong place'), timing: tr('off the beat'), often: tr('too often'), against: tr('against'), jerk: tr('jerked') };
+const REASONS = { miss: tr('missed'), early: tr('let go early'), danger: tr('into danger'), off: tr('off the way'), behind: tr('fell behind'), wrong: tr('wrong place'), timing: tr('too early or too late'), often: tr('too often'), against: tr('against'), jerk: tr('jerked') };
 const OUTCOMES = { clean: tr('success'), flawed: tr('success with errors'), neutral: tr('choice'), loss: tr('loss') };
 
 export function ui(layer, { demos, styles, on }) {

@@ -208,7 +208,7 @@ export const DEMOS = [
       tr('Check: during the answer there are no marks and no glow; the plate’s glow breathes slowly.'),
       tr('Chose “walk away” — a fork, a neutral end.')],
     async run(d) {
-      const mg = d.mg({ phrase: tr('Someone is behind the little door. You need not knock') });
+      const mg = d.mg({ phrase: tr('Someone is behind the door. You need not knock') });
       const knock = mg.mark({ at: 'door#knock' }), away = mg.mark({ at: 'door#away', quiet: true });
       const g = mg.press({ on: knock }), leave = mg.press({ on: away });
       mg.plate.set({ notches: [1 / 3, 2 / 3] });
@@ -229,7 +229,7 @@ export const DEMOS = [
   {
     id: 'hold', group: tr('Gestures'), title: tr('Hold'), scene: WORKSHOP, demo: 'bellows',
     memo: [tr('A ring with a groove on the bellows’ handle — press and hold until the groove fills (1.5 s). The bellows swell. (The trick “hold till full”.)'),
-      tr('Check: while you hold, the bellows glow steadily; the fill shows from under the finger, a breath is heard; full — a snap, no need to hold on.'),
+      tr('Check: while you hold, the bellows glow steadily; the fill shows from under the finger, a breath is heard; full — a snap, no need to keep holding.'),
       tr('Let go early — the fill drains back, the bellows pulse again (a first meeting in the play — the error not counted).')],
     async run(d) {
       const mg = d.mg({ phrase: tr('The bellows have sunk flat') });
@@ -238,7 +238,7 @@ export const DEMOS = [
   },
   {
     id: 'hold-anywhere', group: tr('Gestures'), title: tr('Hold anywhere'), scene: WORKSHOP, demo: 'bellows',
-    memo: [tr('No mark on the thing: hold anywhere on the screen (but the corners with buttons) — the bellows swell as long as you hold.'),
+    memo: [tr('No mark on the thing: hold anywhere on the screen (except the corners with buttons) — the bellows swell as long as you hold.'),
       tr('Under the finger, only a dot: the touch is taken. The progress is in the bellows themselves (they swell) and on the plate.'),
       tr('Check: while you hold, the bellows glow steadily; let go — they pulse; the finger shows it near the middle of the window.')],
     async run(d) {
@@ -536,7 +536,7 @@ export const DEMOS = [
   },
   {
     id: 'rhythm-interval', group: tr('Gestures'), title: tr('Rhythm: interval'), scene: WORKSHOP, demo: 'drum',
-    memo: [tr('What matters is not the grid but the gap between touches: no more often and no less often than the ring closes (0.45–0.8 s). Eight even ones.'),
+    memo: [tr('What matters is not the grid but the gap between touches: neither more nor less often than the ring closes (0.45–0.8 s). Eight even ones.'),
       tr('The ring closes from each touch to the next right moment (the game sets the rhythm’s next beat).'),
       tr('Too often — a double ripple (the error “too often”).')],
     async run(d) {
@@ -669,9 +669,9 @@ export const DEMOS = [
       const r = await d.tricks.steps(mg, [
         phrase(tr('The bell has long been silent'), bar => pressOnce(d, mg, { at: 'bell#top', glow: 'bell', bar }).then(x => (x.state === 'done' && bell(d), x))),
         phrase(tr('The bell rings at any touch'), bar => holdAnywhere(d, mg, { glow: 'bell', seconds: 1.2, bar })),
-        phrase(tr('One ring is not enough'), bar => pressOnce(d, mg, { at: 'bell#top', glow: 'bell', bar }).then(x => (x.state === 'done' && bell(d), x))),
+        phrase(tr('One chime is not enough'), bar => pressOnce(d, mg, { at: 'bell#top', glow: 'bell', bar }).then(x => (x.state === 'done' && bell(d), x))),
         phrase(tr('The sound breaks off too soon'), bar => d.tricks.holdTillFull(mg, { at: 'bell#top', glow: 'bell', seconds: 1, bar })),
-        phrase(tr('One last ring is left'), bar => pressOnce(d, mg, { at: 'bell#top', glow: 'bell', bar }).then(x => (x.state === 'done' && bell(d), x))),
+        phrase(tr('One last chime is left'), bar => pressOnce(d, mg, { at: 'bell#top', glow: 'bell', bar }).then(x => (x.state === 'done' && bell(d), x))),
       ]);
       await d.end(mg, r);
     },
@@ -700,7 +700,7 @@ export const DEMOS = [
     memo: [tr('Each error has its own look and sound, where it happened; a quiet chip on the bar (no soft try here — everything counts).'),
       tr('Steps: the bell (press beside it — “missed”), hold (let go early — “let go early”), hold anywhere in the wind — the bell sways in the gusts, the arc is on it (“into danger”), the bell three times.'),
       tr('Three error sounds, all quiet: a dull “miss”, a “slip”, a “fault”.'),
-      tr('The other errors are in their own demonstrations: “off the way” (a line), “wrong place” (where), “too early or too late” and “too often” (rhythm), “against” (turn), “jerked” (smoothly).')],
+      tr('The other errors are in their own demonstrations: “off the way” (Trace a line), “wrong place” (Pull to a place), “too early or too late” and “too often” (Rhythm), “against” (Turn), “jerked” (Lead smoothly).')],
     async run(d) {
       const mg = d.mg({ phrase: tr('The bell has long been silent') });
       const r = await d.tricks.steps(mg, [
@@ -972,7 +972,7 @@ export const DEMOS = [
   {
     id: 'sounds', group: tr('Sounds'), title: tr('Sound board'), scene: WORKSHOP, demo: 'none',
     memo: [tr('Only the sounds the language of mini-games makes now, by role — in the playground’s key (C); behind them, the playground’s music in the same key.'),
-      tr('Short ones: press — it sounds. Processes: ▶ — it starts, the slider — its course (danger, closeness…), ■ — stop.'),
+      tr('Short ones: press — it sounds. Processes: ▶ — it starts, the slider — its value (danger, closeness…), ■ — stop.'),
       tr('A heart marks what you like; at the foot, the numbers picked: say those.')],
     run: d => board(d.b, d.signal, d.key),
   },
