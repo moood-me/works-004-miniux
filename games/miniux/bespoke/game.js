@@ -21,7 +21,7 @@ export default async function (b) {
   await b.css('ui.css');
   const kept = { demo: DEMOS[0].id, style: 0, switches: {}, ...b.saved };
   const keep = () => b.keep(kept);
-  let shown = null, running = null; // the scene shown (its title); the demonstration going on (its AbortController)
+  let shown = null, running = null; // the scene shown (its folder); the demonstration going on (its AbortController)
 
   const settle = () => {
     const s = kept.switches;

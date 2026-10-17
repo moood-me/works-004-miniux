@@ -1,7 +1,7 @@
 // The playground's demonstrations (docs/miniux/playground.md): each word of the language of mini-games (a vocabulary:
 // marks, gestures that report, responses, the ghost, sounds, the plate) and its ready tricks, each part of a mini-game,
-// and some mini-games of the three games put into it — each on the playground's things («Мастерская»: the key `demo`
-// sets what is on the table; «Палуба»: the deck, its close-up, the ship under way). Each is the game's own code: what
+// and some mini-games of the three games put into it — each on the playground's things (`main`, «Мастерская»: the key
+// `demo` sets what is on the table; `paluba`, «Палуба»: the deck, its close-up, the ship under way). Each is the game's own code: what
 // happens, what is done, what is an error, when it ends — decided here, not by the language.
 // A demonstration: {id, group, title, scene, demo (the workshop's `demo`), state (more of the scene's values), memo
 // (what is meant, what to check, what must work — 3–6 lines), run(d)} — run plays it once; d (game.js): d.mg(o) — a
@@ -10,7 +10,8 @@
 // d.errors(mg, soft), d.end(mg, {as, errors, choice, share}), d.result(r), d.note(text), d.b — bespoke.
 import { board } from './board.js';
 
-export const WORKSHOP = 'Мастерская', DECK = 'Палуба';
+// the world's scenes, by folder
+export const WORKSHOP = 'main', DECK = 'paluba';
 
 // what each scene's keys are at the start of a demonstration (all of them: what one left is not seen in the next)
 export const RESET = {
