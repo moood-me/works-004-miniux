@@ -1,4 +1,4 @@
-# Deck (`paluba`) — miniux's playground: a camera that moves, and an insert
+# Deck (`deck`) — miniux's playground: a camera that moves, and an insert
 
 A small sailing ship seen from the stern forward (the eye 1.7 m above the deck, 1.2 m to starboard of the centreline),
 sea to the horizon (the horizon at 0.55 of the frame), and a kilometre ahead a lighthouse on a rock, a far shore behind
