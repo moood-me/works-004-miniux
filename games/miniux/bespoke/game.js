@@ -8,13 +8,13 @@
 import { DEMOS, RESET } from './demos.js';
 import { ui } from './ui.js';
 
-// the playground's key: its music's (the world's scenes, `scale`) and the language's tonal sounds' (style.key) — до
+// the playground's key: its music's (the world's scenes, `scale`) and the language's tonal sounds' (style.key) — C
 const KEY = 'C_MAJOR_A_MINOR';
 // the language's look (§7): moood's own, a light warm one, a dark cold one — the same meaning in each
 const STYLES = [
-  { name: 'moood', style: {} },
-  { name: 'светлый тёплый', style: { colors: { mark: '#fff8ec', fill: '#ffaa3c', good: '#86d96f', danger: '#e2402a', fork: '#c7b4ff', ghost: 'rgba(255, 238, 214, 0.55)' }, line: 4, font: '"Trebuchet MS", "Segoe UI", sans-serif' } },
-  { name: 'тёмный холодный', style: { colors: { mark: '#bfe2ff', fill: '#58ccff', good: '#62efbf', danger: '#ff4c8a', fork: '#98a4ff', ghost: 'rgba(150, 205, 255, 0.45)' }, line: 2.5, font: 'ui-monospace, Consolas, monospace', vibrate: false } },
+  { name: tr('moood'), style: {} },
+  { name: tr('light warm'), style: { colors: { mark: '#fff8ec', fill: '#ffaa3c', good: '#86d96f', danger: '#e2402a', fork: '#c7b4ff', ghost: 'rgba(255, 238, 214, 0.55)' }, line: 4, font: '"Trebuchet MS", "Segoe UI", sans-serif' } },
+  { name: tr('dark cold'), style: { colors: { mark: '#bfe2ff', fill: '#58ccff', good: '#62efbf', danger: '#ff4c8a', fork: '#98a4ff', ghost: 'rgba(150, 205, 255, 0.45)' }, line: 2.5, font: 'ui-monospace, Consolas, monospace', vibrate: false } },
 ];
 
 export default async function (b) {
@@ -61,7 +61,7 @@ export default async function (b) {
     const left = new WeakSet(); // (the mini-games left already: skipped, or the demonstration gone)
     const d = {
       b, signal, tricks: b.minigame.tricks, key: KEY,
-      // a mini-game, left if the player goes to another demonstration; the ⏭ — left, its outcome as played: «успех»
+      // a mini-game, left if the player goes to another demonstration; the ⏭ — left, its outcome as played: success
       mg(o) {
         const mg = b.minigame.start({ ...o, signal });
         mg.on('skip', () => { d.result({ as: 'clean', skipped: true }); mg.leave(); });
@@ -96,7 +96,7 @@ export default async function (b) {
       note: text => { if (!signal.aborted) view.note(text); },
     };
     // (broken: said, and its mini-game taken away — the scene answers again)
-    try { await demo.run(d); } catch (e) { if (!signal.aborted) b.trouble(`демонстрация сломалась: ${e.message || e}`); run.abort(); }
+    try { await demo.run(d); } catch (e) { if (!signal.aborted) b.trouble(`the demonstration broke: ${e.message || e}`); run.abort(); }
   }
   await go(kept.demo);
 }

@@ -1,9 +1,9 @@
 {
   "type": "bespoke",
   "title": "miniux",
-  "description": "Площадка языка мини-игр: демонстрации жестов, рамки и переложенных мини-игр, с памяткой.",
+  "description": "The playground of the mini-games' language: demonstrations of its gestures, its frame and mini-games carried over from the games, with a memo.",
   "genres": {
-    "механика": 100
+    "mechanics": 100
   },
   "world": "pavel--miniux",
   "scenes": []

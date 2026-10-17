@@ -19,19 +19,19 @@ const button = (parent, text, title, onclick, cls = '') => {
   b.onmousedown = e => e.preventDefault();
   return b;
 };
-const SWITCHES = [['mute', 'без звука'], ['debug', 'отладка']];
-const REASONS = { miss: 'мимо', early: 'рано отпустил', danger: 'в опасность', off: 'сошёл', behind: 'отстал', wrong: 'не туда', timing: 'не в долю', often: 'часто', against: 'против', jerk: 'сорвал' };
-const OUTCOMES = { clean: 'успех', flawed: 'успех с ошибками', neutral: 'выбор', loss: 'проигрыш' };
+const SWITCHES = [['mute', tr('mute')], ['debug', tr('debug')]];
+const REASONS = { miss: tr('missed'), early: tr('let go early'), danger: tr('into danger'), off: tr('off the way'), behind: tr('fell behind'), wrong: tr('wrong place'), timing: tr('off the beat'), often: tr('too often'), against: tr('against'), jerk: tr('jerked') };
+const OUTCOMES = { clean: tr('success'), flawed: tr('success with errors'), neutral: tr('choice'), loss: tr('loss') };
 
 export function ui(layer, { demos, styles, on }) {
   const root = el('div', 'pg', layer);
   const bar = el('div', 'pg-bar', root);
-  button(bar, '≡', 'все демонстрации', () => toggle(list));
-  button(bar, '↻', 'ещё раз', () => on.again());
-  button(bar, '→', 'дальше', () => on.next());
-  const memoButton = button(bar, '?', 'памятка: что задумано, что проверить', () => toggle(memo));
-  const styleButton = button(bar, '◐', 'стиль языка', () => on.style());
-  button(bar, '⚙', 'переключатели', () => toggle(switches));
+  button(bar, '≡', tr('all demonstrations'), () => toggle(list));
+  button(bar, '↻', tr('again'), () => on.again());
+  button(bar, '→', tr('next'), () => on.next());
+  const memoButton = button(bar, '?', tr('memo: what is meant, what to check'), () => toggle(memo));
+  const styleButton = button(bar, '◐', tr('the language’s style'), () => on.style());
+  button(bar, '⚙', tr('switches'), () => toggle(switches));
   const title = el('span', 'pg-title', bar);
   const list = el('div', 'pg-list', root), memo = el('div', 'pg-memo', root), switches = el('div', 'pg-switches', root);
   const result = el('p', 'pg-result', root);
@@ -55,12 +55,12 @@ export function ui(layer, { demos, styles, on }) {
     row.append(label);
     boxes[name] = box;
   }
-  button(switches, 'забыть показ', 'палец покажет каждый жест снова, как в первый раз', () => on.forget(), 'pg-forget');
+  button(switches, tr('forget the showing'), tr('the ghost finger will show every gesture again, as the first time'), () => on.forget(), 'pg-forget');
   // ⏸: the play's pause, for the pause's demonstration and any other
-  const pause = button(layer, '⏸', 'пауза', () => on.pause(), 'pg-pause');
+  const pause = button(layer, '⏸', tr('pause'), () => on.pause(), 'pg-pause');
   // ⏭: the skip of the mini-game going, every player's — a safety net if it glitches, not a way through (the language
   // asks the game for it)
-  button(layer, '⏭', 'пропустить мини-игру', () => on.skip(), 'pg-pause pg-skip');
+  button(layer, '⏭', tr('skip the mini-game'), () => on.skip(), 'pg-pause pg-skip');
 
   return {
     at(demo) {
@@ -72,12 +72,12 @@ export function ui(layer, { demos, styles, on }) {
     // r: {as, errors, choice, share, skipped} — what the demonstration's code made of it (skipped: by ⏭, as played)
     result(r) {
       const errors = Object.entries(r.errors || {}).map(([k, n]) => `${REASONS[k] || k} ×${n}`).join(', ');
-      const more = [errors ? `ошибки: ${errors}` : r.skipped ? 'пропущено ⏭, как сыгранная' : 'без ошибок', 'choice' in r ? `выбор: ${r.choice ?? 'ничего'}` : '', r.share != null ? `в зоне: ${Math.round(r.share * 100)}%` : ''];
-      result.textContent = [`итог: ${OUTCOMES[r.as] || r.as}`, ...more.filter(Boolean)].join(' · ');
+      const more = [errors ? tr('errors: {errors}', { errors }) : r.skipped ? tr('skipped ⏭, as if played') : tr('no errors'), 'choice' in r ? tr('choice: {choice}', { choice: r.choice ?? tr('nothing') }) : '', r.share != null ? tr('in the zone: {percent}%', { percent: Math.round(r.share * 100) }) : ''];
+      result.textContent = [tr('outcome: {outcome}', { outcome: OUTCOMES[r.as] || r.as }), ...more.filter(Boolean)].join(' · ');
     },
     note(text) { result.textContent = text; },
-    styled(i) { styleButton.textContent = ['◐', '☀', '☾'][i] || '◐'; styleButton.title = `стиль: ${styles[i]}`; },
+    styled(i) { styleButton.textContent = ['◐', '☀', '☾'][i] || '◐'; styleButton.title = tr('style: {name}', { name: styles[i] }); },
     switched(s) { for (const [name] of SWITCHES) boxes[name].checked = !!s[name]; },
-    paused(on_) { pause.textContent = on_ ? '▶' : '⏸'; pause.title = on_ ? 'дальше' : 'пауза'; },
+    paused(on_) { pause.textContent = on_ ? '▶' : '⏸'; pause.title = on_ ? tr('go on') : tr('pause'); },
   };
 }
