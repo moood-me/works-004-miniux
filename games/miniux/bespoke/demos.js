@@ -1,7 +1,7 @@
 // The playground's demonstrations (docs/miniux/playground.md): each word of the language of mini-games (a vocabulary:
 // marks, gestures that report, responses, the ghost, sounds, the plate) and its ready tricks, each part of a mini-game,
 // and some mini-games of the three games put into it — each on the playground's things (`main`, the Workshop: the key
-// `demo` sets what is on the table; `paluba`, the Deck: the deck, its close-up, the ship under way). Each is the game's own code: what
+// `demo` sets what is on the table; `deck`, the Deck: the deck, its close-up, the ship under way). Each is the game's own code: what
 // happens, what is done, what is an error, when it ends — decided here, not by the language.
 // A demonstration: {id, group, title, scene, demo (the workshop's `demo`), state (more of the scene's values), memo
 // (what is meant, what to check, what must work — 3–6 lines), run(d)} — run plays it once; d (game.js): d.mg(o) — a
@@ -11,7 +11,7 @@
 import { board } from './board.js';
 
 // the world's scenes, by folder
-export const WORKSHOP = 'main', DECK = 'paluba';
+export const WORKSHOP = 'main', DECK = 'deck';
 
 // what each scene's keys are at the start of a demonstration (all of them: what one left is not seen in the next)
 export const RESET = {
@@ -835,7 +835,7 @@ export const DEMOS = [
   },
   // ── mini-games of the three games, put into the language ──
   {
-    id: 'osnastka', group: tr('Mini-games'), title: tr('Rigging'), scene: DECK,
+    id: 'rigging', group: tr('Mini-games'), title: tr('Rigging'), scene: DECK,
     memo: [tr('Scarlet Sails, Rigging: four fastenings in the close-up insert, one mark at a time, hold till the snap (the tricks “steps in turn” and “hold till full”).'),
       tr('Was: hold “at the point” with no mark, the girl’s hand far from the point. Now: the mark is where they fasten; the first fastening is a soft try (a slip not counted).'),
       tr('Check: the marks live only in the insert (while it is open); four parts of the bar; two fastenings with no slip — “halfway”.')],
@@ -849,7 +849,7 @@ export const DEMOS = [
     },
   },
   {
-    id: 'vinty', group: tr('Mini-games'), title: tr('The screws'), scene: WORKSHOP, demo: 'screws',
+    id: 'screws', group: tr('Mini-games'), title: tr('The screws'), scene: WORKSHOP, demo: 'screws',
     memo: [tr('Usher, The screws: four screws, to turn; beside them a quiet “leave”, seen at once.'),
       tr('Was: “leave” was hidden in the ring’s menu. Now: the second path is seen before choosing; “leave” is a fork, a neutral end.'),
       tr('Check: choose “leave” on any screw — the mini-game ends with a choice.')],
@@ -861,7 +861,7 @@ export const DEMOS = [
     },
   },
   {
-    id: 'struna', group: tr('Mini-games'), title: tr('String'), scene: WORKSHOP, demo: 'drum2',
+    id: 'string', group: tr('Mini-games'), title: tr('String'), scene: WORKSHOP, demo: 'drum2',
     memo: [tr('Usher, String: his rhythm on the left drum (a beat’s sign, not a mark), yours on the right (your ring is there from the start). Your own rhythm or his — both paths are neutral, the plate colours each beat by how it was played; not pressing — a third outcome.'),
       tr('Was: doing nothing counted as “with him”, the beat’s window ≤ 60 ms. Now: three outcomes, a window of ±150 ms.'),
       tr('Check: both rhythms are seen; no errors.')],
@@ -872,7 +872,7 @@ export const DEMOS = [
     },
   },
   {
-    id: 'koltso', group: tr('Mini-games'), title: tr('The ring'), scene: WORKSHOP, demo: 'lantern',
+    id: 'ring', group: tr('Mini-games'), title: tr('The ring'), scene: WORKSHOP, demo: 'lantern',
     memo: [tr('Scarlet Sails, The ring: put the ring on the sleeping girl’s finger — hold until she stirs. Here — the lantern in the wind.'),
       tr('Was: “she stirs” — by ear only. Now: the danger is an arc on the mark’s edge, seen with the eyes.'),
       tr('Check: you can get through by letting go in the gusts.')],
@@ -884,7 +884,7 @@ export const DEMOS = [
     },
   },
   {
-    id: 'slushat', group: tr('Mini-games'), title: tr('Listen'), scene: WORKSHOP, demo: 'floor',
+    id: 'listening', group: tr('Mini-games'), title: tr('Listen'), scene: WORKSHOP, demo: 'floor',
     memo: [tr('Usher, Listen: find the place under the floor. Was: moving the mouse with no press — impossible on a phone, by ear only.'),
       tr('Now: seek with a press, the lens grows warmer to the eye and to the ear.'),
       tr('Check: it is found on a phone and with no sound.')],
@@ -896,7 +896,7 @@ export const DEMOS = [
     },
   },
   {
-    id: 'ruki', group: tr('Mini-games'), title: tr('Hands'), scene: WORKSHOP, demo: 'sockets',
+    id: 'hands', group: tr('Mini-games'), title: tr('Hands'), scene: WORKSHOP, demo: 'sockets',
     memo: [tr('Usher, Hands — two marks and two gestures at once. Here on the Workshop’s things: the peg is a hand, it can be pulled to one of the two outer sockets (her hands); the middle socket is “stay”, it can be held.'),
       tr('Whatever comes first is the choice: the peg let go in an outer socket, or “stay” filled. Time — an arc on the peg and a shade on the plate (10 s); when it runs out, nothing is chosen.'),
       tr('Check: both marks are seen at once, the finger shows both; the response is neutral, there is no “wrong”.')],
@@ -928,7 +928,7 @@ export const DEMOS = [
   },
 
   {
-    id: 'kurs', group: tr('Mini-games'), title: tr('Course'), scene: DECK, state: { under_way: 1, sail: 1 },
+    id: 'course', group: tr('Mini-games'), title: tr('Course'), scene: DECK, state: { under_way: 1, sail: 1 },
     memo: [tr('Scarlet Sails, Course: keep the bow (a big red disc on the stem) on the lighthouse; the wind pushes it off. The camera moves with the ship — the gesture is anywhere, so this does not hinder it.'),
       tr('Three legs of 12 s — three parts of the bar; the glow — whether on course. The bow pulses from the start — an invitation. Lead sideways anywhere — it is the helm: the finger’s shift turns the bow.'),
       tr('Was: the outcome was thrown away. Now: the outcome is seen (here as the outcome line, the share of time on course).')],
@@ -945,7 +945,7 @@ export const DEMOS = [
     },
   },
   {
-    id: 'uspokoit', group: tr('Mini-games'), title: tr('Calm her'), scene: WORKSHOP, demo: 'breath',
+    id: 'calm', group: tr('Mini-games'), title: tr('Calm her'), scene: WORKSHOP, demo: 'breath',
     memo: [tr('The Chrysalids, Calm her: Petra runs at her own pace — here the bellows breathe by themselves, fast and unevenly; hold in rhythm with them (the ring grows — hold, it shrinks — let go).'),
       tr('The scene goes its own way and does not wait: each breath held calms — the bellows’ rhythm slows; lose the beat — it quickens again.'),
       tr('Six held — calm. Check: you see the rhythm change as it goes; the bar moves with each one held and drains at a slip.')],
