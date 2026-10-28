@@ -1,0 +1,10 @@
+{
+  "type": "bespoke",
+  "title": "miniux",
+  "description": "The playground of the mini-games' language: demonstrations of its gestures, its frame and mini-games carried over from the games, with a memo.",
+  "genres": {
+    "mechanics": 100
+  },
+  "world": "pavel--miniux",
+  "scenes": []
+}
