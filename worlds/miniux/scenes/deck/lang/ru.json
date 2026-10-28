@@ -1,3 +1,3 @@
 {"strings": [
-  {"text":"Deck","translation":"Палуба","where":"scenes/deck/scene.json title"}
+  {"text":"Deck","translation":"Палуба","where":"worlds/miniux/scenes/deck/scene.json title"}
 ]}

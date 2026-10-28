@@ -5,6 +5,7 @@
   "genres": {
     "mechanics": 100
   },
-  "world": "pavel--miniux",
-  "scenes": []
+  "world": "../../worlds/miniux",
+  "scenes": [],
+  "languages": ["en", "ru"]
 }
