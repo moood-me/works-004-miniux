@@ -1,0 +1,873 @@
+{
+ "engine": 3,
+ "title": "Workshop",
+ "music": {
+  "prompts": [
+   {
+    "text": "Sparse felt piano and soft woodwinds, a light airy forest by the sea at midday, modern indie game score",
+    "weight": 1.2
+   },
+   {
+    "text": "Gentle flowing harp arpeggios like a stream over stones, bright and clear, minimalist",
+    "weight": 0.8
+   },
+   {
+    "text": "Airy ambient pads with distant sea, breathing slowly, pearl grey morning light",
+    "weight": 0.7
+   }
+  ],
+  "bpm": 72,
+  "density": 0.25,
+  "brightness": 0.55,
+  "scale": "C_MAJOR_A_MINOR"
+ },
+ "horizon": 0.3,
+ "camera": {
+  "mode": "picture"
+ },
+ "light": {
+  "vignette": 0.1,
+  "ambient": 1
+ },
+ "objects": [
+  {
+   "id": "wall",
+   "name": "Wall",
+   "across": 0,
+   "distance": 3.0,
+   "elevation": 0,
+   "facing": 180,
+   "height": 4,
+   "box": [
+    -4.6,
+    -4.0,
+    4.6,
+    0.01
+   ]
+  },
+  {
+   "id": "table_top",
+   "name": "Table",
+   "plane": true,
+   "across": 0,
+   "distance": 2.2,
+   "elevation": 1.0,
+   "width": 4.4,
+   "depth": 1.6
+  },
+  {
+   "id": "table_front",
+   "name": "Table edge",
+   "across": 0,
+   "distance": 1.4,
+   "elevation": 0,
+   "facing": 180,
+   "height": 1.0,
+   "box": [
+    -2.2,
+    -1.0,
+    2.2,
+    0.01
+   ]
+  },
+  {
+   "id": "bell",
+   "name": "Bell",
+   "across": 0,
+   "distance": 1.8,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 0.78,
+   "box": [
+    -0.4,
+    -0.82,
+    0.4,
+    0.02
+   ]
+  },
+  {
+   "id": "box",
+   "name": "Box with three drawers",
+   "across": 0,
+   "distance": 2.2,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 0.72,
+   "box": [
+    -0.48,
+    -0.86,
+    0.48,
+    0.08
+   ]
+  },
+  {
+   "id": "door",
+   "name": "Little door in the wall",
+   "across": 0,
+   "distance": 2.95,
+   "elevation": 1.15,
+   "facing": 180,
+   "height": 0.87,
+   "box": [
+    -0.72,
+    -0.92,
+    0.72,
+    0.02
+   ]
+  },
+  {
+   "id": "bellows",
+   "name": "Bellows",
+   "across": 0,
+   "distance": 1.8,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 0.5,
+   "box": [
+    -0.6,
+    -0.55,
+    0.7,
+    0.02
+   ]
+  },
+  {
+   "id": "lantern",
+   "name": "Lantern on a hook",
+   "across": 0,
+   "distance": 2.95,
+   "elevation": 1.3,
+   "facing": 180,
+   "height": 0.84,
+   "box": [
+    -0.5,
+    -0.88,
+    0.5,
+    0.02
+   ],
+   "flicker": 0.15
+  },
+  {
+   "id": "candle",
+   "name": "Candle",
+   "across": 0,
+   "distance": 1.8,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 0.5,
+   "box": [
+    -0.18,
+    -0.56,
+    0.18,
+    0.02
+   ],
+   "flicker": 0.2
+  },
+  {
+   "id": "wicks",
+   "name": "Three wicks",
+   "across": 0,
+   "distance": 1.8,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 0.95,
+   "box": [
+    -0.65,
+    -1.0,
+    0.65,
+    0.02
+   ],
+   "flicker": 0.2
+  },
+  {
+   "id": "brackets",
+   "name": "Brackets and a rope with a weight",
+   "across": 0,
+   "distance": 2.95,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 0.9,
+   "box": [
+    -0.85,
+    -0.92,
+    0.85,
+    0.02
+   ]
+  },
+  {
+   "id": "rope",
+   "name": "Weight and hook",
+   "across": 0,
+   "distance": 2.95,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 1.0,
+   "box": [
+    -0.65,
+    -1.05,
+    0.65,
+    0.02
+   ]
+  },
+  {
+   "id": "shutter",
+   "name": "Window with a shutter",
+   "across": 0,
+   "distance": 2.95,
+   "elevation": 1.1,
+   "facing": 180,
+   "height": 1.47,
+   "box": [
+    -0.42,
+    -1.5,
+    0.42,
+    0.02
+   ]
+  },
+  {
+   "id": "crate",
+   "name": "Heavy crate",
+   "across": 0,
+   "distance": 2.2,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 0.42,
+   "box": [
+    -0.68,
+    -0.48,
+    0.68,
+    0.02
+   ]
+  },
+  {
+   "id": "knot",
+   "name": "Knot on a rope",
+   "across": 0,
+   "distance": 1.8,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 0.6,
+   "box": [
+    -0.72,
+    -0.62,
+    0.72,
+    0.02
+   ]
+  },
+  {
+   "id": "sockets",
+   "name": "Board with sockets",
+   "across": 0,
+   "distance": 1.8,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 0.36,
+   "box": [
+    -1.6,
+    -1.25,
+    1.6,
+    0.05
+   ]
+  },
+  {
+   "id": "bubbles",
+   "name": "Bubbles",
+   "across": 0,
+   "distance": 1.8,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 1.0,
+   "box": [
+    -1.6,
+    -1.25,
+    1.6,
+    0.05
+   ],
+   "inFront": [
+    "sockets"
+   ]
+  },
+  {
+   "id": "crack",
+   "name": "Cracked board",
+   "across": 0,
+   "distance": 1.8,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 0.62,
+   "box": [
+    -0.78,
+    -0.66,
+    0.78,
+    0.02
+   ],
+   "uniforms": {
+    "edge": -0.7
+   }
+  },
+  {
+   "id": "screws",
+   "name": "Plate with screws",
+   "across": 0,
+   "distance": 1.8,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 0.64,
+   "box": [
+    -0.76,
+    -0.68,
+    0.76,
+    0.02
+   ]
+  },
+  {
+   "id": "plate",
+   "name": "Dusty plaque",
+   "across": 0,
+   "distance": 2.2,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 0.64,
+   "box": [
+    -0.48,
+    -0.68,
+    0.48,
+    0.02
+   ],
+   "uniforms": {
+    "clean": 0
+   }
+  },
+  {
+   "id": "floor",
+   "name": "Floorboards",
+   "across": 0,
+   "distance": 2.0,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 1.12,
+   "box": [
+    -0.86,
+    -1.14,
+    0.86,
+    0.02
+   ],
+   "tilt": 50
+  },
+  {
+   "id": "shells",
+   "name": "Three shells",
+   "across": 0,
+   "distance": 1.8,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 0.2,
+   "box": [
+    -0.65,
+    -0.3,
+    0.65,
+    0.02
+   ]
+  },
+  {
+   "id": "drum",
+   "name": "Drum",
+   "across": 0,
+   "distance": 1.8,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 0.45,
+   "box": [
+    -0.72,
+    -0.5,
+    0.24,
+    0.02
+   ]
+  },
+  {
+   "id": "drum2",
+   "name": "Second drum",
+   "across": 0,
+   "distance": 1.8,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 0.45,
+   "box": [
+    0.22,
+    -0.5,
+    0.72,
+    0.02
+   ]
+  },
+  {
+   "id": "boat",
+   "name": "Model boat with a scale",
+   "across": 0,
+   "distance": 1.9,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 1.27,
+   "box": [
+    -0.87,
+    -1.3,
+    0.87,
+    0.02
+   ],
+   "tilt": 45
+  },
+  {
+   "id": "hourglass",
+   "name": "Hourglass",
+   "across": 0,
+   "distance": 1.8,
+   "elevation": 1.0,
+   "facing": 180,
+   "height": 0.58,
+   "box": [
+    -0.2,
+    -0.62,
+    0.2,
+    0.02
+   ]
+  }
+ ],
+ "state": {
+  "demo": "none",
+  "bell_hits": 0,
+  "drawer": "none",
+  "drawer_open": 0,
+  "door_knocks": 0,
+  "door_reply": 0,
+  "door_open": 0,
+  "bellows": 0,
+  "lantern": 0,
+  "wind": 0,
+  "candle": 0,
+  "candle_shake": 0,
+  "wick1": 0,
+  "wick2": 0,
+  "wick3": 0,
+  "climb": 0,
+  "grip": "none",
+  "rope": 0,
+  "shutter": 0,
+  "crate": 0,
+  "knot": 0,
+  "knot_off": false,
+  "peg": "none",
+  "peg_u": 0,
+  "peg_v": 0,
+  "bubble1": "free",
+  "bubble2": "free",
+  "bubble3": "free",
+  "bubble1_u": 0,
+  "bubble1_v": 0,
+  "bubble2_u": 0,
+  "bubble2_v": 0,
+  "bubble3_u": 0,
+  "bubble3_v": 0,
+  "crack": 0,
+  "screw1": 0,
+  "screw2": 0,
+  "screw3": 0,
+  "screw4": 0,
+  "plate": 0,
+  "floor_found": false,
+  "shell": "none",
+  "shell_odd": "s2",
+  "shell_found": false,
+  "drum_hits": 0,
+  "drum2_hits": 0,
+  "boat_heading": 0,
+  "zone_center": 0,
+  "zone_kind": "zone",
+  "zone_lit": 0,
+  "sand": 0
+ },
+ "states": {
+  "demo": {
+   "values": [
+    "none",
+    "bell",
+    "box",
+    "door",
+    "bellows",
+    "breath",
+    "lantern",
+    "candle",
+    "wicks",
+    "brackets",
+    "rope",
+    "shutter",
+    "crate",
+    "knot",
+    "sockets",
+    "bubbles",
+    "crack",
+    "screw",
+    "screws",
+    "plate",
+    "floor",
+    "shells",
+    "drum",
+    "drum2",
+    "boat",
+    "hourglass"
+   ],
+   "means": "which demonstration is on the table: only its things are seen (the others are not painted), a change is at once. none — an empty table; bellows and breath — the bellows; sockets — the peg and the sockets; bubbles — the bubbles and the same sockets; screw — one screw s1, screws — four; drum — one drum, drum2 — two"
+  },
+  "bell_hits": {
+   "type": "number",
+   "means": "the bell: a counter of strikes (an integer, the game adds 1) — at each it swings and rings"
+  },
+  "drawer": {
+   "values": [
+    "none",
+    "top",
+    "middle",
+    "bottom"
+   ],
+   "means": "which drawer slides out (changes at once)"
+  },
+  "drawer_open": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "how far the drawer named in drawer is out: 0 — pushed in, 1 — pulled out"
+  },
+  "door_knocks": {
+   "type": "number",
+   "means": "the little door: a counter of knocks on it (an integer, +1 a touch) — the door trembles"
+  },
+  "door_reply": {
+   "type": "number",
+   "means": "the little door: a counter of knocks back from inside (an integer, +1) — the door jolts harder, the strip of light under it flares"
+  },
+  "door_open": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "the little door: 0 — shut, 1 — open"
+  },
+  "bellows": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "the bellows: 0 — empty, 1 — full (the top board with the handle rises)"
+  },
+  "lantern": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "the lantern: its fire from a spark (0) to full (1)"
+  },
+  "wind": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "a gust of wind: 0 — calm, 1 — strong (the lantern swings on its hook, the flame leans; the bell sways)"
+  },
+  "candle": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "the candle: its flame from small (0) to full (1)"
+  },
+  "candle_shake": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "the candle: 0 — the flame is steady, 1 — it trembles and thrashes"
+  },
+  "wick1": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "the first (left) wick: 0 — an even quiet flame, 1 — smoking: a tall sooty flame thrashes, smoke above it"
+  },
+  "wick2": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "the second (middle) wick: 0 — a quiet flame, 1 — smoking"
+  },
+  "wick3": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "the third (right) wick: 0 — a quiet flame, 1 — smoking"
+  },
+  "climb": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "the brackets: the weight on the rope between them rises: 0 — at the bottom, 1 — at the top"
+  },
+  "grip": {
+   "values": [
+    "none",
+    "left",
+    "right"
+   ],
+   "means": "the brackets: which one holds now — it lightens (changes at once, lightens in a fraction of a second)"
+  },
+  "rope": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "the weight to the hook: 0 — the weight in its place (the point rope#weight), 1 — its loop on the hook (rope#hook); it goes in a straight line, the point rope#weight with it"
+  },
+  "shutter": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "the shutter: 0 — down, 1 — raised to the mark (the handle shutter#handle at the point shutter#top)"
+  },
+  "crate": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "the heavy crate: 0 — in its place, 1 — on the chalk outline to the right (crate#goal); the handle crate#handle moves with it"
+  },
+  "knot": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "the knot: 0 — tight, 1 — loose (bigger loops, the rope sags)"
+  },
+  "knot_off": {
+   "type": "boolean",
+   "means": "the knot has come apart: both halves of the rope hang from the posts"
+  },
+  "peg": {
+   "values": [
+    "none",
+    "held",
+    "s1",
+    "s2",
+    "s3"
+   ],
+   "means": "the peg (changes at once): none — lies on the table to the left, held — in hand: painted under the finger, at the point peg_u, peg_v; sN — stands in the socket sN. The point sockets#peg is where it is painted now"
+  },
+  "peg_u": {
+   "type": "number",
+   "smooth": true,
+   "means": "the peg in hand (peg = held): where it is along the board — 0 at sockets#s1, 1 at sockets#s3 (may go beyond 0..1)"
+  },
+  "peg_v": {
+   "type": "number",
+   "smooth": true,
+   "means": "the peg in hand: where it is up from the line s1→s3, in lengths |s1→s3| (down — below 0); the board and the peg are on one upright card facing the camera"
+  },
+  "bubble1": {
+   "values": [
+    "free",
+    "held",
+    "s1",
+    "s2",
+    "s3"
+   ],
+   "means": "the first bubble: free — floats round its circle (let go, it floats on from there, slowly coming back to the circle), held — in hand: painted under the finger, at the point bubble1_u, bubble1_v; sN — sits in the socket sN. The point bubbles#b1 is where it is painted"
+  },
+  "bubble1_u": {
+   "type": "number",
+   "smooth": true,
+   "means": "bubble 1 in hand: along the board with the sockets — 0 at sockets#s1, 1 at sockets#s3"
+  },
+  "bubble1_v": {
+   "type": "number",
+   "smooth": true,
+   "means": "bubble 1 in hand: up from the line s1→s3, in lengths |s1→s3|"
+  },
+  "bubble2": {
+   "values": [
+    "free",
+    "held",
+    "s1",
+    "s2",
+    "s3"
+   ],
+   "means": "the second bubble: free — floats round its circle (let go, it floats on from there, slowly coming back to the circle), held — in hand: painted under the finger, at the point bubble2_u, bubble2_v; sN — sits in the socket sN. The point bubbles#b2 is where it is painted"
+  },
+  "bubble2_u": {
+   "type": "number",
+   "smooth": true,
+   "means": "bubble 2 in hand: along the board with the sockets — 0 at sockets#s1, 1 at sockets#s3"
+  },
+  "bubble2_v": {
+   "type": "number",
+   "smooth": true,
+   "means": "bubble 2 in hand: up from the line s1→s3, in lengths |s1→s3|"
+  },
+  "bubble3": {
+   "values": [
+    "free",
+    "held",
+    "s1",
+    "s2",
+    "s3"
+   ],
+   "means": "the third bubble: free — floats round its circle (let go, it floats on from there, slowly coming back to the circle), held — in hand: painted under the finger, at the point bubble3_u, bubble3_v; sN — sits in the socket sN. The point bubbles#b3 is where it is painted"
+  },
+  "bubble3_u": {
+   "type": "number",
+   "smooth": true,
+   "means": "bubble 3 in hand: along the board with the sockets — 0 at sockets#s1, 1 at sockets#s3"
+  },
+  "bubble3_v": {
+   "type": "number",
+   "smooth": true,
+   "means": "bubble 3 in hand: up from the line s1→s3, in lengths |s1→s3|"
+  },
+  "crack": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "the crack: the glue fills it from the left end (p0) to the right (p6): 0 — no glue, 1 — filled all through"
+  },
+  "screw1": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "the screw s1: 0 — out, 1 — driven home (the slot turned two turns, the head seated)"
+  },
+  "screw2": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "the screw s2: as screw1"
+  },
+  "screw3": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "the screw s3: as screw1"
+  },
+  "screw4": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "the screw s4: as screw1"
+  },
+  "plate": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "the dusty plaque: 0 — all in dust, 1 — the dust wiped off, the word “Workshop” and a little ship are seen (the dust comes off in patches)"
+  },
+  "floor_found": {
+   "type": "boolean",
+   "means": "the floorboards: the board over the hiding place (floor#hidden) is moved aside, a key is seen in the hollow"
+  },
+  "shell": {
+   "values": [
+    "none",
+    "s1",
+    "s2",
+    "s3"
+   ],
+   "means": "the shell touched (changes at once): it rocks, and “the odd one” (shell_odd) glows. It answers a change of the value: a second touch of the same one goes through none"
+  },
+  "shell_odd": {
+   "values": [
+    "s1",
+    "s2",
+    "s3"
+   ],
+   "means": "which shell is “the odd one”: at a touch it glows instead of rocking"
+  },
+  "shell_found": {
+   "type": "boolean",
+   "means": "“the odd one” is found: it has opened, a pearl in it"
+  },
+  "drum_hits": {
+   "type": "number",
+   "means": "the drum (drum): a counter of hits (an integer, +1) — the skin jumps"
+  },
+  "drum2_hits": {
+   "type": "number",
+   "means": "the second drum (drum2): a counter of hits (an integer, +1)"
+  },
+  "boat_heading": {
+   "range": [
+    -1,
+    1
+   ],
+   "smooth": true,
+   "means": "the boat: where the bow points on the scale: −1 — the scale's left end (−60°), 0 — the middle, 1 — the right end"
+  },
+  "zone_center": {
+   "range": [
+    -1,
+    1
+   ],
+   "smooth": true,
+   "means": "the boat: where the zone (or the firefly, or the bumblebee) is on the scale: −1 — the left end, 1 — the right"
+  },
+  "zone_kind": {
+   "values": [
+    "zone",
+    "firefly",
+    "bee"
+   ],
+   "means": "what is on the scale at zone_center: zone — a light band on the scale, firefly — a firefly over the scale, bee — a bumblebee over the scale"
+  },
+  "zone_lit": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "the boat: the zone (the firefly) glows brighter — the bow is in it: 0 — no, 1 — yes"
+  },
+  "sand": {
+   "range": [
+    0,
+    1
+   ],
+   "smooth": true,
+   "means": "the hourglass: 0 — all the sand on top, 1 — run through; while the key moves, a trickle is seen"
+  }
+ }
+}
