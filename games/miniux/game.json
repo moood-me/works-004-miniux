@@ -6,5 +6,5 @@
     "mechanics": 100
   },
   "world": "../../worlds/miniux",
-  "languages": ["en", "ru", "uk", "de"]
+  "languages": ["en", "ru", "uk", "de", "es"]
 }
