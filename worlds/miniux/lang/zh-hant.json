@@ -1,0 +1,4 @@
+{"strings": [
+  {"text":"miniux","translation":"miniux","where":"worlds/miniux/world.json title"},
+  {"text":"The playground of the mini-games' language: each gesture and each part of the frame on its own (docs/miniux).","translation":"小遊戲語言的遊樂場：每個手勢、框架的每個部分，各自獨立（docs/miniux）。","where":"worlds/miniux/world.json description"}
+]}
